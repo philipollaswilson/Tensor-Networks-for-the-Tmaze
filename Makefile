@@ -52,7 +52,7 @@ requirements: venv
 .PHONY: repo
 repo: venv
 	@echo "Installing UnsupGenModbyMPS from GitHub..."
-	git clone $(REPO_URL) > lib/
+	cd lib && git clone $(REPO_URL)
 
 # Clean up temporary files and virtual environment
 .PHONY: clean
