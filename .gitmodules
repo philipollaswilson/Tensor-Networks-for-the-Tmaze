@@ -1,0 +1,3 @@
+[submodule "lib/UnsupGenModbyMPS"]
+	path = lib/UnsupGenModbyMPS
+	url = https://github.com/congzlwag/UnsupGenModbyMPS.git
