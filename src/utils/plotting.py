@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.linalg import eigvalsh
 import qiskit.quantum_info as qi
-import math
+import matplotlib.pyplot as plt
+import pandas as pd
 
 def plot_matrix(p):
     # Create subplots with 1 row and 2 columns
@@ -48,7 +48,6 @@ def plot_distributions(ps,titles):
     # Show the plot
     plt.show()
     
-
 def plot_success_rate(success, window_size = 20, label = 'Success Rate'):
     
     # Calculate the moving average success rate
@@ -63,9 +62,6 @@ def plot_success_rate(success, window_size = 20, label = 'Success Rate'):
     plt.xlabel('Epoch')
     plt.ylabel('Success Rate')
     plt.legend()
-
-import matplotlib.pyplot as plt
-import pandas as pd
 
 def plot_average_success_rates(success_rates, val_success_rates, trials, hyperparams, window_size=10):
     # Calculate mean and std for success rates
@@ -98,50 +94,11 @@ def plot_average_success_rates(success_rates, val_success_rates, trials, hyperpa
     # put legend outside of the plot
     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     plt.show()
-    
-    
-def check_density_matrix(rho):
-    messages = []
-
-    # Check if the matrix is Hermitian
-    if not np.allclose(rho, rho.conj().T):
-        messages.append("Matrix is not Hermitian.")
-    else:
-        messages.append("Matrix is Hermitian.")
-
-    # Check if the matrix is positive-definite
-    evals = eigvalsh(rho)
-    # Make evals close to 0 equal to 0
-    evals[np.isclose(evals, 0)] = 0
-    if np.any(evals < 0):
-        messages.append("Matrix is not positive-definite. Negative eigenvalues are: " + str(evals[evals < -1e-5]) + ".")
-    else:
-        messages.append("Matrix is positive-definite. Non-zero eigenvalues are: " + str(evals[evals > 1e-5]) + ".")
         
-    # Check if the trace of the matrix is 1
-    if not np.isclose(np.trace(rho), 1):
-        messages.append("Trace of the matrix is not 1, it is: " + str(np.trace(rho)) + ".")
-    else:
-        messages.append("Trace of the matrix is 1.")
 
-    print("\n".join(messages))
-    
-def inspectRDM(rho,base=2):
-
-    # Confirm that the density matrix is valid, (Hermitian, positive semi-definite and trace 1)
-    check_density_matrix(rho)
-    
-    # Compute Von Neumann entropy of the density matrix
-    S = qi.entropy(rho, base=base)
-    print("(Entanglement) Entropy : ", S)
-    print("Maximum Entropy: ", math.log(rho.shape[0],base))
-    
-    #print("Vector state of RDM: ", qi.DensityMatrix(rho).to_statevector(atol=1e-5) if S < 1e-5 else "Non existent because Entangled!" )
-    plot_matrix(rho)
-    
-def MI(pa,pb,pab,base=2):
     pa = qi.DensityMatrix(pa)
     pb = qi.DensityMatrix(pb)
     pab = qi.DensityMatrix(pab)
     
     return (qi.entropy(pa,base=base) + qi.entropy(pb,base=base) - qi.entropy(pab,base=base))/2
+

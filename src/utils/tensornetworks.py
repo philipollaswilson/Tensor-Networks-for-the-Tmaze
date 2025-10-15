@@ -1,7 +1,9 @@
 import tensornetwork as tn
 import numpy as np
-from ../lib/UnsupGenModbyMPS.MPScumulant import MPS_c
-
+from lib.UnsupGenModbyMPS.MPScumulant import MPS_c
+from scipy.linalg import eigvalsh
+import qiskit.quantum_info as qi
+import math
 
 def init_mps(dataset, config):
     mps = MPS_c(space_size=config["n_features"]+1)
@@ -15,7 +17,6 @@ def init_mps(dataset, config):
     mps.init_cumulants()
 
     return mps
-
 
 def check_mps(mps):
     mps.left_cano()
@@ -52,11 +53,9 @@ def check_mps(mps):
     print("MPS tensors are correct")
     return True
 
-
 def shannon_entropy(probabilities, base=2):
     """Compute Shannon entropy of a probability distribution"""
     return -np.sum(probabilities * np.log(probabilities + 1e-12) / np.log(base))
-
 
 def compute_entanglement_given_fixed_label(
         tensors,
@@ -103,7 +102,6 @@ def compute_entanglement_given_fixed_label(
     entanglement = shannon_entropy(eigenvalues)
     
     return entanglement
-
 
 def compute_RDM(
         mps, 
@@ -176,8 +174,7 @@ def compute_RDM(
     # contracted mps tensor not normalized!
     return RDM, contracted_mps_tensor
 
-
-def compute_mutual_information(
+def compute_mutual_information_v1(
         mps,
         edge_idx_i: int,
         edge_idx_j: int,
@@ -201,3 +198,50 @@ def compute_mutual_information(
         S_j = shannon_entropy(np.linalg.eigvalsh(RDM_j))
     mutual_information = (S_i + S_j - S_ij)/2
     return mutual_information
+
+def compute_mutual_information_v2(pa,pb,pab,base=2):
+    pa = qi.DensityMatrix(pa)
+    pb = qi.DensityMatrix(pb)
+    pab = qi.DensityMatrix(pab)
+    
+    return (qi.entropy(pa,base=base) + qi.entropy(pb,base=base) - qi.entropy(pab,base=base))/2
+    
+def check_density_matrix(rho):
+    messages = []
+
+    # Check if the matrix is Hermitian
+    if not np.allclose(rho, rho.conj().T):
+        messages.append("Matrix is not Hermitian.")
+    else:
+        messages.append("Matrix is Hermitian.")
+
+    # Check if the matrix is positive-definite
+    evals = eigvalsh(rho)
+    # Make evals close to 0 equal to 0
+    evals[np.isclose(evals, 0)] = 0
+    if np.any(evals < 0):
+        messages.append("Matrix is not positive-definite. Negative eigenvalues are: " + str(evals[evals < -1e-5]) + ".")
+    else:
+        messages.append("Matrix is positive-definite. Non-zero eigenvalues are: " + str(evals[evals > 1e-5]) + ".")
+        
+    # Check if the trace of the matrix is 1
+    if not np.isclose(np.trace(rho), 1):
+        messages.append("Trace of the matrix is not 1, it is: " + str(np.trace(rho)) + ".")
+    else:
+        messages.append("Trace of the matrix is 1.")
+
+    print("\n".join(messages))
+    
+def inspect_RDM(rho,base=2):
+
+    # Confirm that the density matrix is valid, (Hermitian, positive semi-definite and trace 1)
+    check_density_matrix(rho)
+    
+    # Compute Von Neumann entropy of the density matrix
+    S = qi.entropy(rho, base=base)
+    print("(Entanglement) Entropy : ", S)
+    print("Maximum Entropy: ", math.log(rho.shape[0],base))
+    
+    #print("Vector state of RDM: ", qi.DensityMatrix(rho).to_statevector(atol=1e-5) if S < 1e-5 else "Non existent because Entangled!" )
+    # plot_matrix(rho)
+    
