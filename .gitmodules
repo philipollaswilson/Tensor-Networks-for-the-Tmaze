@@ -1,3 +1,7 @@
 [submodule "lib/UnsupGenModbyMPS"]
 	path = lib/UnsupGenModbyMPS
 	url = https://github.com/congzlwag/UnsupGenModbyMPS.git
+
+[submodule "lib/aif-mps"]
+	path = lib/aif-mps
+	url = https://github.com/SWauthier/aif-mps
