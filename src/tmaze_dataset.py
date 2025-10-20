@@ -1,5 +1,10 @@
-from pymdp.envs import TMazeEnv as TMaze
 import torch
+from lib.aif_mps.mpstwo.agents import RandomAgent
+from lib.aif_mps.mpstwo.data.datasets import MemoryPool, RolloutPool
+from lib.aif_mps.mpstwo.data.datastructs import Dict, TensorDict
+from lib.aif_mps.mpstwo.envs import DictPacker, TMaze
+from lib.aif_mps.mpstwo.model import MPSTwo
+from lib.aif_mps.mpstwo.utils.mapping import MultiOneHotMap
 
 
 config = Dict(
@@ -37,23 +42,24 @@ config = Dict(
     }
 )
 
+prev_model: MPSTwo
 
 
 def make_env(config):
-    return 
+    return DictPacker(TMaze(**config.environment))
+
 
 def make_dataset(config: Dict):
-    dtype = "torch.complex128"
-    env = DictPacker(TMaze(Dict({"reward_probs": [1, 0],})))
-    observation_map = MultiOneHotMap(env.num_obs)
-    action_map = MultiOneHotMap(env.num_controls)
-
+    dtype = eval(config.model.get("dtype", "torch.float32"))
+    _env = make_env(config)
+    observation_map = MultiOneHotMap(_env.num_obs)
+    action_map = MultiOneHotMap(_env.num_controls)
     # init the agent
-    agent = RandomAgent(env.get_action_space())
+    agent = RandomAgent(_env.get_action_space())
 
     # init xp pool
     pool = RolloutPool(
-        env,
+        _env,
         agent,
         sequence_length=config.pool.sequence_length,
         epoch_size=config.pool.rollouts,
