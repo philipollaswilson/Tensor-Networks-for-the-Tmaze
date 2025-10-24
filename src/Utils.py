@@ -28,24 +28,12 @@ def plot_matrix(p):
     # Show the plot
     plt.show()
     
-def plot_distributions(ps,titles):
-    # Create subplots with 1 row and 2 columns
-    fig, axs = plt.subplots(1, len(ps), figsize=(15,5))
-
-    for i, p in enumerate(ps):
-        # Calculate the minimum and maximum values across both the real and imaginary parts of p1
-        vmin = np.min([p.min(), p.min()])
-        vmax = np.max([p.max(), p.max()])
-
-        # Plot the first figure and add a colorbar
-        im1 = axs[i].matshow(p, vmin=0, vmax=1,cmap = 'hot_r')
-        axs[i].set_title(titles[i])
-    plt.colorbar(im1)
-
-    # Adjust the spacing between subplots
+def plot_distribution(p, title='Distribution'):
+    fig, ax = plt.subplots(figsize=(6,5))
+    im = ax.matshow(p, vmin=0, vmax=1, cmap='hot_r')
+    ax.set_title(title)
+    plt.colorbar(im, ax=ax)
     plt.subplots_adjust(wspace=0.4)
-
-    # Show the plot
     plt.show()
     
 
