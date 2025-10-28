@@ -172,7 +172,7 @@ def compute_empowerment(
     converged = False
     for iter in range(int(max_iter)):
         p_o = (p_a[:, None] * p_o_given_a).sum(0) + 1e-12  # p(o)
-        log_ratio = torch.log(p_o_given_a / p_o)  # log q(o|a)/p(o)
+        log_ratio = torch.log(p_o_given_a + 1e-12) - torch.log(p_o)   # log q(o|a)/p(o)
         f_a = (p_o_given_a * log_ratio).sum(1)    # expectation over o
         new_p_a = torch.softmax(f_a, dim=0)
 
@@ -186,5 +186,5 @@ def compute_empowerment(
         print(f"Warning: Blahut-Arimoto algorithm did not converge in {max_iter} iterations.")
     # Compute empowerment
     p_o = (p_a[:, None] * p_o_given_a).sum(0)
-    empowerment = (p_a[:, None] * p_o_given_a * torch.log(p_o_given_a / p_o)).sum().item()
+    empowerment = (p_a[:, None] * p_o_given_a * (torch.log(p_o_given_a + 1e-12) - torch.log(p_o))).sum().item()
     return p_a, empowerment
