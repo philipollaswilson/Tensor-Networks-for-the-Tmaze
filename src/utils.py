@@ -123,6 +123,7 @@ def compute_mutual_information(
         probabilities_ij = np.linalg.eigvalsh(RDM_ij)
     S_ij = shannon_entropy(probabilities_ij)
 
+    # optional TODO if you have RDMij, you can compute Si and Sj from partial traces instead of recomputing RDMs
     RDM_i, _ = compute_RDM(
         nodes,
         conj_nodes,
@@ -149,7 +150,10 @@ def compute_mutual_information(
         else:
             probabilities_j = np.linalg.eigvalsh(RDM_j)
         S_j = shannon_entropy(probabilities_j)
-    mutual_information = (S_i + S_j - S_ij)/2
+    print("probabilities_i:", probabilities_i)
+    print("probabilities_j:", probabilities_j)
+    print(f"S_i: {S_i}, S_j: {S_j}, S_ij: {S_ij}")
+    mutual_information = (S_i + S_j - S_ij) 
     return mutual_information
 
 def compute_empowerment(
@@ -186,5 +190,5 @@ def compute_empowerment(
         print(f"Warning: Blahut-Arimoto algorithm did not converge in {max_iter} iterations.")
     # Compute empowerment
     p_o = (p_a[:, None] * p_o_given_a).sum(0)
-    empowerment = (p_a[:, None] * p_o_given_a * (torch.log(p_o_given_a + 1e-12) - torch.log(p_o))).sum().item()
-    return p_a, empowerment
+    empowerment = (p_a[:, None] * p_o_given_a * (torch.log(p_o_given_a + 1e-12,) - torch.log(p_o))).sum().item()
+    return p_a, empowerment / np.log(2)  # convert to bits
