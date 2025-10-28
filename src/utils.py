@@ -2,7 +2,7 @@ import tensornetwork as tn
 import numpy as np
 from lib.UnsupGenModbyMPS.MPScumulant import MPS_c
 from typing import Optional
-
+import torch
 
 def init_mps(dataset, config):
     mps = MPS_c(space_size=config["n_features"]+1)
@@ -151,3 +151,40 @@ def compute_mutual_information(
         S_j = shannon_entropy(probabilities_j)
     mutual_information = (S_i + S_j - S_ij)/2
     return mutual_information
+
+def compute_empowerment(
+        p_o_given_a: torch.Tensor, 
+        tol: float = 1e-8, 
+        max_iter = 1000
+    ) -> tuple[torch.Tensor, float]:
+    """
+    Compute empowerment over p(a) using Blahut–Arimoto algorithm.
+
+    Args:
+        p_o_given_a (torch.tensor): of shape [n_actions, n_obs], p(o|a)
+    Returns: 
+        p(a) (torch.tensor): of shape [n_actions,], optimal action distribution
+        empowerment value (float) 
+    """
+    n_actions, n_obs = p_o_given_a.shape
+    p_a = torch.full((n_actions,), 1.0 / n_actions, dtype=torch.double)
+
+    converged = False
+    for iter in range(int(max_iter)):
+        p_o = (p_a[:, None] * p_o_given_a).sum(0) + 1e-12  # p(o)
+        log_ratio = torch.log(p_o_given_a / p_o)  # log q(o|a)/p(o)
+        f_a = (p_o_given_a * log_ratio).sum(1)    # expectation over o
+        new_p_a = torch.softmax(f_a, dim=0)
+
+        if torch.max(torch.abs(new_p_a - p_a)) < tol: 
+            print(f"Converged in {iter} iterations.")
+            converged = True
+            break
+            
+        p_a = new_p_a
+    if not converged:
+        print(f"Warning: Blahut-Arimoto algorithm did not converge in {max_iter} iterations.")
+    # Compute empowerment
+    p_o = (p_a[:, None] * p_o_given_a).sum(0)
+    empowerment = (p_a[:, None] * p_o_given_a * torch.log(p_o_given_a / p_o)).sum().item()
+    return p_a, empowerment
