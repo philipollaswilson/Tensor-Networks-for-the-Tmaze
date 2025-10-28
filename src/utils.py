@@ -104,6 +104,7 @@ def compute_mutual_information(
         fixing_nodes: list[tn.Node] = [],
         fixing_sites: list[int] = [],
         S_j: Optional[float] = None,
+        is_classical: bool = True,
     ):
     """
         Compute the mutual information between two edges in the MPS.
@@ -116,7 +117,10 @@ def compute_mutual_information(
         fixing_nodes=fixing_nodes,
         fixing_sites=fixing_sites,
     )
-    probabilities_ij = np.linalg.eigvalsh(RDM_ij)
+    if is_classical: 
+        probabilities_ij = np.real(np.diag(RDM_ij))
+    else:
+        probabilities_ij = np.linalg.eigvalsh(RDM_ij)
     S_ij = shannon_entropy(probabilities_ij)
 
     RDM_i, _ = compute_RDM(
@@ -126,7 +130,10 @@ def compute_mutual_information(
         fixing_nodes=fixing_nodes,
         fixing_sites=fixing_sites,
     )
-    probabilities_i = np.linalg.eigvalsh(RDM_i)
+    if is_classical: 
+        probabilities_i = np.real(np.diag(RDM_i))
+    else:
+        probabilities_i = np.linalg.eigvalsh(RDM_i)
     S_i = shannon_entropy(probabilities_i)
 
     RDM_j, _ = compute_RDM(
@@ -137,7 +144,10 @@ def compute_mutual_information(
         fixing_sites=fixing_sites,
     )
     if S_j is None:
-        probabilities_j = np.linalg.eigvalsh(RDM_j)
+        if is_classical: 
+            probabilities_j = np.real(np.diag(RDM_j))
+        else:
+            probabilities_j = np.linalg.eigvalsh(RDM_j)
         S_j = shannon_entropy(probabilities_j)
     mutual_information = (S_i + S_j - S_ij)/2
     return mutual_information
