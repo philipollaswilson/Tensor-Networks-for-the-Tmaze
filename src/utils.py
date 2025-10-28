@@ -1,6 +1,6 @@
 import tensornetwork as tn
 import numpy as np
-from ../lib/UnsupGenModbyMPS.MPScumulant import MPS_c
+#from ../lib/UnsupGenModbyMPS.MPScumulant import MPS_c
 
 
 def init_mps(dataset, config):
@@ -106,7 +106,7 @@ def compute_entanglement_given_fixed_label(
 
 
 def compute_RDM(
-        mps, 
+        tensors, 
         open_edge_idxs: list[int],
         fixing_nodes: list[tn.Node] = [],
         fixing_sites: list[int] = [],
@@ -117,10 +117,9 @@ def compute_RDM(
     fixing_flag = False
     if len(fixing_nodes) > 0: fixing_flag = True
     
-    mps.left_cano()
-    tensors = mps.matrices
     nodes = [tn.Node(tensor) for tensor in tensors]
     conj_nodes = [tn.Node(np.conj(tensor)) for tensor in tensors]
+    fixing_nodes = [tn.Node(tensor) for tensor in fixing_nodes]
 
     # Connect the extremes of the MPS
     nodes[0][0] ^ conj_nodes[0][0]
