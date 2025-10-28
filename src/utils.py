@@ -3,6 +3,7 @@ import numpy as np
 from lib.UnsupGenModbyMPS.MPScumulant import MPS_c
 from typing import Optional
 
+
 def init_mps(dataset, config):
     mps = MPS_c(space_size=config["n_features"]+1)
     mps.cutoff = config["cutoff"]
@@ -31,15 +32,15 @@ def compute_RDM(
     ):
 
     assert all(open_edge_idxs[i] < open_edge_idxs[i + 1] for i in range(len(open_edge_idxs) - 1)), "open_edge_idxs must be in ascending order"
-    assert set(fixing_sites).issubset(set(open_edge_idxs)), "fixing_sites must be a subset of open_edge_idxs"
+    # assert set(fixing_sites).issubset(set(open_edge_idxs)), "fixing_sites must be a subset of open_edge_idxs"
     fixing_flag = False
     if len(fixing_nodes) > 0: fixing_flag = True
 
     # Due to canonicalization, we can truncate the MPS to the maximum open edge index
 
-    max_site = max(open_edge_idxs)
-    nodes = nodes[:max_site + 1]
-    conj_nodes = conj_nodes[:max_site + 1]
+    # max_site = max(open_edge_idxs)
+    # nodes = nodes[:max_site + 1]
+    # conj_nodes = conj_nodes[:max_site + 1]
 
     # Connect the extremes of the MPS
     nodes[0][0] ^ conj_nodes[0][0]
@@ -49,7 +50,7 @@ def compute_RDM(
     for i in range(len(nodes)-1):
         
         # Connect the physical indices
-        if i not in open_edge_idxs: nodes[i][1] ^ conj_nodes[i][1]
+        if (i not in open_edge_idxs) and (i not in fixing_sites): nodes[i][1] ^ conj_nodes[i][1]
         
         # Connect the bond indices
         nodes[i][2] ^ nodes[i + 1][0]
@@ -79,7 +80,7 @@ def compute_RDM(
     ).tensor    
 
     # Dynamically reshape the tensor based on number of open edges
-    num_open_edges = len(open_edge_idxs)-len(fixing_sites)
+    num_open_edges = len(open_edge_idxs)
     first_dims = contracted_mps_tensor.shape[:num_open_edges]
     second_dims = contracted_mps_tensor.shape[num_open_edges:]
     
@@ -100,29 +101,43 @@ def compute_mutual_information(
         conj_nodes: list[tn.Node],
         edge_idx_i: int,
         edge_idx_j: int,
-        S_j: Optional[float] = None
+        fixing_nodes: list[tn.Node] = [],
+        fixing_sites: list[int] = [],
+        S_j: Optional[float] = None,
     ):
     """
         Compute the mutual information between two edges in the MPS.
     """
+
     RDM_ij, _ = compute_RDM(
         nodes,
         conj_nodes,
         open_edge_idxs=[edge_idx_i, edge_idx_j],
+        fixing_nodes=fixing_nodes,
+        fixing_sites=fixing_sites,
     )
-    S_ij = shannon_entropy(np.linalg.eigvalsh(RDM_ij))
+    probabilities_ij = np.linalg.eigvalsh(RDM_ij)
+    S_ij = shannon_entropy(probabilities_ij)
+
     RDM_i, _ = compute_RDM(
         nodes,
         conj_nodes,
         open_edge_idxs=[edge_idx_i],
+        fixing_nodes=fixing_nodes,
+        fixing_sites=fixing_sites,
     )
-    S_i = shannon_entropy(np.linalg.eigvalsh(RDM_i))
+    probabilities_i = np.linalg.eigvalsh(RDM_i)
+    S_i = shannon_entropy(probabilities_i)
+
     RDM_j, _ = compute_RDM(
         nodes,
         conj_nodes,
         open_edge_idxs=[edge_idx_j],
+        fixing_nodes=fixing_nodes,
+        fixing_sites=fixing_sites,
     )
     if S_j is None:
-        S_j = shannon_entropy(np.linalg.eigvalsh(RDM_j))
+        probabilities_j = np.linalg.eigvalsh(RDM_j)
+        S_j = shannon_entropy(probabilities_j)
     mutual_information = (S_i + S_j - S_ij)/2
     return mutual_information
