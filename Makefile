@@ -7,8 +7,8 @@ VENV_PYTHON := $(VENV_DIR)/bin/python
 VENV_PIP := $(VENV_PYTHON) -m pip
 
 # Repository URL
-REPO_URL := git@github.com:congzlwag/UnsupGenModbyMPS.git
-
+REPO_URL_1 := git@github.com:congzlwag/UnsupGenModbyMPS.git
+REPO_URL_2 := git@github.com:SWauthier/aif-mps.git
 # Default target
 .PHONY: help
 help:
@@ -52,7 +52,10 @@ requirements: venv
 .PHONY: repo
 repo: venv
 	@echo "Installing UnsupGenModbyMPS from GitHub..."
-	cd lib && git clone $(REPO_URL)
+	cd lib && git clone $(REPO_URL_1)
+
+	@echo "Installing aif-mps from GitHub..."
+	cd lib && git clone $(REPO_URL_2)
 
 # Clean up temporary files and virtual environment
 .PHONY: clean
