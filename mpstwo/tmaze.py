@@ -4,6 +4,10 @@ import sys
 import traceback
 from typing import Any, Callable, Optional
 
+# Fix sys.path to find mpstwo when run as a script
+repo_root = pathlib.Path(__file__).parent.parent
+if str(repo_root) not in sys.path:
+    sys.path.insert(0, str(repo_root))
 
 import numpy as np
 import pandas as pd
@@ -44,6 +48,7 @@ config = Dict(
                 "sequence_length": 3,
                 "rollouts": 5000,
                 "random": False,
+                "simple": True,
             }
         ),
         "optimizer": Dict({"lr": 1e-2}),
@@ -87,6 +92,54 @@ def make_dataset(config: Dict):
         epoch_size=config.pool.rollouts,
     )
     train = MemoryPool()
+    
+    # Actions : Right (0), Left (1), Cue (2)
+    # Observations : Cheese (0), Shock (1), Right (2), Left (3)
+    if config.pool.simple:
+        for context in range(2,4):
+            for a1 in range(3):
+                
+                # If mouse goes to cue it sees Right or Left
+                if a1 == 2:
+                    o2 = context
+                    
+                # If it goes Left  or Right it sees Cheese or Shock
+                elif a1 == 1:
+                    o2 = 3 - context
+                    
+                else:
+                    o2 = context - 2
+                    
+                for a2 in range(3):
+                    if a1 != 2: # TRAP
+                        o3 = o2
+                    else:
+                        if a2 == 2:
+                            o2 = context
+                    
+                        # If it goes Left  or Right it sees Cheese or Shock
+                        elif a2 == 1:
+                            o2 = 3 - context
+                            
+                        else:
+                            o2 = context - 2
+                            
+                        sequence = TensorDict(
+                            {
+                                "action": torch.tensor(
+                                    [[0, 0], [a1, 0], [a2, 0]]
+                                ),
+                                "observation": torch.tensor(
+                                    [[0, 0, 0], [o2], [o3]]
+                                ),
+                            }
+                        )
+                        for k, v in sequence.items():
+                            if k == "observation":
+                                sequence[k] = observation_map(v).type(dtype)
+                            elif k == "action":
+                                sequence[k] = action_map(v).type(dtype)
+                        train.push_no_update(sequence)
 
     if config.pool.random:
         for i in range(config.pool.rollouts):
@@ -140,6 +193,7 @@ def make_dataset(config: Dict):
                                             sequence[k] = observation_map(v).type(dtype)
                                         elif k == "action":
                                             sequence[k] = action_map(v).type(dtype)
+                                    print(sequence)
                                     train.push_no_update(sequence)
     train._update_table()
 
@@ -164,8 +218,8 @@ def run(config: Dict):
 
     my_mps = MPSTwo(
         config.pool.sequence_length,
-        feature_dim_obs=math.prod(_env.num_obs), # type: ignore
-        feature_dim_act=math.prod(_env.num_controls), # type: ignore
+        feature_dim_obs=math.prod(num_obs), # type: ignore
+        feature_dim_act=math.prod(num_controls), # type: ignore
         **config.model,
         device=config.device,
     )
@@ -219,7 +273,7 @@ def run_param_search(config: Dict):
         config.scheduler = Dict(
             {"TwoSite": Dict({"frequency": 10, "first_epoch_update": False})}
         )
-        config.model.bond_dim = math.prod(_env.num_obs)
+        config.model.bond_dim = math.prod(num_obs)
 
     for init in initializations:
         config.model.init_mode = init
@@ -266,8 +320,8 @@ def convergence_callback(
 
 
 def generate_sample(model):
-    observations = torch.empty((model.physical_legs, len(_env.num_obs)))
-    actions = torch.empty((model.physical_legs, len(_env.num_controls)))
+    observations = torch.empty((model.physical_legs, len(num_obs)))
+    actions = torch.empty((model.physical_legs, len(num_controls)))
 
     model.left_canonical()
 
@@ -369,7 +423,7 @@ def evaluate_accuracy(config: Dict):
     sequence = pool[0]
     print("act:", sequence.action)
     print("obs:", sequence.observation)
-    pred = torch.zeros((config.pool.sequence_length, len(_env.num_controls)))
+    pred = torch.zeros((config.pool.sequence_length, len(num_controls)))
     for i in range(config.pool.sequence_length):
         a_exp = eval_func(
             expected_action, model, sequence, missing_idx=i, action_map=action_map
@@ -750,8 +804,17 @@ if __name__ == "__main__":
                 exec(f"config.{kvl[0]} = '{kvl[1]}'")
 
 _env = make_env(config)
-observation_map = MultiOneHotMap(_env.num_obs)
-action_map = MultiOneHotMap(_env.num_controls)
+
+print(_env.num_obs, _env.num_controls)
+if config.pool.simple:
+    num_obs = [4]
+    num_controls = [3]
+else:
+    num_obs = _env.num_obs
+    num_controls = _env.num_controls
+    
+observation_map = MultiOneHotMap(num_obs)
+action_map = MultiOneHotMap(num_controls)
 
 if __name__ == "__main__":
     func = getattr(sys.modules[__name__], sys.argv[1])

@@ -1,194 +1,139 @@
-import tensornetwork as tn
 import numpy as np
-from lib.UnsupGenModbyMPS.MPScumulant import MPS_c
-from typing import Optional
 import torch
 
-def init_mps(dataset, config):
-    mps = MPS_c(space_size=config["n_features"]+1)
-    mps.cutoff = config["cutoff"]
-    mps.descenting_step_length = config["descenting_step_length"]
-    mps.descent_steps = config["descent_steps"]
-    mps.nbatch = config["nbatch"]
-
-    mps.designate_data(dataset)
-    mps.left_cano()
-    mps.init_cumulants()
-
-    return mps
-
-
-def shannon_entropy(probabilities, base=2):
+def shannon_entropy(probabilities, axis = None, base=2):
     """Compute Shannon entropy of a probability distribution"""
-    return -np.sum(probabilities * np.log(probabilities + 1e-12) / np.log(base))
+    return np.round(-np.sum(probabilities * np.log(probabilities + 1e-12) / np.log(base), axis = axis), 4)
 
 
-def compute_RDM(
-        nodes: list[tn.Node],
-        conj_nodes: list[tn.Node],
-        open_edge_idxs: list[int],
-        fixing_nodes: list[tn.Node] = [],
-        fixing_sites: list[int] = [],
-    ):
-
-    assert all(open_edge_idxs[i] < open_edge_idxs[i + 1] for i in range(len(open_edge_idxs) - 1)), "open_edge_idxs must be in ascending order"
-    # assert set(fixing_sites).issubset(set(open_edge_idxs)), "fixing_sites must be a subset of open_edge_idxs"
-    fixing_flag = False
-    if len(fixing_nodes) > 0: fixing_flag = True
-
-    # Due to canonicalization, we can truncate the MPS to the maximum open edge index
-
-    # max_site = max(open_edge_idxs)
-    # nodes = nodes[:max_site + 1]
-    # conj_nodes = conj_nodes[:max_site + 1]
-
-    # Connect the extremes of the MPS
-    nodes[0][0] ^ conj_nodes[0][0]
-    nodes[-1][2] ^ conj_nodes[-1][2]
-
-    # Connect the edges of the MPS
-    for i in range(len(nodes)-1):
-        
-        # Connect the physical indices
-        if (i not in open_edge_idxs) and (i not in fixing_sites): nodes[i][1] ^ conj_nodes[i][1]
-        
-        # Connect the bond indices
-        nodes[i][2] ^ nodes[i + 1][0]
-        conj_nodes[i][2] ^ conj_nodes[i + 1][0]
-
-    # Connect indices of the last site
-    if len(nodes) - 1 not in open_edge_idxs: nodes[-1][1] ^ conj_nodes[-1][1]
-
-    # Connect the fixing tensors if provided
-    if fixing_flag:
-        for idx, site in enumerate(fixing_sites):
-            nodes[site][1] ^ fixing_nodes[idx][0]
-            conj_nodes[site][1] ^ fixing_nodes[idx][1]
-
-    # Prepare output_edge_order for open edges
-    output_edges = []
-    idxs = [i for i in open_edge_idxs if i not in fixing_sites]
-    for idx in idxs:
-        output_edges.extend([nodes[idx][1]])    
-    for idx in idxs:
-        output_edges.extend([conj_nodes[idx][1]])
-    
-    # Contract the network and return the resulting tensor
-    contracted_mps_tensor = tn.contractors.auto(
-        nodes + fixing_nodes + conj_nodes,
-        output_edge_order=output_edges
-    ).tensor    
-
-    # Dynamically reshape the tensor based on number of open edges
-    num_open_edges = len(open_edge_idxs)
-    first_dims = contracted_mps_tensor.shape[:num_open_edges]
-    second_dims = contracted_mps_tensor.shape[num_open_edges:]
-    
-    first_dim_product = np.prod(first_dims)
-    second_dim_product = np.prod(second_dims)
-    
-    # Reshape to a rank-2 tensor where the dimensions are products of the respective open edges
-    RDM = contracted_mps_tensor.reshape((first_dim_product, second_dim_product))
-    
-    RDM /= np.trace(RDM)
-    
-    # contracted mps tensor not normalized!
-    return RDM, contracted_mps_tensor
-
-
-def compute_mutual_information(
-        nodes: list[tn.Node],
-        conj_nodes: list[tn.Node],
-        edge_idx_i: int,
-        edge_idx_j: int,
-        fixing_nodes: list[tn.Node] = [],
-        fixing_sites: list[int] = [],
-        S_j: Optional[float] = None,
-        is_classical: bool = True,
-    ):
-    """
-        Compute the mutual information between two edges in the MPS.
-    """
-
-    RDM_ij, _ = compute_RDM(
-        nodes,
-        conj_nodes,
-        open_edge_idxs=[edge_idx_i, edge_idx_j],
-        fixing_nodes=fixing_nodes,
-        fixing_sites=fixing_sites,
-    )
-    if is_classical: 
-        probabilities_ij = np.real(np.diag(RDM_ij))
-    else:
-        probabilities_ij = np.linalg.eigvalsh(RDM_ij)
-    S_ij = shannon_entropy(probabilities_ij)
-
-    # optional TODO if you have RDMij, you can compute Si and Sj from partial traces instead of recomputing RDMs
-    RDM_i, _ = compute_RDM(
-        nodes,
-        conj_nodes,
-        open_edge_idxs=[edge_idx_i],
-        fixing_nodes=fixing_nodes,
-        fixing_sites=fixing_sites,
-    )
-    if is_classical: 
-        probabilities_i = np.real(np.diag(RDM_i))
-    else:
-        probabilities_i = np.linalg.eigvalsh(RDM_i)
-    S_i = shannon_entropy(probabilities_i)
-
-    RDM_j, _ = compute_RDM(
-        nodes,
-        conj_nodes,
-        open_edge_idxs=[edge_idx_j],
-        fixing_nodes=fixing_nodes,
-        fixing_sites=fixing_sites,
-    )
-    if S_j is None:
-        if is_classical: 
-            probabilities_j = np.real(np.diag(RDM_j))
-        else:
-            probabilities_j = np.linalg.eigvalsh(RDM_j)
-        S_j = shannon_entropy(probabilities_j)
-    print("probabilities_i:", probabilities_i)
-    print("probabilities_j:", probabilities_j)
-    print(f"S_i: {S_i}, S_j: {S_j}, S_ij: {S_ij}")
-    mutual_information = (S_i + S_j - S_ij) 
-    return mutual_information
 
 def compute_empowerment(
         p_o_given_a: torch.Tensor, 
-        tol: float = 1e-8, 
-        max_iter = 1000
+        tol: float = 1e-10, 
+        max_iter: int = 10000,
+        base: int = 2,
+        damping: float = 0.1,
+        dedup: bool = True,
     ) -> tuple[torch.Tensor, float]:
     """
-    Compute empowerment over p(a) using Blahut–Arimoto algorithm.
+    Compute empowerment over p(a) with a numerically stable Blahut–Arimoto.
 
     Args:
-        p_o_given_a (torch.tensor): of shape [n_actions, n_obs], p(o|a)
-    Returns: 
-        p(a) (torch.tensor): of shape [n_actions,], optimal action distribution
-        empowerment value (float) 
+        p_o_given_a (torch.Tensor): shape [n_actions, n_obs], p(o|a)
+        tol (float): convergence tolerance on p(a)
+        max_iter (int): maximum iterations
+        base (int): log base for returned empowerment
+        damping (float): damping in [0,1) to reduce oscillations
+        dedup (bool): if True, collapse identical action rows to avoid oscillations and expand back
+    Returns:
+        p(a) (torch.Tensor): optimal action distribution (shape [n_actions,])
+        empowerment (float): mutual information in the chosen base
     """
-    n_actions, n_obs = p_o_given_a.shape
-    p_a = torch.full((n_actions,), 1.0 / n_actions, dtype=torch.double)
+
+    # Use double precision for numerical stability
+    p_o_given_a = p_o_given_a.double()
+    n_actions, _ = p_o_given_a.shape
+
+    # Basic validation: rows should sum to 1
+    row_sums = p_o_given_a.sum(1)
+    if torch.any(torch.abs(row_sums - 1.0) > 1e-6):
+        raise ValueError("Each action row of p_o_given_a must sum to 1.")
+
+    # Optional: collapse identical action rows to avoid degeneracy
+    def _unique_rows(matrix: torch.Tensor, atol: float = 1e-12):
+        rows: list[torch.Tensor] = []
+        groups: list[list[int]] = []
+        for i, row in enumerate(matrix):
+            matched = False
+            for g_idx, ref in enumerate(rows):
+                if torch.allclose(row, ref, atol=atol, rtol=0):
+                    groups[g_idx].append(i)
+                    matched = True
+                    break
+            if not matched:
+                rows.append(row)
+                groups.append([i])
+        return torch.stack(rows), groups
+
+    if dedup:
+        reduced_o_given_a, groups = _unique_rows(p_o_given_a)
+    else:
+        reduced_o_given_a, groups = p_o_given_a, [[i] for i in range(n_actions)]
+
+    # Initialize p(a) uniformly on the reduced set
+    p_a = torch.full((reduced_o_given_a.shape[0],), 1.0 / reduced_o_given_a.shape[0], dtype=torch.double)
 
     converged = False
+    prev_emp = None
     for iter in range(int(max_iter)):
-        p_o = (p_a[:, None] * p_o_given_a).sum(0) + 1e-12  # p(o)
-        log_ratio = torch.log(p_o_given_a + 1e-12) - torch.log(p_o)   # log q(o|a)/p(o)
-        f_a = (p_o_given_a * log_ratio).sum(1)    # expectation over o
-        new_p_a = torch.softmax(f_a, dim=0)
+        # Marginal p(o) = sum_a p(a) p(o|a)
+        p_o = (p_a[:, None] * reduced_o_given_a).sum(0)
 
-        if torch.max(torch.abs(new_p_a - p_a)) < tol: 
-            print(f"Converged in {iter} iterations.")
+        # f(a) = sum_o p(o|a) log( p(o|a) / p(o) )
+        log_ratio = torch.log(reduced_o_given_a + tol) - torch.log(p_o + tol)
+        f_a = (reduced_o_given_a * log_ratio).sum(1)
+
+        # Update p(a) with optional damping to prevent oscillations
+        step_p_a = torch.softmax(f_a, dim=0)
+        new_p_a = (1 - damping) * step_p_a + damping * p_a
+
+        # Renormalize to guard against drift
+        new_p_a = new_p_a / new_p_a.sum()
+
+        # Check convergence
+        delta = torch.max(torch.abs(new_p_a - p_a)).item()
+        if prev_emp is None:
+            prev_emp = 0.0
+        # current empowerment estimate on reduced p(a)
+        H_O_tmp = -(p_o * torch.log(p_o + tol)).sum()
+        H_OA_tmp = -(new_p_a[:, None] * reduced_o_given_a * torch.log(reduced_o_given_a + tol)).sum()
+        emp_tmp = (H_O_tmp - H_OA_tmp).item()
+
+        if delta < max(tol, 1e-12) or abs(emp_tmp - prev_emp) < 1e-12:
             converged = True
+            p_a = new_p_a
+            print(f"Converged in {iter} iterations.")
             break
-            
+
         p_a = new_p_a
+        prev_emp = emp_tmp
+
     if not converged:
         print(f"Warning: Blahut-Arimoto algorithm did not converge in {max_iter} iterations.")
-    # Compute empowerment
-    p_o = (p_a[:, None] * p_o_given_a).sum(0)
-    empowerment = (p_a[:, None] * p_o_given_a * (torch.log(p_o_given_a + 1e-12,) - torch.log(p_o))).sum().item()
-    return p_a, empowerment / np.log(2)  # convert to bits
+        print(f"Final p(a): {p_a.numpy()}")
+
+    # Expand reduced p(a) back to original actions
+    full_p_a = torch.zeros(n_actions, dtype=torch.double)
+    for prob, idxs in zip(p_a, groups):
+        share = prob / len(idxs)
+        for j in idxs:
+            full_p_a[j] = share
+
+    # Compute empowerment: I(A;O) = H(O) - H(O|A)
+    p_o = (full_p_a[:, None] * p_o_given_a).sum(0)
+    H_O = -(p_o * torch.log(p_o + tol)).sum().item()
+    H_O_given_A = -(full_p_a[:, None] * p_o_given_a * torch.log(p_o_given_a + tol)).sum().item()
+    empowerment = H_O - H_O_given_A
+
+    print(f"H(O) = {H_O / np.log(base):.4f}, H(O|A) = {H_O_given_A / np.log(base):.4f}")
+
+    return full_p_a.numpy(), empowerment / np.log(base)
+
+import matplotlib.pyplot as plt
+
+def plot_distribution(p, title='Distribution', x_labels=None, y_labels=None):
+    fig, ax = plt.subplots(figsize=(6,5))
+    im = ax.matshow(p, vmin=0, vmax=1, cmap='hot_r')
+    ax.set_title(title)
+    plt.colorbar(im, ax=ax)
+    plt.subplots_adjust(wspace=0.4)
+
+    if x_labels is not None:
+        ax.set_xticks(np.arange(len(x_labels)))
+        ax.set_xticklabels(x_labels)
+
+    if y_labels is not None:
+        ax.set_yticks(np.arange(len(y_labels)))
+        ax.set_yticklabels(y_labels)
+
+    plt.show()
