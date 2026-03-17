@@ -51,7 +51,7 @@ config = Dict(
                 "simple": True,
             }
         ),
-        "optimizer": Dict({"lr": 1e-2}),
+        "optimizer": Dict({"lr": 1e-4}),
         "trainer": Dict(
             {
                 "batch_size": 10,
@@ -193,7 +193,7 @@ def make_dataset(config: Dict):
                                             sequence[k] = observation_map(v).type(dtype)
                                         elif k == "action":
                                             sequence[k] = action_map(v).type(dtype)
-                                    print(sequence)
+                                    #print(sequence)
                                     train.push_no_update(sequence)
     train._update_table()
 
