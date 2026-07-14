@@ -54,9 +54,9 @@ conditional-independence graph, from exact mutual information; and the observati
 factorisation, in which context appears as a near-independent modality. The number of
 hidden states is fixed by a model-selection argument, read as active-inference model
 expansion and Bayesian model reduction rather than off a truncation threshold.
-Empowerment computed on the recovered model tracks the three control regimes of the
-first paper to three decimals, and rises when the agent acts to resolve its uncertainty
-even though nothing in training rewards that. Since the tensor network is not itself an
+Empowerment computed on the recovered model tracks the three control regimes of that
+earlier study to three decimals, and rises when the agent acts to resolve its
+uncertainty even though nothing in training rewards that. Since the tensor network is not itself an
 active-inference agent, the method carries over to any system whose sensorimotor stream
 can be modelled.
 \keywords{Active inference \and Agency \and Computational phenotyping \and
@@ -65,24 +65,24 @@ Empowerment \and Tensor networks \and Structure learning \and World models}
 
 \section{Introduction}\label{sec:intro}
 
-Agency in artificial systems is asserted far more often than it is measured. Our first
-paper~\cite{wilsonAgency2025} (Paper~I) held that a useful notion of agency turns on
-three properties, intentionality, rationality, and explainability, and argued that
-active inference~\cite{parr2022} supplies all three at once: within a partially
-observable Markov decision process (POMDP) the agent's posteriors, its prior
-preferences, and its expected-free-energy-driven policy give beliefs, desires, and a
-normative reason for acting, each inspectable in the likelihood and transition tensors.
-On such a model, empowerment~\cite{klyubin2005,salge2014}, the channel capacity from an
-action to the next observation, measures how much of what the agent will observe its
-actions can actually decide. This paper is the follow-up. It keeps the definition, the
-probe, and the T-maze of Paper~I fixed, and adds the step Paper~I set aside.
+Agency in artificial systems is asserted far more often than it is measured. We argued
+in earlier work~\cite{wilsonAgency2025} that a useful notion of agency turns on three
+properties, intentionality, rationality, and explainability, and that active
+inference~\cite{parr2022} supplies all three at once: within a partially observable
+Markov decision process (POMDP) the agent's posteriors, its prior preferences, and its
+expected-free-energy-driven policy give beliefs, desires, and a normative reason for
+acting, each inspectable in the likelihood and transition tensors. On such a model,
+empowerment~\cite{klyubin2005,salge2014}, the channel capacity from an action to the
+next observation, measures how much of what the agent will observe its actions can
+actually decide. This paper is the follow-up: it keeps that definition, the probe, and
+the T-maze fixed, and adds the step we set aside.
 
 Phenotyping, taken from computational psychiatry~\cite{montague2012,schwartenbeck2016},
 runs in two steps: fit a generative model to behaviour, then read behaviour off the
-fitted parameters. Paper~I did only the second, on models we specified by hand, and
-described the first as work to come. We do it here. Once the model is learned from
-behaviour, the reading that produces an empowerment number also produces the entire
-generative model that stands behind it.
+fitted parameters. We did only the second there, on models specified by hand, and left
+the first as work to come. We do it here. Once the model is learned from behaviour, the
+reading that produces an empowerment number also produces the entire generative model
+that stands behind it.
 
 Concretely, we train a \emph{matrix product state} (MPS), a one-dimensional tensor
 network, as an unsupervised generative model of T-maze rollouts, following
@@ -121,8 +121,8 @@ code accompanies the paper.
 \section{Background}\label{sec:background}
 
 We recap only what the pipeline needs; the three agency criteria, the empowerment
-probe, and the design of the T-maze are developed in full in Paper~I~\cite{wilsonAgency2025},
-and the tensor-network machinery is new to this paper.
+probe, and the design of the T-maze are developed in full in our earlier
+paper~\cite{wilsonAgency2025}, and the tensor-network machinery is new here.
 
 \subsection{The task and the analytic model}
 The minimal T-maze is a two-step POMDP with three actions (Left, Right, Cue) and four
@@ -157,12 +157,12 @@ shrinks the step when the loss stalls~\cite{han2018}; the minimal model reaches
 $\|p-q\|_1=0.13$ and the full model $\|p-q\|_1=0.005$.
 
 \subsection{Empowerment}
-We borrow one quantity from Paper~I, $\max_{p(a)} I(A;O')$, the largest mutual
-information an agent can drive between its next action and its next observation,
-evaluated by Blahut--Arimoto~\cite{salge2014}. Paper~I distinguishes the value computed
-under the true environment (\emph{objective}) from the value under the agent's beliefs
-(\emph{subjective}), and both from the \emph{actual} value once preferences narrow the
-action distribution. Only one variant is empirical here: computed under the learned
+We borrow one quantity from that work~\cite{wilsonAgency2025}, $\max_{p(a)} I(A;O')$,
+the largest mutual information an agent can drive between its next action and its next
+observation, evaluated by Blahut--Arimoto~\cite{salge2014}. It distinguishes the value
+computed under the true environment (\emph{objective}) from the value under the agent's
+beliefs (\emph{subjective}), and both from the \emph{actual} value once preferences
+narrow the action distribution. Only one variant is empirical here: computed under the learned
 model, the subjective value approaches the objective one as the fit tightens. We report
 it over the full observation and over the reward modality alone.
 
