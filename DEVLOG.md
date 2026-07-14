@@ -1,5 +1,26 @@
 # Devlog
 
+## 2026-07-14 (night: Paper II hardening)
+- Retitled to *Structure Learning of Generative Models for Agency Phenotyping* — we
+  structure-learn a generative (world) model; agency is the application, not the object.
+- De-duplicated against Paper I (verbatim criteria/empowerment phrasing rewritten; only
+  author block, refs, and Paper I's cited title now overlap) and removed AI-writing tells
+  (em-dashes 25→~10, no appositive-dash cadence, no hedges). Prior work is now cited
+  normally rather than labelled "Paper I".
+- Added a "What is learned, and from what" subsection: the MPS is fit to exhaustive
+  uniform-action rollouts, so it recovers the *environment's* generative model (checkable
+  against q); agent-specific phenotyping would use that agent's rollouts (a limitation).
+- Fixed a real method error: the state count is a predictive-future L1 threshold (τ=1.5),
+  not a largest-gap dendrogram cut (which returns 5). Corrected structure_recovery.py,
+  fig_states, and §3; redesigned fig_states around the over-separation→correction (novel)
+  and cited Paper I for the fidelity method and the reused task schematic.
+- Reference audit vs the web: fixed the AISTATS 2021 author order (Adhikary first, not
+  Srinivasan); all other citations and the author/affiliation mapping verified correct.
+- Scoped the agency claim: the contribution to agency is the recovered model (the
+  belief/world-model substrate the three criteria read off), with empowerment as the
+  controllability facet only.
+- Updated README.md to document the pipeline and both papers.
+
 ## 2026-07-14 (evening: canonical model, figures, extension paper)
 - Promoted the converged model to canonical: folded the Han-scheduler recipe into
   `full_tmaze_train.py` and replaced `Saved_Models/FullTmaze.pt` with it (fit L1 0.005);
