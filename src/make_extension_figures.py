@@ -78,24 +78,28 @@ def fig_states():
             sf.append(predictive_signature(b / np.linalg.norm(b), T3f))
     Ff = np.abs(np.array([[np.vdot(x, y) for y in rf] for x in rf])) ** 2
     _, heights, kp = cluster_by_prediction(sf)
+    kf = cluster_rays(rf)[0].max() + 1        # raw-fidelity cluster count (over-separates)
 
-    fig, ax = plt.subplots(1, 3, figsize=(10, 3.1), gridspec_kw={'width_ratios': [5, 7, 5]})
-    im = ax[0].imshow(Fm, cmap=HEAT, vmin=0, vmax=1)
-    ax[0].set_title('Minimal maze: ray fidelity'); annot(ax[0], Fm)
-    ax[0].set_xticks(range(len(labm))); ax[0].set_yticks(range(len(labm)))
-    ax[0].set_xticklabels(labm, rotation=45, ha='right', fontsize=7); ax[0].set_yticklabels(labm, fontsize=7)
-    ax[1].imshow(Ff, cmap=HEAT, vmin=0, vmax=1)
-    ax[1].set_title('Full maze: ray fidelity (12 histories)'); annot(ax[1], Ff, small=6)
-    ax[1].set_xticks(range(len(labf))); ax[1].set_yticks(range(len(labf)))
-    ax[1].set_xticklabels(labf, rotation=45, ha='right', fontsize=6); ax[1].set_yticklabels(labf, fontsize=6)
-    # predictive-equivalence dendrogram heights
-    ax[2].plot(range(1, len(heights) + 1), heights, 'o-', color=BLUE, ms=4)
-    ax[2].axvline(len(heights) - kp + 0.5, color=ORANGE, ls='--', lw=1)
-    ax[2].set_title('Predictive-equivalence merges')
-    ax[2].set_xlabel('merge step'); ax[2].set_ylabel('L1 merge distance')
-    ax[2].text(0.5, 0.92, f'gap $\\Rightarrow$ {kp} states', transform=ax[2].transAxes,
-               color=ORANGE, fontsize=8)
-    fig.colorbar(im, ax=ax[:2], shrink=0.7, pad=0.02, label=r'$|\langle b_i|b_j\rangle|^2$')
+    # The figure's subject is what is NEW here: bond-ray fidelity (the base method of the
+    # prior tensor-network work) OVER-separates on the full maze, and predictive
+    # equivalence corrects it. The minimal-maze fidelity blocks are reported in text.
+    fig, ax = plt.subplots(1, 2, figsize=(9.4, 3.6), gridspec_kw={'width_ratios': [7, 5]})
+    ax[0].imshow(Ff, cmap=HEAT, vmin=0, vmax=1)
+    ax[0].set_title(f'Bond-ray fidelity over-separates:\n{kf} apparent blocks for 7 states',
+                    fontsize=9.5)
+    annot(ax[0], Ff, small=6)
+    ax[0].set_xticks(range(len(labf))); ax[0].set_yticks(range(len(labf)))
+    ax[0].set_xticklabels(labf, rotation=45, ha='right', fontsize=6); ax[0].set_yticklabels(labf, fontsize=6)
+    ax[0].set_xlabel(r'history pairs, coloured by $|\langle b_i|b_j\rangle|^2$', fontsize=8)
+    TAU = 1.5
+    ax[1].plot(range(1, len(heights) + 1), heights, 'o-', color=BLUE, ms=4)
+    ax[1].axhline(TAU, color=ORANGE, ls='--', lw=1)
+    ax[1].set_title(f'Predictive equivalence\nrecovers the {kp} states', fontsize=9.5)
+    ax[1].set_xlabel('agglomerative merge step'); ax[1].set_ylabel('L1 distance between merged futures')
+    ax[1].text(0.04, 0.60, f'merge futures agreeing\nto L1 $< {TAU}$:  {kp} states',
+               transform=ax[1].transAxes, color=ORANGE, fontsize=8.5)
+    ax[1].text(0.04, 0.08, 'gauge duplicates\nmerge at $\\approx$0', transform=ax[1].transAxes,
+               color='#666', fontsize=8)
     fig.savefig(FIGS / 'fig_states.png'); plt.close(fig)
     print('wrote fig_states.png')
 

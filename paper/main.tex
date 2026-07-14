@@ -14,9 +14,9 @@
 
 \begin{document}
 
-\title{Structure Learning of Agency: Recovering Interpretable Generative Models
-from Behaviour with Tensor Networks}
-\titlerunning{Structure Learning of Agency}
+\title{Structure Learning of Generative Models for Agency Phenotyping
+with Tensor Networks}
+\titlerunning{Structure Learning for Agency Phenotyping}
 
 \author{Philip Wilson\inst{1} \and
 Mahault Albarracin\inst{2,3} \and
@@ -37,28 +37,26 @@ University of Sussex, Brighton, UK}
 \maketitle
 
 \begin{abstract}
-This paper is the sequel to our study of agency in AI systems, which set out the
-properties an agentic system should have and used empowerment to gauge how much control
-an agent holds over its own future. That study measured models we built by hand;
-fitting a model to behaviour, the other half of computational phenotyping, was left as
-a plan. We carry it out. A matrix product state, an interpretable tensor network, is
-trained unsupervised on action--observation rollouts of a T-maze, so its generative
-model $p(o,a)$ is learned from behaviour rather than written down by us. We then read
-off the trained network several kinds of structure that a plain density estimate leaves
-hidden. Normalised hidden states come first, recovered by a gauge-invariant criterion
-of predictive equivalence, where earlier tensor-network work found the bonds ``not
-normalised and therefore not usable'' and stopped. From the states we rebuild the
-labelled likelihood $A=p(o\mid s)$ and transition $B=p(s'\mid s,a)$, which match the
-environment to total-variation $0.000$ and reproduce its branching exactly; the
-conditional-independence graph, from exact mutual information; and the observation's
-factorisation, in which context appears as a near-independent modality. The number of
-hidden states is fixed by a model-selection argument, read as active-inference model
-expansion and Bayesian model reduction rather than off a truncation threshold.
-Empowerment computed on the recovered model tracks the three control regimes of that
-earlier study to three decimals, and rises when the agent acts to resolve its
-uncertainty even though nothing in training rewards that. Since the tensor network is not itself an
-active-inference agent, the method carries over to any system whose sensorimotor stream
-can be modelled.
+An agentic system, we argued in earlier work~\cite{wilsonAgency2025}, should be
+intentional, rational, and explainable; active inference secures the three in a
+partially observable Markov decision process whose tensors are open to inspection, and
+empowerment then reads off how much control the agent has over what it will observe.
+That case was built on models we wrote by hand. Its open question was whether the model,
+and the agency-relevant structure inside it, could instead be recovered from behaviour.
+This paper answers it, and the answer turns out to be an entire interpretable model, not
+a single number. A matrix product state (an interpretable tensor network) is trained
+unsupervised on T-maze rollouts, and from the trained network we recover, each validated
+against the true environment: normalised hidden states, by a gauge-invariant criterion
+of predictive equivalence that earlier tensor-network models could not supply; the
+labelled likelihood $A=p(o\mid s)$ and transition $B=p(s'\mid s,a)$, matched to
+total-variation $0.000$; the conditional-independence graph among observables, by exact
+mutual information; the factorisation of the observation, in which context is recovered
+as a near-independent modality; and the number of hidden states, fixed by model
+selection read as active-inference model expansion and Bayesian model reduction. A gauge
+transformation then makes the bond index itself a labelled state. Because the recovered
+model is fully interpretable, the controllability phenotype now reads off a learned
+model rather than a stipulated one. The construction assumes no active-inference agent,
+and so transfers to any system whose sensorimotor stream can be modelled.
 \keywords{Active inference \and Agency \and Computational phenotyping \and
 Empowerment \and Tensor networks \and Structure learning \and World models}
 \end{abstract}
@@ -66,23 +64,23 @@ Empowerment \and Tensor networks \and Structure learning \and World models}
 \section{Introduction}\label{sec:intro}
 
 Agency in artificial systems is asserted far more often than it is measured. We argued
-in earlier work~\cite{wilsonAgency2025} that a useful notion of agency turns on three
-properties, intentionality, rationality, and explainability, and that active
-inference~\cite{parr2022} supplies all three at once: within a partially observable
-Markov decision process (POMDP) the agent's posteriors, its prior preferences, and its
-expected-free-energy-driven policy give beliefs, desires, and a normative reason for
-acting, each inspectable in the likelihood and transition tensors. On such a model,
-empowerment~\cite{klyubin2005,salge2014}, the channel capacity from an action to the
-next observation, measures how much of what the agent will observe its actions can
-actually decide. This paper is the follow-up: it keeps that definition, the probe, and
-the T-maze fixed, and adds the step we set aside.
+in earlier work~\cite{wilsonAgency2025} that agency worth the name is intentional,
+rational, and explainable, that active inference~\cite{parr2022} secures the three at
+once in a POMDP whose likelihood and transition tensors are open to inspection, and that
+empowerment~\cite{klyubin2005,salge2014}, the channel capacity from an action to its
+next observation, measures the control an agent holds over what it will see. That
+argument ran on generative models we specified by hand. What it left undone was to
+obtain such a model, and the agency-relevant structure inside it, from behaviour.
 
-Phenotyping, taken from computational psychiatry~\cite{montague2012,schwartenbeck2016},
-runs in two steps: fit a generative model to behaviour, then read behaviour off the
-fitted parameters. We did only the second there, on models specified by hand, and left
-the first as work to come. We do it here. Once the model is learned from behaviour, the
-reading that produces an empowerment number also produces the entire generative model
-that stands behind it.
+That is the problem this paper solves, and it is a problem in \emph{structure learning}
+of a generative model, not in learning ``agency'' directly. Agency sets the target: the
+structure worth recovering is exactly what the three criteria and the empowerment probe
+read off a world model, so that once the model is learned the phenotype runs on it. Phenotyping,
+taken from computational psychiatry~\cite{montague2012,schwartenbeck2016}, has two
+steps: fit a generative model to behaviour, then read behaviour off the fitted
+parameters. Earlier we did only the second, on models specified by
+hand~\cite{wilsonAgency2025}; here we do the first, and find that the fitted model can
+be made fully interpretable rather than left as a black-box density.
 
 Concretely, we train a \emph{matrix product state} (MPS), a one-dimensional tensor
 network, as an unsupervised generative model of T-maze rollouts, following
@@ -137,11 +135,24 @@ $q(o,a)$, which we use only as ground truth for validation---the learner never s
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.42\textwidth]{figs/tmaze.png}
-\caption{The T-maze. The arrow marks the observation revealing where the cheese is;
-entering an arm is an absorbing trap, so the epistemically optimal first move is the
-cue.}
+\caption{The T-maze, reproduced from~\cite{wilsonAgency2025}. The arrow marks the
+observation revealing where the cheese is; entering an arm is an absorbing trap, so the
+epistemically optimal first move is the cue.}
 \label{fig:tmaze}
 \end{figure}
+
+\subsection{What is learned, and from what}
+The training set is the space of action--observation trajectories the environment can
+produce, not the log of any one agent. We enumerate every action sequence and pair it
+with the observations the environment returns, weighting each trajectory by its true
+probability, so the action distribution is uniform and carries no policy. What the MPS
+fits is therefore the environment's own input--output law, and the structure we later
+recover is the environment's generative model (its hidden states, likelihood, and
+transition), which is exactly why it can be checked against the analytic $q(o,a)$.
+Learning instead from a \emph{particular} agent's rollouts would recover the model that
+agent's policy induces, a different and agent-specific object; we return to this in
+Sec.~\ref{sec:discussion}. Empowerment is indifferent to the choice, as it already
+maximises over the action distribution.
 
 \subsection{MPS as a generative model}
 An MPS represents the amplitude of a length-$L$ sequence as a chain of contracted
@@ -184,22 +195,28 @@ as a coherence that does not affect the future, splitting otherwise-identical st
 The robust criterion is \emph{predictive equivalence}---the predictive-state /
 observable-operator definition of state~\cite{hsu2012,srinivasan2021}: two histories
 are the same state iff they induce the same future conditional
-$p(o'\mid a',h)$. Clustering the action-conditioned predictive signatures, and cutting
-the dendrogram at its largest gap (Fig.~\ref{fig:states}, right), collapses the gauge
-duplicates and returns the correct seven states (unresolved start, four arm--outcome
-traps, two cue contexts). What the learned latent encodes is therefore
-distinguishability rather than raw history: whether the agent came from the left or the
-right arm collapses into one state when position cannot be seen, and splits into two
-once it can.
+$p(o'\mid a',h)$. Agglomerating the action-conditioned predictive signatures and merging
+any two whose futures agree to within an L1 tolerance (Fig.~\ref{fig:states}, right)
+collapses the gauge duplicates: the four context-bit pairs merge at $\approx 0$
+distance, the two start histories at $1.2$, and the seven genuine states stay $\ge 2.0$
+apart, so any threshold in that gap returns them (unresolved start, four arm--outcome
+traps, two cue contexts). The count does not hang on the threshold: it is corroborated
+by the bond-dimension model selection of Sec.~\ref{sec:modelsel} and by the fact that
+all seven recovered emissions match ground truth (Sec.~\ref{sec:ab}). What the learned
+latent encodes is therefore distinguishability rather than raw history: whether the agent
+entered from the left or the right arm collapses into one state when position cannot be
+seen, and splits into two once it can.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig_states.png}
-\caption{State recovery. Pairwise bond-ray fidelity for the minimal maze (left, four
-blocks) and full maze (centre); raw fidelity over-separates on the full maze because
-the uninformative context bit is written into the bond. Right: predictive-equivalence
-merge distances---the near-zero merges collapse the gauge duplicates and the gap fixes
-the count at seven.}
+\caption{Recovering states beyond bond-ray fidelity. Left: on the full maze, the
+fidelity clustering used in our earlier pipeline~\cite{wilsonAgency2025} over-separates
+into nine apparent blocks (twelve histories), because the model writes the uninformative
+context bit into the bond as a coherence that does not affect the future. Right:
+predictive equivalence merges histories whose predicted futures agree; the gauge
+duplicates collapse at $\approx 0$ distance while the seven genuine states stay
+$\gtrsim 2$ apart, so a threshold in the gap recovers the correct count.}
 \label{fig:states}
 \end{figure}
 
@@ -399,7 +416,11 @@ step on richer environments.
 \paragraph{Limitations.} Results are on two small POMDPs with known ground truth, so
 validation is against an analytic model rather than blind; a state-count criterion
 stated before inspection, and a held-out protocol on data an exact model cannot
-memorise, would strengthen the claim. Empowerment measures controllability, not agency:
+memorise, would strengthen the claim. The model here is fit to exhaustive, uniform-action
+rollouts, so it recovers the environment's generative structure; phenotyping a
+\emph{particular} agent means fitting to that agent's own rollouts, where the recovered
+model reflects its policy and where coverage of the state space is no longer guaranteed.
+Empowerment measures controllability, not agency:
 reading control regimes as agency profiles is licensed only because the agentic action
 chain is independently inspectable in the recovered model~\cite{wilsonAgency2025}.
 Finally, the description-length criterion for state count is conservative under our

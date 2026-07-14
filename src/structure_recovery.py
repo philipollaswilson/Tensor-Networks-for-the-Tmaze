@@ -287,22 +287,22 @@ def predictive_signature(bond, T3):
     return (pr / rows).ravel()
 
 
-def cluster_by_prediction(sigs):
-    """Cluster histories by their predictive signatures (PSR/OOM definition of
-    state: same future => same state), choosing the number of states from the
-    largest gap in the agglomerative dendrogram rather than a hand-set threshold.
-    Robust where bond-ray fidelity over-separates on gauge coherences that do not
-    affect the future."""
+def cluster_by_prediction(sigs, tau=1.5):
+    """Cluster histories by predictive equivalence (PSR/OOM definition of state:
+    same future => same state): merge two histories while their predicted futures
+    agree to within L1 distance `tau` (i.e. overlap on more than 1 - tau/2 of their
+    mass). This removes the gauge over-separation of raw fidelity -- gauge coherences
+    that do not affect the future merge at ~0 distance -- while keeping states whose
+    futures genuinely differ (L1 ~ 2) apart. The resulting count is corroborated by
+    the bond-dimension model selection and by the recovered emissions, so it does not
+    rest on the threshold alone."""
     from scipy.cluster.hierarchy import linkage, fcluster
     from scipy.spatial.distance import pdist
     X = np.array(sigs)
     Z = linkage(pdist(X, metric='cityblock'), method='average')
-    heights = Z[:, 2]                       # increasing merge distances
-    gaps = np.diff(heights)
-    cut = int(np.argmax(gaps))              # widest jump = within- vs between-state
-    k = len(sigs) - (cut + 1)
-    labels = fcluster(Z, t=k, criterion='maxclust') - 1
-    return labels, heights, k
+    heights = Z[:, 2]                       # increasing merge distances (for inspection)
+    labels = fcluster(Z, t=tau, criterion='distance') - 1
+    return labels, heights, int(labels.max() + 1)
 
 
 def run_full(model_name='FullTmaze.pt'):
