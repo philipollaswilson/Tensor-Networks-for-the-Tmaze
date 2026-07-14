@@ -37,14 +37,17 @@ University of Sussex, Brighton, UK}
 \maketitle
 
 \begin{abstract}
-Computational phenotyping of agency has two halves: fitting a generative model to
-behaviour, and reading agency-relevant quantities off the fitted model. Prior work
-established the second half on hand-specified models and left the first as a
-companion sketch. We complete the loop. A matrix product state (an interpretable
-tensor network) is trained unsupervised on action--observation rollouts of a T-maze
-partially observable Markov decision process, so its generative model $p(o,a)$ is
-learned from data rather than stipulated; we then recover the model's structure in
-five senses that a bare density estimate does not provide. From the learned network
+This paper is a direct follow-up to our prior work on characterising agency in AI
+systems, which proposed a three-criterion definition of agency (intentionality,
+rationality, explainability), cast empowerment as a probe of control capacity, and---on
+\emph{hand-specified} generative models---carried out only the second half of
+computational phenotyping: reading agency-relevant quantities off a model. Here we
+carry out the first half. A matrix product state (an interpretable tensor network) is
+trained unsupervised on action--observation rollouts of a T-maze partially observable
+Markov decision process, so its generative model $p(o,a)$ is learned from data rather
+than stipulated; we then recover the model's structure in five senses that a bare
+density estimate does not provide, and show that once the model is learned the readout
+returns the entire interpretable model behind the number. From the learned network
 we (i) extract normalised hidden states by a gauge-invariant, predictive-equivalence
 criterion---closing a gap left open by earlier tensor-network work, whose bond
 indices were ``not normalised and therefore not usable''; (ii) reconstruct the
@@ -67,8 +70,8 @@ Empowerment \and Tensor networks \and Structure learning \and World models}
 
 \section{Introduction}\label{sec:intro}
 
-Agency in artificial systems is increasingly asserted and rarely measured. A
-companion line of work~\cite{wilsonAgency2025} argues that a minimal, operational
+Agency in artificial systems is increasingly asserted and rarely measured. In a first
+paper~\cite{wilsonAgency2025} (hereafter Paper~I) we argued that a minimal, operational
 notion of agency rests on three criteria---\emph{intentionality} (action grounded in
 beliefs and desires), \emph{rationality} (normatively coherent action entailed by a
 world model), and \emph{explainability} (action causally traceable to internal
@@ -77,14 +80,16 @@ partially observable Markov decision process (POMDP), whose likelihood and trans
 tensors constitute an inspectable world model. On that model, \emph{empowerment}---the
 channel capacity between actions and future observations~\cite{klyubin2005,salge2014}
 ---serves as an operational probe of the control capacity that intentional action
-presupposes.
+presupposes. This paper is the direct follow-up: it takes the definition, the probe,
+and the T-maze of Paper~I as given, and supplies the piece Paper~I explicitly deferred.
 
 That programme borrows its method from computational psychiatry's
 \emph{phenotyping}~\cite{montague2012,schwartenbeck2016}: (i) fit a generative model
-to behavioural data, and (ii) explain variation from the inferred parameters. The
-worked example performed only the second half, on models specified by hand. This
-paper performs the first half, and shows that once it is done the second half returns
-not just a number but the entire interpretable model behind it.
+to behavioural data, and (ii) explain variation from the inferred parameters. Paper~I
+performed only the second half, on models specified by hand, and sketched the first as
+a companion pipeline. Here we build that pipeline, and show that once the model is
+learned from behaviour the second half returns not just a number but the entire
+interpretable model behind it.
 
 Concretely, we train a \emph{matrix product state} (MPS), a one-dimensional tensor
 network, as an unsupervised generative model of T-maze rollouts, following
@@ -121,6 +126,10 @@ On the learned model we then phenotype control capacity (Sec.~\ref{sec:empower})
 code accompanies the paper.
 
 \section{Background}\label{sec:background}
+
+We recap only what the pipeline needs; the three agency criteria, the empowerment
+probe, and the design of the T-maze are developed in full in Paper~I~\cite{wilsonAgency2025},
+and the tensor-network machinery is new to this paper.
 
 \subsection{The task and the analytic model}
 The minimal T-maze is a two-step POMDP with three actions (Left, Right, Cue) and four
