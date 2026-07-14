@@ -37,59 +37,52 @@ University of Sussex, Brighton, UK}
 \maketitle
 
 \begin{abstract}
-This paper is a direct follow-up to our prior work on characterising agency in AI
-systems, which proposed a three-criterion definition of agency (intentionality,
-rationality, explainability), cast empowerment as a probe of control capacity, and---on
-\emph{hand-specified} generative models---carried out only the second half of
-computational phenotyping: reading agency-relevant quantities off a model. Here we
-carry out the first half. A matrix product state (an interpretable tensor network) is
-trained unsupervised on action--observation rollouts of a T-maze partially observable
-Markov decision process, so its generative model $p(o,a)$ is learned from data rather
-than stipulated; we then recover the model's structure in five senses that a bare
-density estimate does not provide, and show that once the model is learned the readout
-returns the entire interpretable model behind the number. From the learned network
-we (i) extract normalised hidden states by a gauge-invariant, predictive-equivalence
-criterion---closing a gap left open by earlier tensor-network work, whose bond
-indices were ``not normalised and therefore not usable''; (ii) reconstruct the
-labelled likelihood $A=p(o\mid s)$ and transition $B=p(s'\mid s,a)$ and match them to
-the ground-truth environment (emission total-variation $0.000$, transition branching
-exact); (iii) recover the conditional-independence structure by exact mutual
-information; (iv) discover that the observation factorises, with context a
-near-independent modality; and (v) select the number of hidden states by a
-model-selection criterion rather than a truncation threshold, which we cast as active
-inference model expansion and Bayesian model reduction. On the learned model we then
-phenotype control capacity: empowerment reproduces the analytic zero-, intermediate-,
-and maximal-control regimes to three decimals, and epistemic action increases
-empowerment without it being an explicit objective. The pipeline is
-architecture-agnostic---the tensor network is not itself an active-inference
-agent---so the criteria and probe apply to any system whose sensorimotor stream can
-be modelled.
+This paper is the sequel to our study of agency in AI systems, which set out the
+properties an agentic system should have and used empowerment to gauge how much control
+an agent holds over its own future. That study measured models we built by hand;
+fitting a model to behaviour, the other half of computational phenotyping, was left as
+a plan. We carry it out. A matrix product state, an interpretable tensor network, is
+trained unsupervised on action--observation rollouts of a T-maze, so its generative
+model $p(o,a)$ is learned from behaviour rather than written down by us. We then read
+off the trained network several kinds of structure that a plain density estimate leaves
+hidden. Normalised hidden states come first, recovered by a gauge-invariant criterion
+of predictive equivalence, where earlier tensor-network work found the bonds ``not
+normalised and therefore not usable'' and stopped. From the states we rebuild the
+labelled likelihood $A=p(o\mid s)$ and transition $B=p(s'\mid s,a)$, which match the
+environment to total-variation $0.000$ and reproduce its branching exactly; the
+conditional-independence graph, from exact mutual information; and the observation's
+factorisation, in which context appears as a near-independent modality. The number of
+hidden states is fixed by a model-selection argument, read as active-inference model
+expansion and Bayesian model reduction rather than off a truncation threshold.
+Empowerment computed on the recovered model tracks the three control regimes of the
+first paper to three decimals, and rises when the agent acts to resolve its uncertainty
+even though nothing in training rewards that. Since the tensor network is not itself an
+active-inference agent, the method carries over to any system whose sensorimotor stream
+can be modelled.
 \keywords{Active inference \and Agency \and Computational phenotyping \and
 Empowerment \and Tensor networks \and Structure learning \and World models}
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
 
-Agency in artificial systems is increasingly asserted and rarely measured. In a first
-paper~\cite{wilsonAgency2025} (hereafter Paper~I) we argued that a minimal, operational
-notion of agency rests on three criteria---\emph{intentionality} (action grounded in
-beliefs and desires), \emph{rationality} (normatively coherent action entailed by a
-world model), and \emph{explainability} (action causally traceable to internal
-states)---and that active inference~\cite{parr2022} realises all three jointly in a
-partially observable Markov decision process (POMDP), whose likelihood and transition
-tensors constitute an inspectable world model. On that model, \emph{empowerment}---the
-channel capacity between actions and future observations~\cite{klyubin2005,salge2014}
----serves as an operational probe of the control capacity that intentional action
-presupposes. This paper is the direct follow-up: it takes the definition, the probe,
-and the T-maze of Paper~I as given, and supplies the piece Paper~I explicitly deferred.
+Agency in artificial systems is asserted far more often than it is measured. Our first
+paper~\cite{wilsonAgency2025} (Paper~I) held that a useful notion of agency turns on
+three properties, intentionality, rationality, and explainability, and argued that
+active inference~\cite{parr2022} supplies all three at once: within a partially
+observable Markov decision process (POMDP) the agent's posteriors, its prior
+preferences, and its expected-free-energy-driven policy give beliefs, desires, and a
+normative reason for acting, each inspectable in the likelihood and transition tensors.
+On such a model, empowerment~\cite{klyubin2005,salge2014}, the channel capacity from an
+action to the next observation, measures how much of what the agent will observe its
+actions can actually decide. This paper is the follow-up. It keeps the definition, the
+probe, and the T-maze of Paper~I fixed, and adds the step Paper~I set aside.
 
-That programme borrows its method from computational psychiatry's
-\emph{phenotyping}~\cite{montague2012,schwartenbeck2016}: (i) fit a generative model
-to behavioural data, and (ii) explain variation from the inferred parameters. Paper~I
-performed only the second half, on models specified by hand, and sketched the first as
-a companion pipeline. Here we build that pipeline, and show that once the model is
-learned from behaviour the second half returns not just a number but the entire
-interpretable model behind it.
+Phenotyping, taken from computational psychiatry~\cite{montague2012,schwartenbeck2016},
+runs in two steps: fit a generative model to behaviour, then read behaviour off the
+fitted parameters. Paper~I did only the second, on models we specified by hand, and
+described the first as work to come. We do it here. Once the model is learned from
+behaviour, the reading that produces an empowerment number also produces the entire
+generative model that stands behind it.
 
 Concretely, we train a \emph{matrix product state} (MPS), a one-dimensional tensor
 network, as an unsupervised generative model of T-maze rollouts, following
@@ -164,21 +157,23 @@ shrinks the step when the loss stalls~\cite{han2018}; the minimal model reaches
 $\|p-q\|_1=0.13$ and the full model $\|p-q\|_1=0.005$.
 
 \subsection{Empowerment}
-Empowerment at a state is the channel capacity between the next action and the next
-observation, $\max_{p(a)} I(A;O')$, computed by the Blahut--Arimoto
-algorithm~\cite{salge2014}. Under the true environment conditional it is
-\emph{objective} empowerment; under the agent's (here, the learned model's) conditional
-it is \emph{subjective} empowerment, and the two coincide as the fit improves. We
-report subjective potential empowerment over the full observation and over the reward
-modality alone (the preference-relevant variant).
+We borrow one quantity from Paper~I, $\max_{p(a)} I(A;O')$, the largest mutual
+information an agent can drive between its next action and its next observation,
+evaluated by Blahut--Arimoto~\cite{salge2014}. Paper~I distinguishes the value computed
+under the true environment (\emph{objective}) from the value under the agent's beliefs
+(\emph{subjective}), and both from the \emph{actual} value once preferences narrow the
+action distribution. Only one variant is empirical here: computed under the learned
+model, the subjective value approaches the objective one as the fit tightens. We report
+it over the full observation and over the reward modality alone.
 
 \section{Recovering hidden states}\label{sec:states}
 
 The bond of a trained MPS is defined only up to a gauge transformation
 $A^{(n)}\!\to A^{(n)}G,\ A^{(n+1)}\!\to G^{-1}A^{(n+1)}$, so the bare bond index has no
-intrinsic labelling. We first fix states in a gauge-invariant way: each
-action--observation history $h$ induces a bond vector $|b_h\rangle$, and histories are
-clustered by pairwise fidelity $|\langle b_i|b_j\rangle|^2$
+intrinsic labelling, so any state we read off it must be invariant to that freedom.
+Each history $h$ (a prefix of actions and observations) drives the network into a bond
+vector $|b_h\rangle$; the quantity $|\langle b_i|b_j\rangle|^2$ is gauge-invariant, and
+grouping histories by it gives a first partition into states
 (Fig.~\ref{fig:states}, left/centre).
 
 On the minimal maze this yields exactly four states (cheese-trap, shock-trap, and one
@@ -192,9 +187,10 @@ are the same state iff they induce the same future conditional
 $p(o'\mid a',h)$. Clustering the action-conditioned predictive signatures, and cutting
 the dendrogram at its largest gap (Fig.~\ref{fig:states}, right), collapses the gauge
 duplicates and returns the correct seven states (unresolved start, four arm--outcome
-traps, two cue contexts). The learned state space thus tracks distinguishability, not
-surface history---arm-of-entry histories merge when position is hidden and separate
-when it is observed.
+traps, two cue contexts). What the learned latent encodes is therefore
+distinguishability rather than raw history: whether the agent came from the left or the
+right arm collapses into one state when position cannot be seen, and splits into two
+once it can.
 
 \begin{figure}[t]
 \centering
@@ -221,7 +217,8 @@ resulting state by predictive equivalence, and accumulating Born weight. States 
 matched to the environment by the Hungarian algorithm, the only residual gauge freedom
 being a discrete permutation.
 
-The reconstruction is essentially exact (Fig.~\ref{fig:ab}, Table~\ref{tab:results}).
+The reconstruction matches ground truth to measurement precision
+(Fig.~\ref{fig:ab}, Table~\ref{tab:results}).
 On the minimal maze the emission matches ground truth to total-variation $0.000$ for
 all four states. On the full maze, all seven emissions match to mean total-variation
 $0.000$: the four traps are deterministic, and the two cue states carry the correct
@@ -333,17 +330,17 @@ exist~\cite{glasser2019}, quantified rather than hidden.
 \section{Phenotyping control capacity on the learned model}\label{sec:empower}
 
 With the model recovered, we phenotype it. Subjective potential empowerment computed
-from the converged full-maze network reproduces the analytic regimes essentially
-exactly (Fig.~\ref{fig:empower}, left; Table~\ref{tab:results}): $2.00$ bits at the
+from the converged full-maze network reproduces the analytic regimes to three decimals
+(Fig.~\ref{fig:empower}, left; Table~\ref{tab:results}): $2.00$ bits at the
 start, $0.00$ in the trap, and $2.00$ bits (full) / $1.585$ bits (reward) post-cue,
-against analytic $2.00$/$1.585$. The reward-modality restriction recovers the three
-control regimes of the minimal maze ($1.00$/$0.00/1.585$ bits), so restricting the
-probe to preferred modalities surfaces the agency-relevant structure that the full
-observation space obscures. The subjective--objective gap is now empirical and small:
+against analytic $2.00$/$1.585$. Restricting the probe to the reward modality returns
+the three control regimes of the minimal maze ($1.00$/$0.00/1.585$ bits): reading
+empowerment only over outcomes the agent cares about isolates the control that matters
+for behaviour, which the full observation space dilutes. The subjective--objective gap is now empirical and small:
 a bond-truncated checkpoint attenuates post-cue empowerment ($0.65$ bits reward-only),
-and it approaches the objective value as the fit improves. Epistemic action increases
-empowerment---the cue raises it from the intermediate to the maximal regime---without
-empowerment being any part of the training objective.
+and it approaches the objective value as the fit improves. Acting to resolve
+uncertainty increases empowerment: visiting the cue lifts it from the intermediate to
+the maximal regime, though empowerment is no part of the training objective.
 
 \begin{figure}[t]
 \centering
@@ -381,8 +378,8 @@ Hidden-state count (minimal / full) & $4$ / $7$ & $4$ / $7$ & exact \\
 \paragraph{What is new.} Earlier tensor-network work learned $p(o,a)$ but could not
 expose normalised hidden states, and the phenotyping programme it was meant to serve
 was demonstrated only on hand-specified models. We supply the missing state
-construction---gauge-invariant and predictive-equivalence-based---and build on it a
-complete structural readout: a labelled likelihood and transition validated to
+construction, gauge-invariant and based on predictive equivalence, and build on it a
+complete structural account: a labelled likelihood and transition validated to
 $\sim\!10^{-3}$, the conditional-independence graph, the observation factorisation, a
 principled state count, and a symbolic-state gauge. Agency phenotyping then runs on the
 learned model and matches the analytic regimes. The pipeline is architecture-agnostic:
