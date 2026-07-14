@@ -398,8 +398,8 @@ was demonstrated only on hand-specified models. We supply the missing state
 construction, gauge-invariant and based on predictive equivalence, and build on it a
 complete structural account: a labelled likelihood and transition validated to
 $\sim\!10^{-3}$, the conditional-independence graph, the observation factorisation, a
-principled state count, and a symbolic-state gauge. Agency phenotyping then runs on the
-learned model and matches the analytic regimes. The pipeline is architecture-agnostic:
+principled state count, and a symbolic-state gauge. The controllability probe then runs
+on the learned model and matches the analytic regimes. The pipeline is architecture-agnostic:
 the tensor network is not an active-inference agent, so recovering active-inference-style
 structure from it addresses the circularity worry that active inference might satisfy
 the agency criteria only by construction.
@@ -412,6 +412,19 @@ and it yields a labelled factored model (Sec.~\ref{sec:ab}). It does not search 
 network topology; the tensor-network structure-search
 literature~\cite{li2022,li2023tnale} would be the route to that, and is a natural next
 step on richer environments.
+
+\paragraph{What the agency claim is, and is not.} The contribution to agency is the
+recovered model, not the empowerment number. The states, the likelihood, and the
+transition are the belief-like and world-model structures that the intentionality,
+rationality, and explainability criteria are read off; recovering them from behaviour is
+what lets those criteria reach a system whose internals were opaque. Empowerment adds
+only the controllability facet, whether the recovered interface leaves the agent's
+economy anything to decide, and on its own it is not a measure of agency
+(Sec.~\ref{sec:empower}). Two caveats bound even this. Because the model is fit to
+uniform-action rollouts, what we recover is the world's structure, the ideal belief an
+accurate agent would hold, not any particular agent's posterior; and we exercise the
+controllability probe rather than the full three-criteria assessment, which the recovered
+model enables but which we leave to a study with agent-specific data.
 
 \paragraph{Limitations.} Results are on two small POMDPs with known ground truth, so
 validation is against an analytic model rather than blind; a state-count criterion
@@ -476,9 +489,9 @@ NeurIPS 32 (2019). arXiv:1907.03741
 \bibitem{hsu2012} Hsu, D., Kakade, S.M., Zhang, T.: A spectral algorithm for learning
 hidden Markov models. J. Comput. Syst. Sci. \textbf{78}(5), 1460--1480 (2012).
 arXiv:0811.4413
-\bibitem{srinivasan2021} Srinivasan, S., Adhikary, S., Miller, J., et al.: Quantum
-Tensor Networks, Stochastic Processes, and Weighted Automata. In: AISTATS (2021).
-arXiv:2010.10653
+\bibitem{srinivasan2021} Adhikary, S., Srinivasan, S., Miller, J., Rabusseau, G.,
+Boots, B.: Quantum Tensor Networks, Stochastic Processes, and Weighted Automata. In:
+AISTATS. PMLR, vol. 130, pp. 2080--2088 (2021). arXiv:2010.10653
 \bibitem{chowliu1968} Chow, C.K., Liu, C.N.: Approximating discrete probability
 distributions with dependence trees. IEEE Trans. Inf. Theory \textbf{14}(3), 462--467 (1968)
 \bibitem{rissler2006} Rissler, J., Noack, R.M., White, S.R.: Measuring orbital
