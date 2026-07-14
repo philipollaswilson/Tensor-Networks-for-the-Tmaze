@@ -1,5 +1,10 @@
 # Devlog
 
+## 2026-07-14 (wrap: sent to coauthors)
+- Paper II draft + pipeline pushed to branch `analysis/structure-recovery`; sent the
+  group a summary and three open questions (retitle, agency scope, author order, and
+  whether Philip sees it as distinct from his Section 5). Awaiting coauthor feedback.
+
 ## 2026-07-14 (night: Paper II hardening)
 - Retitled to *Structure Learning of Generative Models for Agency Phenotyping* — we
   structure-learn a generative (world) model; agency is the application, not the object.
