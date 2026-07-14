@@ -2,3 +2,6 @@
 __pycache__/
 MPS_*/
 *.tfevents.*
+paper/*.aux
+paper/*.log
+paper/*.out

@@ -1,5 +1,19 @@
 # Devlog
 
+## 2026-07-14 (evening: canonical model, figures, extension paper)
+- Promoted the converged model to canonical: folded the Han-scheduler recipe into
+  `full_tmaze_train.py` and replaced `Saved_Models/FullTmaze.pt` with it (fit L1 0.005);
+  removed the v2 duplicates. All analyses default to the good model now. Regenerated fig8.
+- Added `src/make_extension_figures.py` -> `paper/figs/`: state recovery (fidelity vs
+  predictive equivalence), A/B recovery, MI dependency graph + factorization, model
+  selection, empowerment phenotyping + gauge-fixed emitted states.
+- Wrote the extension paper `paper/main.tex` (LNCS, 11 pp, compiles clean): "Structure
+  Learning of Agency: Recovering Interpretable Generative Models from Behaviour with
+  Tensor Networks." Promotes the learned-model pipeline from a companion section to the
+  central contribution -- states, labeled A/B, dependency graph, factorization, principled
+  state count, symbolic states, then empowerment phenotyping on the learned model. Closes
+  the Wauthier et al. normalized-hidden-state gap.
+
 ## 2026-07-14 (afternoon: full-maze fit + weak-point fixes, branch analysis/structure-recovery)
 - Added `src/full_tmaze_train_v2.py`: converged full-maze MPS with a Han LR scheduler
   (shrinks lr when the noisy DMRG/cumulant loss jumps up) + gentler lr + 200 epochs.
