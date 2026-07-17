@@ -259,19 +259,18 @@ branching.}
 \end{figure}
 
 \paragraph{Only the cue is informative.} Labelling the arm states by outcome
-(\texttt{R/cheese} versus \texttt{R/shock}) raises a fair question: does the model treat
+(\texttt{R/cheese}, \texttt{R/shock}) invites a fair question: does the model treat
 seeing Cheese or Shock at an arm as resolving the hidden context, which would make a
-blind arm entry an epistemic move rather than a gamble? It does not, and the recovered
-emission shows why. The full $p(o_2\mid s_2)$, factored into Position, Reward, and
-Context, leaves the context factor at $0.50/0.50$ for every arm state
-(Fig.~\ref{fig:emission}): the two outcomes are distinct predictive states because they
-emit distinct \emph{rewards}, but neither carries information about \emph{context}. Made
-quantitative, the mutual information between a blind arm's outcome and the start context
-is $0.000$ bits, so the context posterior after entering Right blind is unchanged at
-$0.50/0.50$; the same measure at the cue is $1.000$ bit, where the observed context bit
-determines the reward of the next arm. The learned model reproduces both to within
-$10^{-3}$. This is the intended information geometry of the task---only the cue reduces
-uncertainty about the reward contingency---recovered from behaviour rather than assumed.
+blind arm entry an epistemic act? It does not, and the recovered emission shows why. The
+full $p(o_2\mid s_2)$, factored into Position, Reward, and Context, leaves the context
+factor at $0.50/0.50$ for every arm state (Fig.~\ref{fig:emission}). The two outcomes are
+distinct predictive states because they emit distinct \emph{rewards}, yet neither carries
+information about \emph{context}: the mutual information between a blind arm's outcome and
+the start context is $0.000$ bits, so the context posterior after a blind Right entry
+stays $0.50/0.50$. The same measure at the cue is $1.000$ bit, where the read-off context
+bit fixes the reward of the next arm, and the learned model reproduces both to within
+$10^{-3}$. Only the cue reduces uncertainty about the reward contingency, and here that
+geometry is recovered from behaviour rather than built into the model.
 
 \begin{figure}[t]
 \centering
