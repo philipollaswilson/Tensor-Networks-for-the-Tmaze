@@ -1,5 +1,24 @@
 # Devlog
 
+## 2026-07-17 (Philip's p(o2|s2) / info-gain question)
+- Philip asked to see p(o2|s2), worried that seeing Cheese/Shock at a blind arm
+  resolves context (info-gain), contradicting "only the cue is informative."
+- Checked it directly against the model: at a blind Right arm the emission leaves
+  context at 0.50/0.50 for all arm states, I(reward; start-context) = 0.000 bits, so
+  the context posterior is unchanged. The cue gives I(cue bit; next arm reward) = 1.000
+  bit. Learned model matches both to <1e-3. His concern does not bite; the recovery
+  reproduces the intended information geometry. `R/cheese`/`R/shock` split on the reward
+  outcome (distinct predictive states) but carry no context.
+- Note for the meeting: in this dataset (enumerate_weighted/tmaze.py) the context bit is
+  drawn i.i.d. at each observation and only the bit read AT the cue governs the next
+  arm's reward, so context is not a persistent episode latent like the canonical Friston
+  T-maze. Our recovery faithfully reflects that generation.
+- Added `fig_emission()` to make_extension_figures.py -> paper/figs/fig_emission.png and
+  an "Only the cue is informative" paragraph + figure to §4. Paper now 13 pp, compiles.
+- The transition figure Philip screenshotted lives on analysis/structure-recovery (not
+  the analysis/learned-empowerment branch he merged); he can't regenerate it from what
+  he has.
+
 ## 2026-07-14 (wrap: sent to coauthors)
 - Paper II draft + pipeline pushed to branch `analysis/structure-recovery`; sent the
   group a summary and three open questions (retitle, agency scope, author order, and

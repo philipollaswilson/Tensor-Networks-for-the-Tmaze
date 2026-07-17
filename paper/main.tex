@@ -258,6 +258,32 @@ branching.}
 \label{fig:ab}
 \end{figure}
 
+\paragraph{Only the cue is informative.} Labelling the arm states by outcome
+(\texttt{R/cheese} versus \texttt{R/shock}) raises a fair question: does the model treat
+seeing Cheese or Shock at an arm as resolving the hidden context, which would make a
+blind arm entry an epistemic move rather than a gamble? It does not, and the recovered
+emission shows why. The full $p(o_2\mid s_2)$, factored into Position, Reward, and
+Context, leaves the context factor at $0.50/0.50$ for every arm state
+(Fig.~\ref{fig:emission}): the two outcomes are distinct predictive states because they
+emit distinct \emph{rewards}, but neither carries information about \emph{context}. Made
+quantitative, the mutual information between a blind arm's outcome and the start context
+is $0.000$ bits, so the context posterior after entering Right blind is unchanged at
+$0.50/0.50$; the same measure at the cue is $1.000$ bit, where the observed context bit
+determines the reward of the next arm. The learned model reproduces both to within
+$10^{-3}$. This is the intended information geometry of the task---only the cue reduces
+uncertainty about the reward contingency---recovered from behaviour rather than assumed.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\textwidth]{figs/fig_emission.png}
+\caption{Emission $p(o_2\mid s_2)$ of the learned full-maze model, factored into
+Position, Reward, and Context. The four arm states (boxed) are separated by their reward
+but leave context at $0.50/0.50$: a blind arm carries $I(\text{reward};\text{context})=0$
+bits, so it resolves no hidden state. Only the two cue states fix the context, where the
+read-off bit is worth $1$ bit about the next arm's reward.}
+\label{fig:emission}
+\end{figure}
+
 \section{The dependency graph}\label{sec:graph}
 
 Because the learned joint is available in closed form, its dependency structure

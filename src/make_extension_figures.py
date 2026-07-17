@@ -170,6 +170,79 @@ def fig_ab():
 
 
 # --------------------------------------------------------------------------- #
+def fig_emission():
+    """p(o2|s2) factored into position/reward/context, plus the info-gain contrast:
+    a blind arm carries 0 bits about context (posterior stays 50/50), only the cue
+    resolves it (1 bit). Answers the concern that seeing Cheese/Shock at the arm would
+    resolve the hidden context (spurious information gain)."""
+    T1, T2, T3 = load_tensors('FullTmaze.pt')
+    psi = np.einsum('xaoi,ibpj,jcqy->aobpcq', T1, T2, T3)
+    p = np.abs(psi) ** 2; p /= p.sum()
+    sub = p[0, 0:2].sum(axis=0).sum(axis=(2, 3))          # (a2, o2) first-move joint
+    states = [('center', 0, [obs_index(0, 0, 0), obs_index(0, 0, 1)]),
+              ('R/cheese', 1, [obs_index(1, 1, 0), obs_index(1, 1, 1)]),
+              ('R/shock', 1, [obs_index(1, 2, 0), obs_index(1, 2, 1)]),
+              ('L/cheese', 2, [obs_index(2, 1, 0), obs_index(2, 1, 1)]),
+              ('L/shock', 2, [obs_index(2, 2, 0), obs_index(2, 2, 1)]),
+              ('cue/ctx0', 3, [obs_index(3, 0, 0)]), ('cue/ctx1', 3, [obs_index(3, 0, 1)])]
+    COLS = ['center', 'right', 'left', 'cue', 'none', 'cheese', 'shock', 'ctx0', 'ctx1']
+    E = np.zeros((7, 9))
+    for i, (nm, a2, o2list) in enumerate(states):
+        e = np.zeros(24)
+        for o in o2list:
+            e[o] += sub[a2, o]
+        e = e / e.sum()
+        for o in range(24):
+            E[i, o // 6] += e[o]
+            E[i, 4 + (o // 2) % 3] += e[o]
+            E[i, 7 + o % 2] += e[o]
+
+    # info-gain: I(reward ; start context) at a blind Right arm; I(cue bit ; next reward)
+    def mi(J):
+        J = np.asarray(J, float); s = J.sum()
+        if s <= 0:
+            return 0.0
+        P = J / s; px = P.sum(1, keepdims=True); py = P.sum(0, keepdims=True)
+        with np.errstate(divide='ignore', invalid='ignore'):
+            return float(np.where(P > 1e-15, P * np.log2(P / (px * py)), 0.0).sum())
+    blind = p[0, 0:2, 1].sum(axis=(2, 3))                 # (start ctx, o2) at Right arm
+    Jarm = np.zeros((2, 2))
+    for c0 in range(2):
+        for o2 in range(24):
+            r = (o2 // 2) % 3
+            if r in (1, 2):
+                Jarm[c0, r - 1] += blind[c0, o2]
+    cue = p[0, 0:2, 3, :, 1, :].sum(axis=0)               # cue at o2 -> Right at o3
+    Jcue = np.zeros((2, 2))
+    for o2 in range(24):
+        if o2 // 6 != 3:
+            continue
+        for o3 in range(24):
+            r = (o3 // 2) % 3
+            if r in (1, 2):
+                Jcue[o2 % 2, r - 1] += cue[o2, o3]
+    i_arm, i_cue = mi(Jarm), mi(Jcue)
+
+    fig, ax = plt.subplots(figsize=(7.4, 3.6))
+    im = ax.imshow(E, cmap=HEAT, vmin=0, vmax=1, aspect='auto')
+    ax.set_xticks(range(9)); ax.set_xticklabels(COLS, rotation=45, ha='right', fontsize=8)
+    ax.set_yticks(range(7)); ax.set_yticklabels([s[0] for s in states], fontsize=8)
+    annot(ax, E, small=7)
+    for b, name in [(4, 'position'), (7, 'reward'), (9, 'context')]:
+        if b < 9:
+            ax.axvline(b - 0.5, color='k', lw=0.6)
+        ax.text((b + (0 if name == 'position' else 4 if name == 'reward' else 7) - 1) / 2,
+                -0.72, name, ha='center', va='bottom', fontsize=8.5, fontweight='bold')
+    ax.add_patch(plt.Rectangle((6.5, 0.5), 2, 4, fill=False, edgecolor=BLUE, lw=2))
+    ax.set_title(r'$p(o_2\,|\,s_2)$: blind arms leave context 0.50/0.50'
+                 '\n' r'($I(\mathrm{reward};\mathrm{ctx})=%.3f$ bit) — only the cue'
+                 r' resolves it ($%.3f$ bit)' % (i_arm, i_cue), fontsize=9, pad=26)
+    fig.colorbar(im, ax=ax, shrink=0.8, pad=0.02, label='probability')
+    fig.savefig(FIGS / 'fig_emission.png'); plt.close(fig)
+    print('wrote fig_emission.png  (I_arm=%.3f, I_cue=%.3f bits)' % (i_arm, i_cue))
+
+
+# --------------------------------------------------------------------------- #
 def _rdm_subfactor_mi(psi, leg):
     d = psi.shape[leg]
     M = np.moveaxis(psi, leg, 0).reshape(d, -1)
@@ -306,6 +379,7 @@ def fig_empower():
 if __name__ == '__main__':
     fig_states()
     fig_ab()
+    fig_emission()
     fig_graph()
     fig_modelsel()
     fig_empower()
