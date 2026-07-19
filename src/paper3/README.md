@@ -8,8 +8,9 @@ the repo root; this package is the code skeleton for the spine (workstreams
 
 | module                 | workstream | closes Paper II gap                       | status |
 |------------------------|-----------|-------------------------------------------|--------|
-| `persistent_tmaze.py`  | 4         | context i.i.d.-per-step (Philip's point)  | **done + verified** — generator, info-gain checks, and `to_memory_pool` trainer bridge |
-| `agents.py`            | 1         | recovered env, not an agent               | scaffold — specs + concrete pymdp-driven plan; `build_agent`/`rollout` stubbed |
+| `persistent_tmaze.py`  | 4         | context i.i.d.-per-step (Philip's point)  | **done + verified** — generator, info-gain checks, `to_memory_pool` + `rollouts_to_memory_pool` bridges |
+| `generative_model.py`  | 1, 2      | (shared A/B/C/D for the agent + EFE)      | **done + verified** — matches the env info geometry (0.390 / 1.000 bit) |
+| `agents.py`            | 1         | recovered env, not an agent               | **done + verified** — EFE agent; info-seeker cue-first 0.98, gambler arm-first 0.96, habitual ~random |
 | `agency_criteria.py`   | 2         | empowerment ≠ agency                       | stub (interfaces defined) |
 | `blind_validation.py`  | 3         | non-blind vs ground truth                 | stub (interfaces defined) |
 | `phenotype.py`         | 1–4       | the killer experiment (discrimination)    | stub (driver) |
@@ -50,8 +51,10 @@ recipe in `full_tmaze_train.py`.
 
 ## Build order
 
-1. `persistent_tmaze.to_memory_pool` — drop the new data into the existing trainer.
-2. `agents.build_agent` / `rollout` — per-agent pymdp rollouts.
-3. `phenotype.train_agent_mps` — one MPS per agent.
+1. ~~`persistent_tmaze.to_memory_pool`~~ — **done.**
+2. ~~`agents` — EFE agent + `rollout`~~ — **done + verified** (behaviour separates).
+3. `phenotype.train_agent_mps` — one MPS per agent (in progress).
 4. `agency_criteria` — the three criteria on each recovered model.
 5. `blind_validation` — freeze a pre-registration, then discriminate blind.
+
+Quick behaviour check: `python -m src.paper3.agents`.

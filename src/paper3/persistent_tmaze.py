@@ -240,6 +240,34 @@ def to_memory_pool(episodes, replicas: int = 10000, dtype="torch.complex128"):
     return pool, pushed
 
 
+def rollouts_to_memory_pool(rollouts, dtype="torch.complex128"):
+    """Build an mpstwo MemoryPool from raw agent rollouts (agents.rollout output).
+
+    Each rollout is a ``(actions, observations)`` pair and is an independent
+    sample, so each is pushed exactly once (no weights, unlike the exhaustive
+    enumeration). Mirrors to_memory_pool's obs [4,3,2] / act [4,1] maps.
+    """
+    import torch
+    _install_import_shims()
+    from mpstwo.data.datasets.memory_pool import MemoryPool
+    from mpstwo.data.datastructs import TensorDict
+    from mpstwo.utils.mapping import MultiOneHotMap
+
+    torch_dtype = eval(dtype)
+    obs_map = MultiOneHotMap([4, 3, 2])
+    act_map = MultiOneHotMap([4, 1])
+
+    pool = MemoryPool()
+    for actions, obs in rollouts:
+        sample = TensorDict({
+            "action": act_map(torch.tensor([[int(a), 0] for a in actions])).type(torch_dtype),
+            "observation": obs_map(torch.tensor([list(map(int, row)) for row in obs])).type(torch_dtype),
+        })
+        pool.push_no_update(sample)
+    pool._update_table()
+    return pool, len(pool)
+
+
 if __name__ == "__main__":
     eps = enumerate_persistent()
     print(f"enumerated {len(eps)} episodes, weights sum to {sum(w for *_, w in eps):.6f}")

@@ -1,5 +1,33 @@
 # Devlog
 
+## 2026-07-19 (Paper III kickoff: branch + persistent-latent environment)
+- Started Paper III on branch `paper3/agent-phenotyping` (off `analysis/structure-recovery`).
+  Scaffolded `src/paper3/`: persistent_tmaze, agents, agency_criteria,
+  blind_validation, phenotype, README. Stubs raise NotImplementedError with TODOs.
+- **Workstream 4 (persistent-latent env) built + verified.** The key realisation:
+  in Paper II "context" is the 3rd observation modality, so it was directly
+  OBSERVED every step; making it merely persistent would leave Philip's info-gain
+  worry vacuous. Fix: context is now a genuine persistent HIDDEN latent, emitted
+  only indirectly -- the cue reads it (I(cue;ctx)=1.000 bit, safe), an arm's
+  reward is a NOISY readout (fidelity 0.85 -> I(reward;ctx|arm)=1-H(0.85)=0.390
+  bit; leaks but does not resolve -- Mao said "go noisy, we shouldn't cheat").
+  Keeps the [4,3,2]->24-obs shape so the whole Paper II pipeline transfers.
+- Fixed a diagnostic bug: info-gain was measured against a context INFERRED from
+  the reward (circular -> spurious 1.000 bit). Now measured against the true
+  hidden context via _enumerate_with_context.
+- Step 1 (trainer bridge) verified: to_memory_pool builds an mpstwo MemoryPool
+  with obs (3,24)/action (3,4)/complex128, the shapes MPSTwo expects.
+- Environment check: pymdp + MPS stack importable (MPS needs the standard
+  gym/pymdp shim). Installed pymdp exposes pymdp.envs.TMaze (generate_A/B/D,
+  reset, step) + pymdp.agent.Agent. Class is TMaze, not the old TMazeEnv that
+  mpstwo.envs imports -- for Paper III we use pymdp directly.
+- Step-2 architecture settled: drive a real pymdp Agent (genuine active
+  inference) against OUR verified env; agents share A/B/D, differ only in C and
+  gamma, so phenotype differences are pure character.
+- Commits: 0ad3ead (skeleton), c53dd45 (env), 370586b (step-2 plan).
+- NEXT: step 2 (build_agent + rollout), verifying info-seeker visits the cue and
+  the gambler does not before trusting anything downstream.
+
 ## 2026-07-17 (Philip's p(o2|s2) / info-gain question)
 - Philip asked to see p(o2|s2), worried that seeing Cheese/Shock at a blind arm
   resolves context (info-gain), contradicting "only the cue is informative."
