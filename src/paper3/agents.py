@@ -14,7 +14,22 @@ vector C and policy precision (gamma). State-space coverage under a real policy
 is no longer guaranteed (an info-seeker rarely enters an arm blind); that
 partiality is realistic and is itself part of the recovered phenotype.
 
-Reuses the pymdp TMaze wiring already present in src/full_tmaze_train.py.
+Architecture (settled against the installed pymdp API):
+  * pymdp.envs.TMaze exposes generate_A / generate_B / generate_D and
+    reset / step, with cue_validity and reward_probability as the noisy channels.
+  * We drive a real pymdp.agent.Agent (genuine active-inference planning) against
+    OUR persistent-latent environment (persistent_tmaze.py) -- the one that
+    answers Philip and matches the Paper II [4,3,2] pipeline -- so the science
+    stays in one environment.
+  * Each agent shares the same recognition model (A, B, D); they differ ONLY in
+    the preference vector C and policy precision gamma, so any phenotype
+    difference is attributable to character, not to a different world model.
+  * Rollouts are mapped into our (position, reward, ctx_read) encoding and fed to
+    persistent_tmaze.to_memory_pool, reusing the whole training path.
+
+VERIFICATION TARGET for the implementation: the info-seeker must actually visit
+the cue before an arm, and the reward-gambler must go straight to an arm -- check
+this on sampled rollouts before trusting any downstream phenotype.
 """
 from __future__ import annotations
 
@@ -43,22 +58,33 @@ ROSTER = [INFO_SEEKER, REWARD_GAMBLER, HABITUAL]
 
 
 def build_agent(spec: AgentSpec):
-    """Instantiate a pymdp agent from an AgentSpec.
+    """Instantiate a pymdp Agent from an AgentSpec.
 
-    TODO(paper3): construct the pymdp Agent with A/B/D from the TMaze env and
-    C/gamma from the spec (see the pymdp TMazeEnv usage patterns imported in
-    src/full_tmaze_train.py).
+    TODO(paper3):
+      A, B, D = pymdp.envs.TMaze(cue_validity=..., reward_probability=0.85,
+                                 punishment_probability=0.85).generate_{A,B,D}()
+      C = preference vector over the reward modality from spec.C_reward (uniform
+          on the other modalities).
+      return pymdp.agent.Agent(A=A, B=B, C=C, D=D, gamma=spec.gamma,
+                               policy_len=2)   # two decision steps
+    All specs share A/B/D; only C and gamma vary.
     """
-    raise NotImplementedError("build pymdp Agent from spec (A/B/D/C/gamma)")
+    raise NotImplementedError("build pymdp Agent from spec (shared A/B/D, per-spec C/gamma)")
 
 
-def rollout(spec: AgentSpec, n_episodes: int, seed: int, persistent_latent: bool = True):
-    """Generate n_episodes of this agent acting in the (persistent-latent) T-maze.
+def rollout(spec: AgentSpec, n_episodes: int, seed: int):
+    """Generate n_episodes of this agent acting in the persistent-latent T-maze.
 
-    Returns rollouts in the same (actions, observations) shape as
-    persistent_tmaze.enumerate_persistent so they feed the identical MPS trainer.
+    Returns rollouts in the same (actions, observations) int-array shape as
+    persistent_tmaze.enumerate_persistent, so they feed the identical trainer via
+    persistent_tmaze.to_memory_pool.
 
-    TODO(paper3): drive build_agent(spec) through the env for n_episodes; when
-    persistent_latent, sample context once per episode (see persistent_tmaze).
+    TODO(paper3): loop per episode --
+        env.reset() with context sampled once (persistent);
+        for each of the 2 steps: agent.infer_states(obs) ->
+        agent.infer_policies() -> a = agent.sample_action() -> obs = env.step(a);
+        record (action, obs) mapped into our (position, reward, ctx_read) triple.
+      Then assert the VERIFICATION TARGET (info-seeker visits cue, gambler does
+      not) before returning.
     """
-    raise NotImplementedError("run the agent through the env and collect rollouts")
+    raise NotImplementedError("run the pymdp agent through our env and collect rollouts")
