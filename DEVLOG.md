@@ -25,8 +25,21 @@
   inference) against OUR verified env; agents share A/B/D, differ only in C and
   gamma, so phenotype differences are pure character.
 - Commits: 0ad3ead (skeleton), c53dd45 (env), 370586b (step-2 plan).
-- NEXT: step 2 (build_agent + rollout), verifying info-seeker visits the cue and
-  the gambler does not before trusting anything downstream.
+- **Step 2 done + verified (e3c4f96).** Installed pymdp is the JAX build (Agent
+  is functional JAX; its TMaze is a foreign 5-location env), so instead of
+  driving it we wrote a small transparent EFE agent on our own generative model
+  (generative_model.py, verified against the env: 0.390 / 1.000 bit). Agents
+  share A/B/D, differ only in C, gamma, horizon. Behaviour separates and
+  rollout() asserts it: info-seeker cue-first 0.98, gambler arm-first 0.96,
+  habitual ~random. Horizon is the distinguishing trait (cue-then-arm is
+  reward-optimal, so the gambler differs by being myopic, not by a rigged C).
+- **Step 3 done + verified.** phenotype.train_agent_mps reuses the full_tmaze
+  Han-scheduler recipe on each agent's own rollout pool; run_experiment reports
+  fit L1 to the agent's empirical joint. Smoke (300 ep, 15 epochs): info-seeker
+  0.007, gambler 0.027, habitual 0.039 -- each MPS already reproduces its agent's
+  behaviour. Full run (5000 ep, 200 epochs) will tighten these.
+- NEXT: step 4 (agency_criteria: inverse-C, EFE-regret, explainability) then
+  step 5 (blind discrimination) -- the scientific payoff.
 
 ## 2026-07-17 (Philip's p(o2|s2) / info-gain question)
 - Philip asked to see p(o2|s2), worried that seeing Cheese/Shock at a blind arm

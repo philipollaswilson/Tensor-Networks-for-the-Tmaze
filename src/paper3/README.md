@@ -13,7 +13,7 @@ the repo root; this package is the code skeleton for the spine (workstreams
 | `agents.py`            | 1         | recovered env, not an agent               | **done + verified** — EFE agent; info-seeker cue-first 0.98, gambler arm-first 0.96, habitual ~random |
 | `agency_criteria.py`   | 2         | empowerment ≠ agency                       | stub (interfaces defined) |
 | `blind_validation.py`  | 3         | non-blind vs ground truth                 | stub (interfaces defined) |
-| `phenotype.py`         | 1–4       | the killer experiment (discrimination)    | stub (driver) |
+| `phenotype.py`         | 1–3       | per-agent train + fit (steps 1–3)         | **done + verified** — `train_agent_mps` + `run_experiment`; steps 4–5 pending |
 
 Stubs raise `NotImplementedError` with a one-line TODO pointing at the Paper II
 code to reuse. Nothing is silently fake — an unfinished path fails loudly.
@@ -53,8 +53,14 @@ recipe in `full_tmaze_train.py`.
 
 1. ~~`persistent_tmaze.to_memory_pool`~~ — **done.**
 2. ~~`agents` — EFE agent + `rollout`~~ — **done + verified** (behaviour separates).
-3. `phenotype.train_agent_mps` — one MPS per agent (in progress).
-4. `agency_criteria` — the three criteria on each recovered model.
+3. ~~`phenotype.train_agent_mps`~~ — **done + verified** (each MPS fits its agent).
+4. `agency_criteria` — the three criteria on each recovered model (next).
 5. `blind_validation` — freeze a pre-registration, then discriminate blind.
 
-Quick behaviour check: `python -m src.paper3.agents`.
+Quick checks:
+- behaviour: `python -m src.paper3.agents`
+- full pipe (smoke): `python -m src.paper3.phenotype smoke`  (rollout → MPS fit)
+
+Smoke fits (300 episodes, 15 epochs): info-seeker L1≈0.007, gambler ≈0.027,
+habitual ≈0.039 — each MPS already reproduces its agent's own behaviour; a full
+run (5000 episodes, 200 epochs) tightens these.
