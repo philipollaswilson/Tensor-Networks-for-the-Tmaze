@@ -22,17 +22,23 @@ The EFE machinery is reused from agents.ActiveInferenceAgent, so the criteria
 score behaviour with the SAME expected-free-energy the agents plan by -- there is
 one definition of value in the paper, not two.
 
-Two honest properties of this operationalisation, worth stating in the paper:
+Three honest findings of this operationalisation, worth stating in the paper:
   * rationality is measured against each agent's OWN inferred C, so a CONSISTENT
     agent scores high regardless of what it wants. The reward-gambler is not
     "irrational" -- it has shallow, risk-neutral preferences under which going
-    straight to an arm really is near-optimal. What separates it from the
-    info-seeker is intentionality (goal depth), not rationality; what separates
-    the habitual agent is its inconsistency (chance-level rationality).
-  * inferring C under a fixed horizon-2 observer conflates MYOPIA with WEAK
-    PREFERENCE: the gambler's short horizon is read as a small |C|. Inferring the
-    planning horizon as a separate trait would disentangle them -- a clean
-    Paper III extension, not a bug in the recovery.
+    straight to an arm really is near-optimal. What separates the habitual agent
+    is its inconsistency (chance-level rationality).
+  * INTENTIONALITY IS UNDER-IDENTIFIED HERE. Cue-seeking is explained about
+    equally well by a peaked reward preference OR by pure epistemic drive under a
+    flat C, so behaviour alone cannot attribute the info-seeker's cue visits to
+    reward goals: the prior-relative goal-directedness is ~0 for it. This is a
+    genuine identifiability result, not a coding artifact. Pinning it down needs
+    the epistemic weight / planning horizon inferred as a separate trait (a clean
+    Paper III extension). We therefore do NOT discriminate agents by
+    intentionality; we use rationality plus recovered state-visitation coverage
+    (visitation_signature), which are stable and identifiable.
+  * inferring C under a fixed horizon-2 observer also conflates MYOPIA with WEAK
+    PREFERENCE: the gambler's short horizon is read as a small |C|.
 """
 from __future__ import annotations
 
@@ -79,13 +85,23 @@ def _reference_agent() -> "agents.ActiveInferenceAgent":
 
 
 def infer_preferences(rollouts, c_grid=None, gamma_grid=None):
-    """Maximum-likelihood (C_reward, gamma) explaining the observed first actions
-    under the reference planner. Returns (C_reward tuple, gamma, loglik)."""
+    """Infer preferences (C_reward, gamma) explaining the observed first actions
+    under the reference planner.
+
+    Returns (C_map, gamma_map, loglik_map, intentionality_post) where the first
+    three are the maximum-likelihood point and the last is the POSTERIOR-EXPECTED
+    goal-directedness. The posterior expectation is used for the intentionality
+    criterion because the MLE argmax is unstable: cue-seeking is explained about
+    equally well by a peaked reward preference OR by pure epistemic drive under a
+    flat C, so the argmax flips between them across seeds. Averaging peakedness
+    over the likelihood is stable and honestly reflects that ambiguity.
+    """
     ref = _reference_agent()
     phat = behavioural_first_action(rollouts)
     n = sum(1 for _ in rollouts)
     c_grid = c_grid if c_grid is not None else np.linspace(0.0, 6.0, 13)
     gamma_grid = gamma_grid if gamma_grid is not None else np.array([0.0, 0.5, 1, 2, 4, 8, 16])
+    lls, Cs, peaks = [], [], []
     best = (-np.inf, (0.0, 0.0, 0.0), 0.0)
     for c_ch in c_grid:
         for c_sh in -c_grid:                # shock preference in [-6, 0]
@@ -93,10 +109,20 @@ def infer_preferences(rollouts, c_grid=None, gamma_grid=None):
             for g in gamma_grid:
                 qpi = ref.first_action_dist(gm.CENTER, steps_left=2, gamma=float(g), C_rew=C)
                 ll = n * float(np.sum(phat * np.log(np.clip(qpi, _EPS, 1.0))))
+                lls.append(ll); Cs.append(C); peaks.append(_intentionality(C))
                 if ll > best[0]:
                     best = (ll, C, float(g))
+    peaks = np.asarray(peaks)
+    w = agents._softmax(np.asarray(lls))    # posterior over the grid, uniform prior
+    prior_peak = float(peaks.mean())        # what peakedness we'd expect a priori
+    post_peak = float(np.sum(w * peaks))    # peakedness the behaviour actually implies
+    # prior-relative goal-directedness: how much the behaviour shifts C toward
+    # peaked beyond the prior. ~0 when behaviour underdetermines C (random agent
+    # reverts to the prior); positive when behaviour genuinely implies goals.
+    denom = max(peaks.max() - prior_peak, _EPS)
+    intentionality = float(np.clip((post_peak - prior_peak) / denom, 0.0, 1.0))
     ll, C, g = best
-    return C, g, ll
+    return C, g, ll, intentionality
 
 
 def _efe_by_policy(C_reward) -> np.ndarray:
@@ -136,11 +162,27 @@ def _intentionality(C_reward) -> float:
     return float(1.0 - h / np.log(len(p)))
 
 
+def visitation_signature(rollouts) -> dict:
+    """State-visitation coverage of the recovered policy-weighted model -- the
+    'coverage is no longer guaranteed' phenotype PAPER3 workstream 1 names. These
+    are marginals of the recovered joint (estimated here from the same rollouts
+    the MPS is fit to, which it reproduces to <0.04 L1). Stable across seeds and a
+    legitimate recovered-model coordinate, unlike the degenerate inverse-C."""
+    cue = arm_first = 0
+    n = 0
+    for actions, _obs in rollouts:
+        n += 1
+        if int(actions[1]) == gm.CUE:
+            cue += 1
+        if int(actions[1]) in gm.ARMS:
+            arm_first += 1
+    return {"cue_visit": cue / n, "arm_first": arm_first / n}
+
+
 def profile_agent(agent_name, rollouts, fit_L1=None, empowerment=None) -> AgencyProfile:
     """Assemble the full AgencyProfile from an agent's rollouts (and optionally
     its recovered-model fit L1 and empowerment facet)."""
-    C, gamma, _ll = infer_preferences(rollouts)
-    intentionality = _intentionality(C)
+    C, gamma, _ll, intentionality = infer_preferences(rollouts)
     rationality = 1.0 - efe_regret(rollouts, C)
     explainability = (1.0 - fit_L1) if fit_L1 is not None else float("nan")
     return AgencyProfile(agent_name, intentionality, rationality, explainability,
@@ -149,10 +191,12 @@ def profile_agent(agent_name, rollouts, fit_L1=None, empowerment=None) -> Agency
 
 if __name__ == "__main__":
     # verification: the three criteria should separate the roster by character
-    print(f"{'agent':16s} {'intent':>7s} {'ration':>7s} {'C(cheese,shock)':>18s} {'gamma':>6s}")
+    print(f"{'agent':16s} {'intent':>7s} {'ration':>7s} {'cue_vis':>8s} {'arm_1st':>8s} "
+          f"{'C(cheese,shock)':>18s}")
     for spec in agents.ROSTER:
         rollouts, _ = agents.rollout(spec, n_episodes=3000, seed=0, verify=False)
-        C, gamma, _ = infer_preferences(rollouts)
+        C, gamma, _, _ = infer_preferences(rollouts)
         prof = profile_agent(spec.name, rollouts)
+        vis = visitation_signature(rollouts)
         print(f"{spec.name:16s} {prof.intentionality:7.2f} {prof.rationality:7.2f} "
-              f"{str((C[1], C[2])):>18s} {gamma:6.1f}")
+              f"{vis['cue_visit']:8.2f} {vis['arm_first']:8.2f} {str((C[1], C[2])):>18s}")

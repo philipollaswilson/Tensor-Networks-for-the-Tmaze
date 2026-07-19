@@ -48,8 +48,26 @@
   "consistent with shallow prefs", not irrational -- intentionality is what
   separates it; (b) inferring C at a fixed horizon-2 conflates myopia with weak
   preference (motivates inferring horizon as a 4th trait, future work).
-- NEXT: step 5 (blind discrimination) -- freeze a pre-registration, classify a
-  held-out agent from its recovered 3-criteria profile. The scientific payoff.
+- **Step 5 done + verified -- the killer experiment works.** blind_validation
+  freezes a PreRegistration (features, decision rule, disjoint reference/holdout
+  seeds, behavioural predictions), builds reference centroids on seeds (0,1,2),
+  then blind-classifies held-out agents on seeds (100-103). **Blind accuracy
+  1.00** (12/12), confusion matrix diagonal. Discriminates on
+  (rationality, cue_visit, arm_first): rationality separates habitual, cue_visit
+  the info-seeker, arm_first the gambler.
+- Finding surfaced en route: INTENTIONALITY is under-identified. MLE inverse-C
+  flips across seeds because cue-seeking is explained equally by peaked-C (reward)
+  or flat-C (pure curiosity/epistemic). Stabilised to a posterior-expected,
+  prior-relative goal-directedness (~0 when behaviour underdetermines C) and
+  documented as a genuine identifiability result; discrimination deliberately
+  does NOT use it. Resolving it needs inferring the epistemic weight / planning
+  horizon as a separate trait (Paper III extension).
+- Spine 1+2+3+4 now implemented end-to-end and verified. Commits this session:
+  0ad3ead, c53dd45, 370586b, e3c4f96, a8dce31, be779b8, + step-5 commit.
+- NEXT (open): read cue_visit/arm_first off the trained MPS directly (not the
+  fit rollouts); full-scale training run; empowerment facet on recovered models;
+  then write the Paper III draft. Optionally infer horizon to identify
+  intentionality.
 
 ## 2026-07-17 (Philip's p(o2|s2) / info-gain question)
 - Philip asked to see p(o2|s2), worried that seeing Cheese/Shock at a blind arm
