@@ -163,11 +163,19 @@ def _intentionality(C_reward) -> float:
 
 
 def visitation_signature(rollouts) -> dict:
-    """State-visitation coverage of the recovered policy-weighted model -- the
-    'coverage is no longer guaranteed' phenotype PAPER3 workstream 1 names. These
-    are marginals of the recovered joint (estimated here from the same rollouts
-    the MPS is fit to, which it reproduces to <0.04 L1). Stable across seeds and a
-    legitimate recovered-model coordinate, unlike the degenerate inverse-C."""
+    """RAW BEHAVIOURAL statistics: how often the agent's FIRST action was the cue
+    or an arm, counted straight off the rollouts.
+
+    HONESTY NOTE (this docstring previously claimed these were "marginals of the
+    recovered model" -- they are not). Nothing here touches a trained MPS. These
+    are the agents' defining behaviour, so classifying agents with them is
+    circular: a bare first-action histogram, with no criteria, no EFE and no
+    tensor network, separates the roster equally well.
+
+    For the genuine recovered-model version, read the action marginal off a
+    trained MPS's contracted joint: phenotype.coverage_features(joint). For a
+    phenotype that raw behaviour cannot supply at all, see structure_phenotype.
+    """
     cue = arm_first = 0
     n = 0
     for actions, _obs in rollouts:

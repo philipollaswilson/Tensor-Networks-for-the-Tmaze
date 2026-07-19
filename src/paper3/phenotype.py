@@ -61,6 +61,34 @@ def train_agent_mps(pool, epochs: int = 200, bond_dim: int = 4, seed: int = 0):
     return mps, p
 
 
+#: axis of the contracted joint holding the FIRST REAL action (axis 0 is the null
+#: leading action, axis 4 the second decision). Verified empirically against the
+#: empirical marginal, not assumed from the einsum string.
+FIRST_ACTION_AXIS = 2
+
+
+def recovered_action_marginal(joint: np.ndarray) -> np.ndarray:
+    """P(first real action) read off a RECOVERED joint (the contracted Born
+    distribution of a trained MPS).
+
+    This is the honest version of what the discrimination features must be: a
+    marginal of the learned generative model, so the tensor network is actually
+    load-bearing. Passing an *empirical* joint here instead gives the raw-behaviour
+    baseline, which is exactly the comparison baseline_comparison.py runs.
+    """
+    axes = tuple(i for i in range(joint.ndim) if i != FIRST_ACTION_AXIS)
+    m = joint.sum(axis=axes)
+    return m / m.sum()
+
+
+def coverage_features(joint: np.ndarray) -> np.ndarray:
+    """(cue_visit, arm_first) read off a recovered joint -- the state-visitation
+    coverage phenotype, as a property of the learned model."""
+    from . import generative_model as gm
+    m = recovered_action_marginal(joint)
+    return np.array([m[gm.CUE], m[gm.RIGHT] + m[gm.LEFT]])
+
+
 def empirical_joint(rollouts):
     """Empirical Born-target joint p(a1,o1,a2,o2,a3,o3) from raw rollouts, the
     distribution the per-agent MPS is fit to. Shape (4,24,4,24,4,24)."""

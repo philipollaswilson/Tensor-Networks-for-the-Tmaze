@@ -1,5 +1,59 @@
 # Devlog
 
+## 2026-07-19 (evening: adversarial audit -- the "killer experiment" was circular)
+
+Mao asked me to be adversarial about the Paper III result. The headline (blind
+discrimination, accuracy 1.00) does not survive.
+
+- **The tensor network was doing no work.** blind_validation's features
+  (cue_visit, arm_first) are counted straight off `actions[1]` in the rollouts --
+  i.e. the agents' *defining* behaviour (the info-seeker is the one built to visit
+  the cue). The trained MPS is never consulted anywhere in the discrimination
+  path. Docstrings claiming these were "marginals of the recovered model" were
+  FALSE and are now corrected.
+- **A trivial baseline ties it.** Raw P(a1) histogram, no criteria / EFE /
+  inverse-C / tensor network: accuracy 1.00 (12/12). So none of the machinery
+  contributes to the number.
+- **"Held-out" was weak**: the same three specs re-seeded; near-deterministic
+  agents put held-out points on the reference centroids, so 1.00 is guaranteed by
+  construction.
+- Why Paper II is untouched by this: its claims REQUIRED the latent model
+  (7-state partition from bond rays, A/B to TV<=0.001, subsystem MI, empowerment
+  on the learned model). None of those have a raw-behaviour analogue. The Paper
+  III error was choosing a phenotype raw behaviour supplies for free.
+
+Rebuild, in order (each checked rather than asserted):
+- phenotype.recovered_action_marginal / coverage_features now read the action
+  marginal off the CONTRACTED BORN JOINT of a trained MPS. Axis verified
+  empirically (axis 2; MPS [0,.524,.438,.038] vs empirical [0,.52,.444,.036]),
+  not trusted from the einsum string.
+- **Negative result: thresholded coverage does not work.** Predicted the support
+  floor might not bite; measured it and it does not. The gambler still visits the
+  cue ~2% of the time (history weights 0.017/0.020), clearing any sane threshold,
+  so it "supports" the cue states despite having almost no data there. The only
+  history it loses is `center` (it never idles) -- incidental, not the cue
+  blindness that matters. Binary coverage is threshold-arbitrary and misses the
+  effect.
+- **Pivot: per-state recovery FIDELITY** (recovery_fidelity.py). L1 between the
+  predictive signature recovered from the agent's MPS (bond ray x T3) and the
+  ANALYTIC signature of the true model. Continuous, threshold-free, and it needs
+  the tensor network. Analytic truth sanity-checked in isolation first:
+  q(K|cue)=[1,0], q(K|R,cheese)=[0.15,0.85], rows normalised, cue/ctx0 vs ctx1
+  differ by L1 2.8.
+- Bug caught: indexed T1 with three subscripts, feeding the obs index into the
+  action slot (T1 is bond,action,obs,bond). Cost a full training run; shape
+  asserts added so it fails fast.
+- Gambler smoke map is the expected shape: arms (w~0.24) err 0.37-1.07, cue
+  (w~0.02) err ~6, center (w=0) err 7.3 -- "you recover the world where you go".
+- **Audit of the pivot is in flight** (fidelity_analysis.py): regress error on
+  log10(weight) across all (agent,state) pairs. If R^2 ~ 1 the fidelity map is
+  the visit rate restated and must be reported as such. Adding Spearman too,
+  since a linear fit could under-fit a saturating relation and deflate R^2.
+- Still open: structure_vs_visitrate.py -- the cleanest test, holding the
+  first-action distribution EXACTLY fixed (same policy) while varying only
+  second-step exploration, so any difference in recovered structure cannot be
+  first-step visit rate.
+
 ## 2026-07-19 (Paper III kickoff: branch + persistent-latent environment)
 - Started Paper III on branch `paper3/agent-phenotyping` (off `analysis/structure-recovery`).
   Scaffolded `src/paper3/`: persistent_tmaze, agents, agency_criteria,

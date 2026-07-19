@@ -7,23 +7,32 @@ BEFORE fitting, build reference profiles on one set of seeds, then classify
 held-out agents from DISJOINT seeds by their recovered agency profile alone --
 never using the held-out label.
 
-The killer result: a profile that tells a curious agent from a gambler, without
-being told which is which, is genuine phenotyping. We discriminate the roster
-(info-seeker / reward-gambler / habitual) by nearest reference centroid in a
-recovered-profile space of three stable coordinates:
+*** THIS CLASSIFIER IS CIRCULAR. Kept as the documented negative result. ***
 
-  rationality  -- agency criterion (EFE-consistency), separates the habitual agent
-  cue_visit    -- recovered epistemic-seeking (state-visitation coverage of the
-                  recovered policy-weighted model), separates the info-seeker
-  arm_first    -- recovered reward-commitment, separates the reward-gambler
+It discriminates the roster by nearest reference centroid over
+(rationality, cue_visit, arm_first). It reports accuracy 1.00 -- and that number
+is worthless as evidence for the paper's thesis, for three reasons found by
+adversarial audit:
 
-We deliberately do NOT use intentionality as a discrimination axis: cue-seeking
-is degenerate between reward-preference and pure curiosity (see agency_criteria),
-so the inverse-inferred goal depth is an unstable classifier. cue_visit /
-arm_first are marginals of the RECOVERED model (reproduced by the fitted MPS to
-<0.04 L1), so this is discrimination by recovered phenotype, not by raw label.
-All three coordinates are behaviour/recovery-derived, so the blind test needs no
-per-agent retraining.
+  1. cue_visit / arm_first are computed straight off `actions[1]` in the rollouts.
+     They ARE the agents' defining behaviour (the info-seeker is the one built to
+     visit the cue), so this recovers the agents by the signature we hand-built
+     into them. An earlier docstring here claimed they were "marginals of the
+     RECOVERED model" -- that was false; nothing in this module touches an MPS.
+  2. A trivial baseline -- the raw first-action histogram P(a1), with no criteria,
+     no EFE, no inverse-C and no tensor network -- also scores 1.00 (12/12). So
+     none of the machinery contributes to the number.
+  3. "Held-out" is weak: the same three specs re-run under different RNG seeds.
+     The agents are near-deterministic, so held-out points land on the reference
+     centroids and 1.00 is guaranteed by construction, not earned.
+
+Paper II earned its tensor network because its claims REQUIRED the latent model
+(hidden-state partition from bond rays, A/B, subsystem MI, empowerment). The
+error here was choosing a phenotype that raw behaviour supplies for free.
+
+See structure_phenotype.py for the non-circular replacement (phenotype by the
+latent structure recoverable from each agent's MPS) and structure_vs_visitrate.py
+for the check that it is not the visit rate restated.
 """
 from __future__ import annotations
 
@@ -52,8 +61,9 @@ class PreRegistration:
 
 
 def _profile_vector(spec, seed, n_episodes) -> np.ndarray:
-    """The recovered-profile coordinate (rationality, cue_visit, arm_first) for
-    one agent run. No labels or held-out data used in the computation."""
+    """(rationality, cue_visit, arm_first) for one agent run. cue_visit and
+    arm_first are RAW behavioural frequencies, not recovered-model quantities --
+    which is why this classifier is circular (see module docstring)."""
     rollouts, _ = agents.rollout(spec, n_episodes, seed, verify=False)
     prof = agency_criteria.profile_agent(spec.name, rollouts)
     vis = agency_criteria.visitation_signature(rollouts)

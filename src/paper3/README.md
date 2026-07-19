@@ -12,7 +12,9 @@ the repo root; this package is the code skeleton for the spine (workstreams
 | `generative_model.py`  | 1, 2      | (shared A/B/C/D for the agent + EFE)      | **done + verified** — matches the env info geometry (0.390 / 1.000 bit) |
 | `agents.py`            | 1         | recovered env, not an agent               | **done + verified** — EFE agent; info-seeker cue-first 0.98, gambler arm-first 0.96, habitual ~random |
 | `agency_criteria.py`   | 2         | empowerment ≠ agency                       | **done + verified** — intentionality/rationality/explainability; separates the roster |
-| `blind_validation.py`  | 3         | non-blind vs ground truth                 | **done + verified** — pre-registered blind discrimination, **accuracy 1.00** |
+| `blind_validation.py`  | 3         | non-blind vs ground truth                 | ⚠️ **CIRCULAR — negative result.** Scores 1.00, but a bare `P(a1)` histogram ties it; no MPS involved |
+| `structure_phenotype.py`| 1, 2     | phenotype by *recoverable latent structure* | non-circular replacement (in progress) |
+| `structure_vs_visitrate.py`| —     | adversarial check on the above            | tests whether structure ≠ visit rate restated |
 | `phenotype.py`         | 1–3       | per-agent train + fit (steps 1–3)         | **done + verified** — `train_agent_mps` + `run_experiment` |
 
 Stubs raise `NotImplementedError` with a one-line TODO pointing at the Paper II
@@ -70,6 +72,26 @@ Quick checks:
 Smoke fits (300 episodes, 15 epochs): info-seeker L1≈0.007, gambler ≈0.027,
 habitual ≈0.039 — each MPS already reproduces its agent's own behaviour; a full
 run (5000 episodes, 200 epochs) tightens these.
+
+## ⚠️ Adversarial audit: the first "killer experiment" was circular
+
+`blind_validation` reported blind accuracy **1.00** and that number does not
+support the paper's thesis. Audit findings:
+
+1. Its features `cue_visit` / `arm_first` are read straight off `actions[1]` in
+   the rollouts — they *are* the agents' defining behaviour. The trained MPS is
+   never consulted; docstrings claiming they were "marginals of the recovered
+   model" were **false** and have been corrected.
+2. A trivial baseline — raw `P(a1)`, no criteria/EFE/tensor network — also scores
+   **1.00 (12/12)**. None of the machinery contributes to the number.
+3. "Held-out" = the same three specs re-seeded; near-deterministic agents make
+   1.00 guaranteed by construction.
+
+Paper II earned its tensor network because its claims *required* the latent model
+(hidden-state partition from bond rays, A/B, subsystem MI, empowerment). The
+error was choosing a Paper III phenotype that raw behaviour supplies for free.
+The replacement (`structure_phenotype.py`) phenotypes by the latent structure
+*recoverable* from each agent's MPS, which has no raw-behaviour analogue.
 
 ## Honest limitations (findings, not bugs)
 
