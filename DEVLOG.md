@@ -49,10 +49,50 @@ Rebuild, in order (each checked rather than asserted):
   log10(weight) across all (agent,state) pairs. If R^2 ~ 1 the fidelity map is
   the visit rate restated and must be reported as such. Adding Spearman too,
   since a linear fit could under-fit a saturating relation and deflate R^2.
-- Still open: structure_vs_visitrate.py -- the cleanest test, holding the
-  first-action distribution EXACTLY fixed (same policy) while varying only
-  second-step exploration, so any difference in recovered structure cannot be
-  first-step visit rate.
+- Still open: structure_vs_visitrate.py -- holds the first-action distribution
+  EXACTLY fixed while varying only second-step exploration. Largely superseded by
+  the result below, which found the mechanism directly.
+
+**RESULT: action entropy gates identifiability; data volume sets the rate.**
+
+Per-state recovery error vs the analytic truth (1500 episodes, 35 epochs):
+
+    agent            center  R/chee  R/shок  L/chee  L/shок  cue/c0  cue/c1
+    info-seeker       3.000   3.496   2.039   3.489   2.904   6.001   6.015
+    reward-gambler      nan   0.316   0.482   0.304   0.242   6.044   6.012
+    habitual          0.288   0.318   0.453   0.452   0.310   0.275   0.246
+
+Regressions over the 20 (agent,state) pairs:
+    error ~ log10(weight)                R^2 = 0.093
+    error ~ H(a3)                        R^2 = 0.807
+    error ~ H(a3) + log10(weight)        R^2 = 0.904
+    error ~ log10(weight) | H(a3) > 1.4  R^2 = 0.909
+
+So recovery is NOT driven by how often a state is visited. Every state with
+error ~6 has H(a3)=0 (exactly one third action ever taken); every state with
+error <0.5 has H~2 (all four). The info-seeker holds 40% of its data at the cue
+and recovers it WORST, while recovering its arm states -- 0.4% of its data, ~100x
+less -- BETTER, because at the cue it is deterministic and at the arms it is not.
+Marginally this masks the volume effect (R^2 0.09) because the highest-weight
+states are exactly the zero-entropy ones; conditioned on the gate being open,
+volume predicts recovery strongly (R^2 0.91). A Simpson's-paradox masking.
+
+Interpretation, and the honest Paper III thesis: **agent epistemics and observer
+epistemics are opposed.** The info-seeker resolves ITS OWN uncertainty at the
+cue, which makes its subsequent behaviour deterministic, which destroys the
+observer's ability to identify the conditionals. Competence removes the action
+variation that identification requires. The RANDOM agent yields the best
+recovered world model. This also explains Paper II: its exhaustive uniform-action
+rollouts are the maximum-entropy best case, which is why it reached TV<=0.001.
+Paper III is what happens when you drop that assumption and watch a real agent.
+
+Caveats to keep honest: (a) ~81% of the error variance is predicted by action
+entropy, a BEHAVIOURAL statistic, so the fidelity map is not independent of
+behaviour -- the contribution is the identifiability law, not a classifier;
+(b) error ~6 means UNIDENTIFIED (unexercised rows hit the metric ceiling), not
+"learned wrongly"; (c) the info-seeker's H=0 follows from gamma=16 -- a gamma
+sweep would turn this into a continuous determinism-vs-identifiability curve, and
+is the obvious next experiment.
 
 ## 2026-07-19 (Paper III kickoff: branch + persistent-latent environment)
 - Started Paper III on branch `paper3/agent-phenotyping` (off `analysis/structure-recovery`).

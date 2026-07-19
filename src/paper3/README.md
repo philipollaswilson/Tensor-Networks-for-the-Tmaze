@@ -90,8 +90,77 @@ support the paper's thesis. Audit findings:
 Paper II earned its tensor network because its claims *required* the latent model
 (hidden-state partition from bond rays, A/B, subsystem MI, empowerment). The
 error was choosing a Paper III phenotype that raw behaviour supplies for free.
-The replacement (`structure_phenotype.py`) phenotypes by the latent structure
-*recoverable* from each agent's MPS, which has no raw-behaviour analogue.
+
+### Negative result #2 — thresholded coverage doesn't work either
+
+The first replacement (`structure_phenotype.py`) asked which histories are
+"supported" above a Born-weight floor. Measured, the floor does not bite:
+
+| agent | states | supported | note |
+|---|---|---|---|
+| info-seeker | 7 | 7/7 | — |
+| reward-gambler | 6 | 6/7 | loses only `center` (never idles) |
+| habitual | 6 | 7/7 | two histories merged predictively |
+
+The gambler still visits the cue ~2% of the time, so its cue histories carry
+weight 0.017/0.020 and clear any sane threshold — it "supports" the cue states
+despite having almost no data there. The one history it loses is `center`, an
+incidental artifact, not the cue blindness that matters. **Binary coverage is
+threshold-arbitrary and misses the effect.**
+
+### Current attempt — per-state recovery *fidelity*
+
+`recovery_fidelity.py` measures, per latent state, the L1 between the predictive
+signature recovered from the agent's MPS (bond ray × T3) and the **analytic**
+signature of the true model. Continuous, threshold-free, and it requires the
+tensor network. Analytic ground truth was sanity-checked independently
+(q(K|cue)=[1,0], q(K|R,cheese)=[0.15,0.85], cue/ctx0 vs ctx1 differ by L1 2.8).
+
+### ✅ The actual result: action entropy gates identifiability
+
+Auditing the fidelity map (`fidelity_analysis.py`) overturned the expected story.
+Per-state recovery error vs analytic truth:
+
+| agent | center | R/cheese | R/shock | L/cheese | L/shock | cue/ctx0 | cue/ctx1 |
+|---|---|---|---|---|---|---|---|
+| info-seeker | 3.000 | 3.496 | 2.039 | 3.489 | 2.904 | **6.001** | **6.015** |
+| reward-gambler | — | 0.316 | 0.482 | 0.304 | 0.242 | **6.044** | **6.012** |
+| habitual | 0.288 | 0.318 | 0.453 | 0.452 | 0.310 | 0.275 | 0.246 |
+
+| model | R² |
+|---|---|
+| `error ~ log10(visit weight)` | 0.093 |
+| `error ~ H(a3)` | **0.807** |
+| `error ~ H(a3) + log10(weight)` | **0.904** |
+| `error ~ log10(weight)` given `H > 1.4` | **0.909** |
+
+**Recovery is not driven by how often a state is visited.** Every state with
+error ≈ 6 has `H(a3) = 0` (one action ever taken there); every state with error
+< 0.5 has `H ≈ 2`. The info-seeker holds **40%** of its data at the cue and
+recovers it *worst*, while recovering its arm states — **0.4%** of its data — far
+better, because at the cue it is deterministic and at the arms it is not. That
+masks the volume effect marginally (R²=0.09, a Simpson's-paradox artifact: the
+highest-weight states are exactly the zero-entropy ones); once the gate is open,
+volume predicts recovery strongly (R²=0.91).
+
+**Thesis this supports: agent epistemics and observer epistemics are opposed.**
+The info-seeker resolves *its own* uncertainty at the cue, which makes its later
+behaviour deterministic, which destroys the *observer's* ability to identify the
+conditionals. Competence removes the variation identification needs — the
+*random* agent yields the best recovered world model. This also explains Paper
+II: its exhaustive uniform-action rollouts are the maximum-entropy best case,
+which is why it reached TV ≤ 0.001. Paper III is what happens when you drop that
+assumption and watch a real agent.
+
+Honest caveats: ~81% of the error variance is predicted by action entropy, a
+*behavioural* statistic — so the contribution is the identifiability law, not a
+classifier; error ≈ 6 means **unidentified** (unexercised rows hit the metric
+ceiling), not "learned wrongly"; and the info-seeker's `H=0` follows from
+γ=16, so a γ sweep would turn this into a continuous
+determinism-vs-identifiability curve (the obvious next experiment).
+
+`structure_vs_visitrate.py` (same agent, identical first-step policy, second
+action greedy vs uniform) remains available as an independent confirmation.
 
 ## Honest limitations (findings, not bugs)
 
