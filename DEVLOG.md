@@ -38,8 +38,18 @@
   fit L1 to the agent's empirical joint. Smoke (300 ep, 15 epochs): info-seeker
   0.007, gambler 0.027, habitual 0.039 -- each MPS already reproduces its agent's
   behaviour. Full run (5000 ep, 200 epochs) will tighten these.
-- NEXT: step 4 (agency_criteria: inverse-C, EFE-regret, explainability) then
-  step 5 (blind discrimination) -- the scientific payoff.
+- **Step 4 done + verified.** agency_criteria operationalises all three Paper I
+  criteria on the recovered model, reusing the agents' own EFE: intentionality =
+  peakedness of the inverse-inferred C, rationality = 1 - normalised EFE-regret,
+  explainability = model fidelity. Separates the roster:
+  info-seeker (intent 0.96, ration 0.98, C=(5,-5)), gambler (0.11, 0.99, C=(1,0)),
+  habitual (0.00, 0.51, C=(0,0)). Two honest properties documented in the module:
+  (a) rationality is measured vs each agent's OWN inferred C, so the gambler is
+  "consistent with shallow prefs", not irrational -- intentionality is what
+  separates it; (b) inferring C at a fixed horizon-2 conflates myopia with weak
+  preference (motivates inferring horizon as a 4th trait, future work).
+- NEXT: step 5 (blind discrimination) -- freeze a pre-registration, classify a
+  held-out agent from its recovered 3-criteria profile. The scientific payoff.
 
 ## 2026-07-17 (Philip's p(o2|s2) / info-gain question)
 - Philip asked to see p(o2|s2), worried that seeing Cheese/Shock at a blind arm

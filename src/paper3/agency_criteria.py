@@ -2,58 +2,157 @@
 
 Paper II reported only empowerment (controllability). This is the direct answer
 to "empowerment isn't agency": operationalise all three Paper I criteria on the
-MPS-recovered generative model, with empowerment kept as the controllability
-facet of a fuller profile.
+recovered generative model, with empowerment kept as the controllability facet of
+a fuller profile.
 
-  intentionality — inverse-infer the preference vector C from the recovered
-      A, B and the observed behaviour; goal-directedness = whether the recovered
-      C renders the observed policy an expected-free-energy (EFE) minimiser.
-  rationality    — the EFE-optimality gap (regret) of the behaviour under the
-      recovered model: how far the agent is from the EFE-optimal policy.
-  explainability — fidelity and description length of the recovered model.
+  intentionality -- inverse-infer the preference vector C from behaviour under
+      the recovered model; goal-directedness = how PEAKED those preferences are
+      (a flat C means no goals). Fitted jointly with precision by maximum
+      likelihood of the agent's observed first actions.
+  rationality    -- the EFE-optimality gap (regret) of the behaviour under the
+      recovered model and the inferred C, normalised to [0,1]. A rational agent
+      minimises expected free energy; an impulsive or random one does not.
+  explainability -- fidelity of the recovered model to the agent's own behaviour
+      (1 - fit L1) and its description length (MPS parameter count).
 
-The recovered A, B come from Paper II's src/structure_recovery.py; empowerment
-from the existing Blahut-Arimoto code. The new numerics are inverse-C inference
-and the EFE-regret computation.
+empowerment stays as the controllability facet (Blahut-Arimoto), carried when a
+recovered joint is available.
+
+The EFE machinery is reused from agents.ActiveInferenceAgent, so the criteria
+score behaviour with the SAME expected-free-energy the agents plan by -- there is
+one definition of value in the paper, not two.
+
+Two honest properties of this operationalisation, worth stating in the paper:
+  * rationality is measured against each agent's OWN inferred C, so a CONSISTENT
+    agent scores high regardless of what it wants. The reward-gambler is not
+    "irrational" -- it has shallow, risk-neutral preferences under which going
+    straight to an arm really is near-optimal. What separates it from the
+    info-seeker is intentionality (goal depth), not rationality; what separates
+    the habitual agent is its inconsistency (chance-level rationality).
+  * inferring C under a fixed horizon-2 observer conflates MYOPIA with WEAK
+    PREFERENCE: the gambler's short horizon is read as a small |C|. Inferring the
+    planning horizon as a separate trait would disentangle them -- a clean
+    Paper III extension, not a bug in the recovery.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
+from itertools import product
+
+import numpy as np
+
+from . import agents
+from . import generative_model as gm
+
+_EPS = 1e-12
 
 
 @dataclass
 class AgencyProfile:
-    """The full phenotype for one agent, read off its recovered model."""
+    """The full phenotype for one agent, read off its behaviour + recovered model."""
 
     agent: str
-    empowerment: float          # controllability (Paper II carry-over)
-    intentionality: float       # goal-directedness score in [0, 1]
-    rationality: float          # 1 - normalised EFE regret, in [0, 1]
-    explainability: float       # model fidelity / description-length score
-    recovered_C: tuple          # inverse-inferred preference vector
+    intentionality: float          # goal-directedness (peakedness of inferred C), [0,1]
+    rationality: float             # 1 - normalised EFE regret, [0,1]
+    explainability: float          # model fidelity to the agent's behaviour, [0,1]
+    recovered_C: tuple             # inverse-inferred (none, cheese, shock) preference
+    empowerment: float | None      # controllability facet, if a joint was given
+
+    def vector(self) -> np.ndarray:
+        """The 3-criteria coordinate used for agent discrimination (step 5)."""
+        return np.array([self.intentionality, self.rationality, self.explainability])
 
 
-def infer_preferences(A, B, behaviour):
-    """Inverse-infer the preference vector C that best rationalises `behaviour`.
+def behavioural_first_action(rollouts) -> np.ndarray:
+    """Empirical P(first real action | start) from an agent's rollouts."""
+    counts = np.zeros(gm.N_ACT)
+    for actions, _obs in rollouts:
+        counts[int(actions[1])] += 1.0     # actions[0] is the null a1
+    return counts / counts.sum()
 
-    TODO(paper3): solve for C such that the observed policy is (near-)EFE-optimal
-    under the recovered A, B. Inverse active inference / max-likelihood over C.
+
+def _reference_agent() -> "agents.ActiveInferenceAgent":
+    """A rational-observer planner (horizon 2) used to score behaviour. Its C and
+    gamma are overridden per call; only its A/B and EFE code are used."""
+    spec = agents.AgentSpec("reference", C_reward=(0.0, 0.0, 0.0), gamma=1.0, horizon=2)
+    return agents.ActiveInferenceAgent(spec)
+
+
+def infer_preferences(rollouts, c_grid=None, gamma_grid=None):
+    """Maximum-likelihood (C_reward, gamma) explaining the observed first actions
+    under the reference planner. Returns (C_reward tuple, gamma, loglik)."""
+    ref = _reference_agent()
+    phat = behavioural_first_action(rollouts)
+    n = sum(1 for _ in rollouts)
+    c_grid = c_grid if c_grid is not None else np.linspace(0.0, 6.0, 13)
+    gamma_grid = gamma_grid if gamma_grid is not None else np.array([0.0, 0.5, 1, 2, 4, 8, 16])
+    best = (-np.inf, (0.0, 0.0, 0.0), 0.0)
+    for c_ch in c_grid:
+        for c_sh in -c_grid:                # shock preference in [-6, 0]
+            C = (0.0, float(c_ch), float(c_sh))
+            for g in gamma_grid:
+                qpi = ref.first_action_dist(gm.CENTER, steps_left=2, gamma=float(g), C_rew=C)
+                ll = n * float(np.sum(phat * np.log(np.clip(qpi, _EPS, 1.0))))
+                if ll > best[0]:
+                    best = (ll, C, float(g))
+    ll, C, g = best
+    return C, g, ll
+
+
+def _efe_by_policy(C_reward) -> np.ndarray:
+    """EFE G(a1,a2) for every 2-step policy from the start belief, under C."""
+    ref = _reference_agent()
+    ref.C = gm.build_C(C_reward)
+    qK0 = gm.build_D()[1]
+    G = np.zeros((gm.N_ACT, gm.N_ACT))
+    for a1, a2 in product(range(gm.N_ACT), repeat=2):
+        G[a1, a2] = ref._efe(qK0, gm.CENTER, (a1, a2))
+    return G
+
+
+def efe_regret(rollouts, C_reward) -> float:
+    """Normalised EFE-optimality gap of the behaviour in [0,1] (0 = optimal).
+
+    Uses the best continuation a2 for each first action (isolating first-choice
+    quality), weighted by the empirical P(a1). Normalised by the spread between
+    the best and worst first choice so it is comparable across agents.
     """
-    raise NotImplementedError("inverse-infer C from recovered A, B and behaviour")
+    G = _efe_by_policy(C_reward)
+    best_cont = G.min(axis=1)               # min over a2 for each a1
+    phat = behavioural_first_action(rollouts)
+    g_behaviour = float(np.sum(phat * best_cont))
+    g_opt = float(best_cont.min())
+    g_worst = float(best_cont.max())
+    if g_worst - g_opt < _EPS:
+        return 0.0
+    return (g_behaviour - g_opt) / (g_worst - g_opt)
 
 
-def efe_regret(A, B, C, behaviour):
-    """EFE-optimality gap of `behaviour` under the recovered model and C.
+def _intentionality(C_reward) -> float:
+    """Goal-directedness = how far the softmaxed preferences are from uniform,
+    normalised so a flat C scores 0 and a maximally peaked one scores 1."""
+    p = agents._softmax(np.asarray(C_reward, float))
+    h = -np.sum(p * np.log(np.clip(p, _EPS, 1.0)))
+    return float(1.0 - h / np.log(len(p)))
 
-    TODO(paper3): EFE(observed policy) - EFE(optimal policy), normalised.
-    """
-    raise NotImplementedError("compute EFE regret against the optimal policy")
+
+def profile_agent(agent_name, rollouts, fit_L1=None, empowerment=None) -> AgencyProfile:
+    """Assemble the full AgencyProfile from an agent's rollouts (and optionally
+    its recovered-model fit L1 and empowerment facet)."""
+    C, gamma, _ll = infer_preferences(rollouts)
+    intentionality = _intentionality(C)
+    rationality = 1.0 - efe_regret(rollouts, C)
+    explainability = (1.0 - fit_L1) if fit_L1 is not None else float("nan")
+    return AgencyProfile(agent_name, intentionality, rationality, explainability,
+                         tuple(round(x, 2) for x in C), empowerment)
 
 
-def profile_agent(agent_name, recovered_model, behaviour) -> AgencyProfile:
-    """Assemble the full AgencyProfile for one recovered agent model.
-
-    TODO(paper3): combine empowerment (existing) + intentionality + rationality
-    + explainability into one profile.
-    """
-    raise NotImplementedError("assemble empowerment + 3 criteria into a profile")
+if __name__ == "__main__":
+    # verification: the three criteria should separate the roster by character
+    print(f"{'agent':16s} {'intent':>7s} {'ration':>7s} {'C(cheese,shock)':>18s} {'gamma':>6s}")
+    for spec in agents.ROSTER:
+        rollouts, _ = agents.rollout(spec, n_episodes=3000, seed=0, verify=False)
+        C, gamma, _ = infer_preferences(rollouts)
+        prof = profile_agent(spec.name, rollouts)
+        print(f"{spec.name:16s} {prof.intentionality:7.2f} {prof.rationality:7.2f} "
+              f"{str((C[1], C[2])):>18s} {gamma:6.1f}")

@@ -11,7 +11,7 @@ the repo root; this package is the code skeleton for the spine (workstreams
 | `persistent_tmaze.py`  | 4         | context i.i.d.-per-step (Philip's point)  | **done + verified** — generator, info-gain checks, `to_memory_pool` + `rollouts_to_memory_pool` bridges |
 | `generative_model.py`  | 1, 2      | (shared A/B/C/D for the agent + EFE)      | **done + verified** — matches the env info geometry (0.390 / 1.000 bit) |
 | `agents.py`            | 1         | recovered env, not an agent               | **done + verified** — EFE agent; info-seeker cue-first 0.98, gambler arm-first 0.96, habitual ~random |
-| `agency_criteria.py`   | 2         | empowerment ≠ agency                       | stub (interfaces defined) |
+| `agency_criteria.py`   | 2         | empowerment ≠ agency                       | **done + verified** — intentionality/rationality/explainability; separates the roster |
 | `blind_validation.py`  | 3         | non-blind vs ground truth                 | stub (interfaces defined) |
 | `phenotype.py`         | 1–3       | per-agent train + fit (steps 1–3)         | **done + verified** — `train_agent_mps` + `run_experiment`; steps 4–5 pending |
 
@@ -54,8 +54,8 @@ recipe in `full_tmaze_train.py`.
 1. ~~`persistent_tmaze.to_memory_pool`~~ — **done.**
 2. ~~`agents` — EFE agent + `rollout`~~ — **done + verified** (behaviour separates).
 3. ~~`phenotype.train_agent_mps`~~ — **done + verified** (each MPS fits its agent).
-4. `agency_criteria` — the three criteria on each recovered model (next).
-5. `blind_validation` — freeze a pre-registration, then discriminate blind.
+4. ~~`agency_criteria`~~ — **done + verified** (three criteria separate the roster).
+5. `blind_validation` — freeze a pre-registration, then discriminate blind (next).
 
 Quick checks:
 - behaviour: `python -m src.paper3.agents`

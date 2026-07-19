@@ -138,20 +138,35 @@ class ActiveInferenceAgent:
                 G += po * (-info_gain - pragmatic + future)
         return G
 
+    def first_action_dist(self, L: int, steps_left: int,
+                          gamma: float | None = None, C_rew=None) -> np.ndarray:
+        """Marginal distribution over the first action under EFE-softmax policy
+        selection at (current belief, location L). Optional gamma / C_rew
+        overrides let workstream 2 evaluate counterfactual preferences without
+        rebuilding the agent (used by agency_criteria)."""
+        h = min(self.spec.horizon, steps_left)
+        if h <= 0:
+            return np.full(gm.N_ACT, 1.0 / gm.N_ACT)
+        if C_rew is not None:
+            saved = self.C[1]; self.C = [self.C[0], np.asarray(C_rew, float), self.C[2]]
+        policies = _enumerate_policies(h)
+        G = np.array([self._efe(self.qK, L, pi) for pi in policies])
+        if C_rew is not None:
+            self.C = [self.C[0], saved, self.C[2]]
+        g = self.spec.gamma if gamma is None else gamma
+        qpi = _softmax(-g * G)
+        first = np.zeros(gm.N_ACT)
+        for pi, w in zip(policies, qpi):
+            first[pi[0]] += w
+        return first / first.sum()
+
     def act(self, L: int, steps_left: int, rng: np.random.Generator) -> int:
         """Choose an action from the current location by EFE-softmax policy
         selection over a receding horizon."""
         h = min(self.spec.horizon, steps_left)
         if h <= 0:
             return int(rng.integers(gm.N_ACT))
-        policies = _enumerate_policies(h)
-        G = np.array([self._efe(self.qK, L, pi) for pi in policies])
-        qpi = _softmax(-self.spec.gamma * G)
-        # marginal over the first action, then sample
-        first = np.zeros(gm.N_ACT)
-        for pi, w in zip(policies, qpi):
-            first[pi[0]] += w
-        first /= first.sum()
+        first = self.first_action_dist(L, steps_left)
         return int(rng.choice(gm.N_ACT, p=first))
 
 
