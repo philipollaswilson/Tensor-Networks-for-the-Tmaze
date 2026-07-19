@@ -7,3 +7,4 @@ paper/*.log
 paper/*.out
 paper/pages/
 _fidelity_cache.json
+_gamma_sweep.json

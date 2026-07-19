@@ -156,8 +156,22 @@ Honest caveats: ~81% of the error variance is predicted by action entropy, a
 *behavioural* statistic — so the contribution is the identifiability law, not a
 classifier; error ≈ 6 means **unidentified** (unexercised rows hit the metric
 ceiling), not "learned wrongly"; and the info-seeker's `H=0` follows from
-γ=16, so a γ sweep would turn this into a continuous
-determinism-vs-identifiability curve (the obvious next experiment).
+γ=16, so a γ sweep turns this into a continuous
+determinism-vs-identifiability curve (`gamma_sweep.py`).
+
+### Novelty — state this plainly in the paper
+
+The underlying principle is **not new**. It is the *positivity / overlap*
+assumption in causal inference and the *coverage* requirement in offline RL and
+imitation learning: no identification for an action never taken. Cite that
+literature; do not present the principle as novel.
+
+Defensibly new here: its instantiation in **tensor-network structure learning**
+(the limit appears as unexercised rows of the action-conditioned bond signature),
+the **quantification** in this setting (entropy R² 0.81 vs visit-rate 0.09, with
+the Simpson's-paradox masking), and the **active-inference twist** — the agent
+whose objective *includes* epistemic value is the one that most damages the
+observer's identifiability.
 
 `structure_vs_visitrate.py` (same agent, identical first-step policy, second
 action greedy vs uniform) remains available as an independent confirmation.

@@ -21,27 +21,66 @@ Paper II has four honest gaps, stated in its own Discussion:
    rather than being a **persistent episode latent** — so "only the cue is informative"
    holds, but context is not the stable hidden variable the standard T-maze intends.
 
-## The thesis for Paper III
+## The thesis for Paper III — REVISED 2026-07-19 after adversarial audit
 
-**Phenotype actual agents from their own behaviour: recover the full agency profile
-(all three criteria, not just control), discriminate agents by character, and validate
-blind with a pre-registered predictive test on a persistent-latent environment.**
+> **Superseded.** The original thesis below ("discriminate agents by their
+> recovered phenotype") was implemented, and then **failed an adversarial audit
+> as circular**: the discriminating features were the agents' own defining
+> behaviour, a bare `P(a1)` histogram matched the reported accuracy 1.00, and the
+> trained MPS was never consulted. Kept here for the record; see
+> `src/paper3/README.md` for the audit and the replacement.
 
-This closes the loop the series opened: Paper I defined the profile, Paper II recovered
-the substrate, Paper III reads the profile off the recovered substrate for a *specific
-agent* and shows it *distinguishes agents* — the thing "phenotyping" has been promising.
+### Current thesis: competence destroys identifiability
 
-## The killer experiment: agent discrimination
+**A world model can only be recovered where the agent VARIES its actions — not
+where it goes. So the more competent and goal-directed an agent is, the less
+identifiable its own world model becomes from its behaviour.**
 
-Generate rollouts from N agents that differ in a controlled way:
-- an **info-seeker** (high preference precision, visits the cue first),
-- a **reward-gambler** (low precision / high risk, goes straight to an arm),
-- a **habitual/random** agent (flat policy).
+Measured, per latent state, as L1 between the predictive signature recovered from
+the agent's MPS and the analytic truth:
 
-Fit one MPS per agent, on that agent's *own* rollouts. Recover each agent's structure
-and full agency profile. Show the profiles **separate by character**, then blind-classify
-a held-out agent from its recovered phenotype alone. A profile that can tell a curious
-agent from a gambler, without being told which is which, is a genuine phenotyping result.
+    error ~ log10(visit weight)               R^2 = 0.093
+    error ~ H(a3)                             R^2 = 0.807
+    error ~ H(a3) + log10(weight)             R^2 = 0.904
+    error ~ log10(weight) given H(a3) > 1.4   R^2 = 0.909
+
+The info-seeker holds **40%** of its data at the cue and recovers it **worst**
+(error 6.0), while recovering its arm states — **0.4%** of its data — better,
+because at the cue it always makes the same next move. The **random** agent
+recovers the environment best.
+
+**The irony that carries the paper: the epistemically-driven agent produces the
+least informative data.** It resolves *its own* uncertainty, which makes it
+deterministic, which destroys the *observer's* ability to identify its model.
+Agent epistemics and observer epistemics are opposed.
+
+This also explains Paper II rather than competing with it: Paper II's exhaustive
+uniform-action rollouts are the maximum-entropy best case, which is why it
+recovered A and B to TV <= 0.001. Paper III is what happens when that assumption
+is dropped and you watch a real agent.
+
+### Novelty: be honest in the write-up
+
+This principle is **not new to science**. It is the *positivity / overlap*
+assumption in causal inference and the *coverage* requirement in offline RL and
+imitation learning: you cannot identify an effect for an action never taken. The
+paper must cite that literature rather than present the principle as new.
+
+What is defensible as new:
+- its instantiation in **tensor-network structure learning** (the identifiability
+  limit shows up as unexercised rows of the action-conditioned bond signature),
+- the **quantification** in this setting (entropy R^2 0.81 vs visit-rate 0.09,
+  with the Simpson's-paradox masking),
+- the **active-inference twist**: the agent whose objective *includes* epistemic
+  value is the one that most damages the observer's identifiability.
+
+### Original thesis (superseded, kept for the record)
+
+Phenotype actual agents from their own behaviour: recover the full agency profile,
+discriminate agents by character, validate blind on a persistent-latent
+environment. The killer experiment was to fit one MPS per agent (info-seeker /
+reward-gambler / habitual) and blind-classify a held-out agent from its recovered
+phenotype. **This is circular** — see the audit.
 
 ## Workstreams (each tied to the gap it closes)
 
