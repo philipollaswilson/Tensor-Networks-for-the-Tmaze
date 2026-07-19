@@ -86,6 +86,35 @@ recovered world model. This also explains Paper II: its exhaustive uniform-actio
 rollouts are the maximum-entropy best case, which is why it reached TV<=0.001.
 Paper III is what happens when you drop that assumption and watch a real agent.
 
+**GAMMA SWEEP: the tradeoff is continuous and monotone.** One agent family
+(info-seeker's C and horizon fixed), precision gamma the only knob, 1200 episodes
+/ 25 epochs each:
+
+    gamma  cue_visit  H(a3) mean  H weighted  recovery err
+      0.0       0.30        1.99        1.99         0.325
+      0.5       0.34        1.84        1.85         0.299
+      1.0       0.37        1.63        1.61         0.529
+      2.0       0.45        1.41        1.26         1.139
+      4.0       0.59        1.34        0.96         1.664
+      8.0       0.84        1.18        0.38         2.228
+     16.0       0.98        0.82        0.02         3.967
+
+    corr(gamma, H_weighted) = -0.934
+    corr(gamma, error)      = +0.987
+    corr(H_weighted, error) = -0.962
+
+The pre-registered falsifier (corr(gamma,error) ~ 0 => tradeoff does not bind)
+did NOT fire. Recovery error degrades 12x across the competence range while
+weighted action entropy collapses from 1.99 to 0.02 bits. This is the paper's
+headline figure: competence is not free, it is paid for in the observer's ability
+to identify the agent's model.
+
+Minor honesty notes on the curve: gamma=0.5 dips slightly below gamma=0 (0.299 vs
+0.325), within run-to-run noise -- do not over-read the very low end. And
+error_mean is unweighted across the 7 states, so at high gamma it mixes the
+entropy effect with reduced arm coverage; the entropy dominance is established
+separately by the R^2 0.81 vs 0.09 decomposition, not by this curve alone.
+
 Caveats to keep honest: (a) ~81% of the error variance is predicted by action
 entropy, a BEHAVIOURAL statistic, so the fidelity map is not independent of
 behaviour -- the contribution is the identifiability law, not a classifier;

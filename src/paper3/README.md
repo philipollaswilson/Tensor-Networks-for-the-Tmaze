@@ -159,6 +159,31 @@ ceiling), not "learned wrongly"; and the info-seeker's `H=0` follows from
 γ=16, so a γ sweep turns this into a continuous
 determinism-vs-identifiability curve (`gamma_sweep.py`).
 
+### The tradeoff curve (headline figure) — `gamma_sweep.py`
+
+One agent family, C and horizon fixed, policy precision γ the only knob:
+
+| γ | cue_visit | H(a3) weighted | recovery error |
+|---|---|---|---|
+| 0.0 | 0.30 | 1.99 | 0.325 |
+| 0.5 | 0.34 | 1.85 | 0.299 |
+| 1.0 | 0.37 | 1.61 | 0.529 |
+| 2.0 | 0.45 | 1.26 | 1.139 |
+| 4.0 | 0.59 | 0.96 | 1.664 |
+| 8.0 | 0.84 | 0.38 | 2.228 |
+| 16.0 | 0.98 | 0.02 | **3.967** |
+
+`corr(γ, H) = −0.934` · `corr(γ, error) = +0.987` · `corr(H, error) = −0.962`
+
+**12× degradation** in recoverability across the competence range. The
+pre-registered falsifier (`corr(γ, error) ≈ 0`) did not fire. Competence is not
+free — it is paid for in the observer's ability to identify the agent's model.
+
+Read-with-care: γ=0.5 dips marginally below γ=0 (noise; don't over-read the low
+end), and `error_mean` is unweighted across states so at high γ it mixes the
+entropy effect with reduced arm coverage — entropy *dominance* rests on the
+R² 0.81 vs 0.09 decomposition, not on this curve alone.
+
 ### Novelty — state this plainly in the paper
 
 The underlying principle is **not new**. It is the *positivity / overlap*
