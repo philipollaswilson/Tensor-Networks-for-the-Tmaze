@@ -109,6 +109,34 @@ weighted action entropy collapses from 1.99 to 0.02 bits. This is the paper's
 headline figure: competence is not free, it is paid for in the observer's ability
 to identify the agent's model.
 
+**CONVERGENCE CONFOUND CLOSED (convergence_check.py).** The sweep fixed epochs,
+not convergence, so the trend could have been uneven under-training. Same
+rollouts trained at 25 vs 100 epochs:
+
+    gamma   err@25   err@100    delta   loss@25 -> loss@100
+      0.0    0.457     0.421   -0.036   3.689 -> 3.700
+      4.0    1.950     1.852   -0.098   3.031 -> 3.029
+     16.0    3.805     3.603   -0.202   1.661 -> 1.663
+
+    error spread (gamma16 - gamma0): +3.349 at 25 epochs, +3.183 at 100 (95% kept)
+
+The gap survives a 4x budget, so the sweep was not measuring convergence speed.
+NOTE the test passed by a different route than designed: the intended proof was
+"error flat WHILE loss keeps descending"; in fact the loss is flat to three
+decimals, i.e. the models were ALREADY CONVERGED at 25 epochs. That closes the
+confound just as well (nothing was under-trained) but the advertised corroboration
+did not occur -- recorded here rather than quietly banked as a pass.
+
+**Unplanned finding, and the sharpest form of the result: fit quality and
+recovery quality are ANTI-CORRELATED.** Training loss across gamma runs
+3.689 (gamma=0) -> 1.661 (gamma=16): the deterministic agent's model fits its own
+data far BETTER while recovering the environment far WORSE (error 3.8 vs 0.46).
+Its data is low-entropy and concentrated, hence easy to model. The high-gamma
+model did not fail to learn -- it learned its data very well, and its data does
+not contain the environment. Methodological consequence for the paper: TRAINING
+LOSS CANNOT BE USED AS A PROXY FOR RECOVERY QUALITY. A well-fit model of
+self-selected data is still a bad model of the world.
+
 Minor honesty notes on the curve: gamma=0.5 dips slightly below gamma=0 (0.299 vs
 0.325), within run-to-run noise -- do not over-read the very low end. And
 error_mean is unweighted across the 7 states, so at high gamma it mixes the

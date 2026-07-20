@@ -8,3 +8,6 @@ paper/*.out
 paper/pages/
 _fidelity_cache.json
 _gamma_sweep.json
+_baseline_cache.json
+_baseline_hard.json
+_convergence_check.json

@@ -23,7 +23,8 @@ import numpy as np
 from . import agents, persistent_tmaze
 
 
-def train_agent_mps(pool, epochs: int = 200, bond_dim: int = 4, seed: int = 0):
+def train_agent_mps(pool, epochs: int = 200, bond_dim: int = 4, seed: int = 0,
+                    batch_size: int = 32):
     """Fit one MPS on a single agent's rollout pool.
 
     Reuses the converged recipe from src/full_tmaze_train.py (random init, SGD
@@ -44,7 +45,11 @@ def train_agent_mps(pool, epochs: int = 200, bond_dim: int = 4, seed: int = 0):
     mps = MPSTwo(3, feature_dim_obs=24, feature_dim_act=4, bond_dim=bond_dim,
                  init_mode='random', max_bond=16, cutoff=0.01, dtype=dtype)
     optim = SGD(mps, lr=5e-3)
-    trainer = MPSTrainer(mps, pool, optimizer=optim, batch_size=32,
+    # the loader drops incomplete batches, so a batch larger than the pool yields
+    # nothing and the trainer dies on StopIteration. Matters in the small-N
+    # regime baseline_comparison probes.
+    batch_size = max(1, min(batch_size, len(pool)))
+    trainer = MPSTrainer(mps, pool, optimizer=optim, batch_size=batch_size,
                          scheduler=Han(optim, safe_loss_threshold=5e-3, lr_shrink_rate=0.8),
                          log_dir_suffix='paper3_agent', device='cpu')
     with torch.inference_mode():

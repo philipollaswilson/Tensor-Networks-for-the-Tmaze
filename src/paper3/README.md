@@ -184,6 +184,33 @@ end), and `error_mean` is unweighted across states so at high γ it mixes the
 entropy effect with reduced arm coverage — entropy *dominance* rests on the
 R² 0.81 vs 0.09 decomposition, not on this curve alone.
 
+### Convergence confound — closed (`convergence_check.py`)
+
+The sweep fixed epochs, not convergence. Same rollouts at 25 vs 100 epochs:
+
+| γ | err@25 | err@100 | delta | loss@25 → loss@100 |
+|---|---|---|---|---|
+| 0.0 | 0.457 | 0.421 | −0.036 | 3.689 → 3.700 |
+| 4.0 | 1.950 | 1.852 | −0.098 | 3.031 → 3.029 |
+| 16.0 | 3.805 | 3.603 | −0.202 | 1.661 → 1.663 |
+
+Error spread survives: **+3.349 → +3.183** (95% retained), so the sweep was not
+measuring convergence speed. Noted honestly: the intended proof was "error flat
+*while loss descends*"; in fact loss is flat, i.e. the models were **already
+converged at 25 epochs**. Same conclusion, different route than advertised.
+
+### ⚠️ Fit quality and recovery quality are ANTI-correlated
+
+Training loss across γ: **3.689 (γ=0) → 1.661 (γ=16)**. The deterministic agent's
+model fits its own data *far better* while recovering the environment *far worse*
+(error 3.8 vs 0.46). Its data is low-entropy and concentrated, hence easy to
+model. The high-γ model did not fail to learn — it learned its data very well,
+and its data does not contain the environment.
+
+**Methodological consequence: training loss cannot be used as a proxy for
+recovery quality.** A well-fit model of self-selected data is still a bad model of
+the world. This is the failure mode a reader would otherwise walk into.
+
 ### Novelty — state this plainly in the paper
 
 The underlying principle is **not new**. It is the *positivity / overlap*
