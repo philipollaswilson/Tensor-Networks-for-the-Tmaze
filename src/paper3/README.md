@@ -184,6 +184,50 @@ end), and `error_mean` is unweighted across states so at high γ it mixes the
 entropy effect with reduced arm coverage — entropy *dominance* rests on the
 R² 0.81 vs 0.09 decomposition, not on this curve alone.
 
+### ❌ Confabulation hypothesis — refuted (`confabulation_check.py`)
+
+The claim that would have made this tensor-network-specific: that the MPS invents
+confident structure where the agent never sampled. **It doesn't.**
+
+| category (γ=16) | n | mean err | mean H | mean rel-mass |
+|---|---|---|---|---|
+| exercised | 14 | 0.622 | 0.30 | **0.4999** |
+| generalised | 2 | 0.364 | 0.30 | 0.0005 |
+| CONFABULATED | 4 | 1.872 | 0.44 | **0.0001** |
+| hedged | 8 | 1.214 | 3.19 | 0.0000 |
+
+Relative mass 0.0001 vs 0.4999 — the model assigns ~zero probability to actions
+the agent never takes. It is **honest**. The apparent confidence was my own row
+normalisation dividing a near-zero row by its near-zero sum. The built-in
+artifact control caught my own hypothesis.
+
+### Is the error metric just a count? Mostly, but not entirely
+
+| γ | unexercised | mean state err |
+|---|---|---|
+| 0 | 0/28 | 0.457 |
+| 2 | 5/28 | 1.191 |
+| 8 | 6/28 | 2.273 |
+| 16 | 14/28 | 3.805 |
+
+`error ~ #unexercised`: slope 1.330, **R² = 0.738**, corr +0.859.
+
+Not ~1.0 — and γ=2 vs γ=8 have near-identical coverage (5 vs 6) yet ~2× the error
+(1.19 vs 2.27), which counting cannot produce. Decomposition: **~74% binary
+coverage** (countable without any MPS) + **~26% graded estimation quality** at
+rarely-sampled rows.
+
+### ⚠️ Bottom line: no tensor-network-specific claim survives
+
+The graded 26% is sample efficiency at rare actions — any estimator shows it.
+With confabulation refuted, the finding is about **data**, not tensor networks.
+It is real; it is not evidence for the method. Open options: (a) reframe as a
+methodological study of the limits of behavioural structure learning; (b) fold
+into Paper II as its limitations section; (c) one bounded test of the untried
+route — Paper II's *actual* machinery (bond-ray state partition, recovered A/B,
+subsystem MI) applied per agent. **Do not spend compute on more mazes until this
+is settled.**
+
 ### Convergence confound — closed (`convergence_check.py`)
 
 The sweep fixed epochs, not convergence. Same rollouts at 25 vs 100 epochs:

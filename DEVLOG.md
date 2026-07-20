@@ -109,6 +109,57 @@ weighted action entropy collapses from 1.99 to 0.02 bits. This is the paper's
 headline figure: competence is not free, it is paid for in the observer's ability
 to identify the agent's model.
 
+**CONFABULATION HYPOTHESIS: DEAD (confabulation_check.py).** Hypothesis was that
+the MPS invents confident structure at conditionals the agent never exercised --
+the one claim that would have made this a TENSOR-NETWORK result rather than an
+identifiability note. The artifact control built to catch exactly this failure
+mode caught it.
+
+    gamma=16      n   mean err   mean H   mean rel-mass
+    exercised    14      0.622     0.30          0.4999
+    generalised   2      0.364     0.30          0.0005
+    CONFABULATED  4      1.872     0.44          0.0001
+    hedged        8      1.214     3.19          0.0000
+    (gamma=0 control: all 28 rows exercised, mean err 0.114)
+
+The "confabulated" rows carry relative mass 0.0001 vs 0.4999 for exercised rows.
+The model assigns essentially ZERO probability to actions the agent never takes:
+it is HONEST, saying "this does not happen". The apparent confidence was my own
+row normalisation dividing a near-zero row by its near-zero sum. The model comes
+out better than the hypothesis; the hypothesis is refuted.
+
+**IS THE ERROR METRIC JUST A COUNT?** Follow-up, since error ~2 per unexercised
+row suggested the whole apparatus might reduce to counting unsampled (state,
+action) pairs -- computable with no MPS at all.
+
+    gamma   unexercised   mean state err
+      0.0        0/28              0.457
+      2.0        5/28              1.191
+      8.0        6/28              2.273
+     16.0       14/28              3.805
+
+    state-level  error ~ #unexercised:  slope 1.330, R^2 0.738, corr +0.859 (n=28)
+
+R^2 = 0.738, NOT ~1.0. And gamma=2 vs gamma=8 have near-identical coverage (5 vs 6
+unexercised) yet errors differ ~2x (1.19 vs 2.27), which counting cannot produce.
+So recovery error decomposes into ~74% binary coverage (countable) + ~26% graded
+estimation quality at rows that ARE sampled but rarely. The metric is more than a
+count, but the count dominates.
+
+**BOTTOM LINE: no tensor-network-specific claim survives.** The graded 26% is
+sample efficiency at rare actions, which any estimator exhibits. With the
+confabulation hypothesis refuted, the finding is about DATA, not about tensor
+networks. It is real; it is not evidence for the method.
+
+Options recorded for Mao's call: (a) reframe Paper III as a methodological study
+of the limits of behavioural structure learning, stating plainly that the limit
+is estimator-agnostic; (b) fold it into Paper II as the limitations section
+quantifying what its exhaustive-uniform-action assumption buys; (c) one bounded
+test of the only untried TN-specific route -- apply Paper II's ACTUAL machinery
+per agent (bond-ray state partition, recovered A/B, subsystem MI) and ask whether
+those differ informatively across agents rather than merely tracking coverage.
+Do NOT spend compute on more mazes until this is settled.
+
 **CONVERGENCE CONFOUND CLOSED (convergence_check.py).** The sweep fixed epochs,
 not convergence, so the trend could have been uneven under-training. Same
 rollouts trained at 25 vs 100 epochs:
