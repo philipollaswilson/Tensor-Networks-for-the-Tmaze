@@ -109,6 +109,44 @@ weighted action entropy collapses from 1.99 to 0.02 bits. This is the paper's
 headline figure: competence is not free, it is paid for in the observer's ability
 to identify the agent's model.
 
+**CEILING TEST FOUND A REAL BUG: the two data generators implement DIFFERENT
+ENVIRONMENTS.** Training on the exact weighted enumeration (zero sampling noise)
+gave:
+
+    mean err 1.1965      center   0.0822   cue/ctx0 0.0132   cue/ctx1 0.1204
+                         R/cheese 2.0400   R/shock  2.0399
+                         L/cheese 2.0398   L/shock  2.0400
+
+Center and cue recover to 0.01-0.12, so THE METRIC IS NOT BIASED -- the
+instrument works, which was the question the test was built to answer. But all
+four ARM states sit at ~2.04, a flat signature rather than noise.
+
+Cause: `persistent_tmaze.enumerate_persistent()` makes the arm reward PERSIST
+across steps (r2 = r1 when you stay in an arm, inherited from the original
+tmaze.py), while `agents.rollout()` RE-SAMPLES it fresh from the noisy channel at
+each step. The analytic `recovery_fidelity.true_signature` matches the ROLLOUT
+convention. So this test trained on one environment and scored against another,
+and the mismatch shows up exactly at the states where persistence applies.
+
+WHAT IS AND IS NOT AFFECTED:
+  * NOT affected -- every agent-based result (gamma sweep, fidelity map, entropy
+    decomposition, certificate, convergence and floor diagnoses). Those use
+    agents.rollout throughout AND true_signature, which agree with each other, so
+    they are internally consistent and valid for the re-sampling environment.
+  * NOT affected -- the info-gain numbers (I(reward;ctx|arm)=0.390,
+    I(cue;ctx)=1.000). They concern step-1 arm ENTRY, before persistence applies.
+  * INVALID as run -- this ceiling test itself. It is the only place
+    enumerate_persistent feeds the trainer.
+  * TO FIX -- decide which convention is the real environment and make both
+    generators agree, then re-run the ceiling test. The original tmaze.py used
+    persistence, so that is probably the intended semantics and agents.rollout is
+    the one that drifted.
+
+Silver lining: the ceiling test did its job. It was built to ask "is my
+measuring instrument biased?" and the answer is no -- the states it can score
+cleanly it scores at 0.01-0.12, far below the ~0.2 floor. That means the floor
+seen under sampled rollouts is a property of the DATA, not of the metric.
+
 **FLOOR IS STRUCTURAL (floor_diagnosis.py).** Fixed N=3200, full support:
 
     epochs  40 bond 4   err 0.1920

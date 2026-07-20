@@ -228,6 +228,30 @@ route — Paper II's *actual* machinery (bond-ray state partition, recovered A/B
 subsystem MI) applied per agent. **Do not spend compute on more mazes until this
 is settled.**
 
+### 🐞 Known bug: the two generators disagree at arm states
+
+`enumerate_persistent()` makes the arm reward **persist** (`r2 = r1`, following
+the original `tmaze.py`); `agents.rollout()` **re-samples** it each step.
+`recovery_fidelity.true_signature` matches the *rollout* convention.
+
+Found by the exact-distribution ceiling test, which trained on the enumeration
+and scored against `true_signature`: center 0.082 and cue 0.013/0.120 recovered
+fine, while all four arm states pinned at ~2.04 — a flat signature, not noise.
+
+- **Unaffected:** every agent-based result (γ sweep, fidelity map, entropy
+  decomposition, certificate, convergence/floor diagnoses) — they use
+  `agents.rollout` + `true_signature`, which agree. Also unaffected: the info-gain
+  numbers (0.390 / 1.000), which concern step-1 arm *entry*, before persistence.
+- **Invalid as run:** the ceiling test itself, the only place the enumeration
+  feeds the trainer.
+- **To fix:** pick the intended convention (the original `tmaze.py` used
+  persistence, so `agents.rollout` is likely the one that drifted), make both
+  generators agree, re-run the ceiling test.
+
+**Useful negative:** the test answered its actual question. The states it *can*
+score cleanly land at 0.013–0.12, far below the ~0.2 sampled-rollout floor — so
+that floor is a property of the **data**, not a bias in the metric.
+
 ### Convergence confound — closed (`convergence_check.py`)
 
 The sweep fixed epochs, not convergence. Same rollouts at 25 vs 100 epochs:

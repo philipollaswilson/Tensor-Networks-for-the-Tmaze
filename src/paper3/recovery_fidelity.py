@@ -54,7 +54,19 @@ def context_posterior(L1: int, o_rew: int, o_cue: int, A) -> np.ndarray:
 
 def true_signature(a1: int, otup, reward_fidelity: float = 0.85) -> np.ndarray:
     """Analytic p(o3 | a3, state) in the same (4 actions x 12 pos-reward) layout
-    structure_recovery.predictive_signature produces."""
+    structure_recovery.predictive_signature produces.
+
+    ⚠️ CONVENTION MISMATCH -- see DEVLOG 2026-07-19/20. This assumes the arm reward
+    is RE-SAMPLED from the noisy channel at each step, matching agents.rollout.
+    persistent_tmaze.enumerate_persistent instead makes the arm reward PERSIST
+    (r2 = r1), following the original tmaze.py. The two generators therefore
+    describe different environments at arm states.
+
+    All agent-based results are internally consistent (rollout + this function
+    agree). Anything trained on enumerate_persistent and scored here is NOT --
+    that mismatch produces a flat ~2.04 error at all four arm states, which is how
+    the bug was found. Resolve the convention before re-running the ceiling test.
+    """
     A = gm.build_A(reward_fidelity)
     L1 = a1
     qK = context_posterior(L1, otup[1], otup[2], A)
