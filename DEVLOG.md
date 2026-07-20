@@ -109,6 +109,59 @@ weighted action entropy collapses from 1.99 to 0.02 bits. This is the paper's
 headline figure: competence is not free, it is paid for in the observer's ability
 to identify the agent's model.
 
+**FLOOR IS STRUCTURAL (floor_diagnosis.py).** Fixed N=3200, full support:
+
+    epochs  40 bond 4   err 0.1920
+    epochs 100 bond 4   err 0.2231
+    epochs 200 bond 4   err 0.2377   <- MORE TRAINING IS WORSE (-24%)
+    epochs 200 bond 8   err 0.2058   <- capacity helps only 13%
+
+Neither budget nor capacity removes it, so the strict positive claim (error -> 0
+under full support) is NOT established. My leading hypothesis (budget) was wrong.
+Mechanism is probably ordinary overfitting: more epochs tightens the fit to the
+EMPIRICAL distribution, which at finite N is a noisy sample. Same phenomenon as
+the fit/recovery anti-correlation, now WITHIN one agent instead of across agents:
+across agents concentrated data gives better fit + worse recovery; within an
+agent more epochs gives tighter fit + worse recovery. Fitting your data is not
+recovering the world.
+
+OPEN: whether the error METRIC itself has a bias floor. Training on the exact
+weighted enumeration (zero sampling noise, what Paper II did) is the ceiling
+test -- ~0.01 means the floor was sampling variance; ~0.2 means the instrument is
+biased and no absolute number here is quotable. Queued.
+
+**CERTIFICATE VALIDATED, AUC 0.997 (certificate.py).** Per-conditional verdicts
+computed from data + model ONLY (no ground truth, since none exists in the wild),
+checked against the recovery error they claim to predict:
+
+    IDENTIFIED    n=53  mean support 67.6  mean err 0.082
+    WEAK          n=12  mean support  1.5  mean err 0.778
+    UNIDENTIFIED  n=19  mean support  0.0  mean err 1.474
+    AUC 0.997
+
+Honest reading: the binary half is near-tautological -- zero-sample rows cannot be
+learned, so flagging them predicts failure by construction. The non-trivial part
+is the WEAK tier landing cleanly between the extremes, i.e. graded discounting
+rather than presence/absence. Also clarifies the floor: identified rows average
+0.082 PER ROW, so the ~0.2 PER-STATE aggregate is inflated by averaging
+unidentified rows into it -- the well-supported parts recover better than the
+aggregate suggested.
+
+**CONCEPTUAL CORRECTION from Mao: drop the "irony" framing.** An agent ceasing to
+explore once its uncertainty is resolved is epistemic value working AS DESIGNED,
+not an ironic reversal. The precise, defensible claim is:
+
+    Epistemic value drives STATE DISAMBIGUATION, not ACTION COVERAGE.
+
+The info-seeker's epistemic term concerns its own posterior over the hidden
+context. Visiting the cue resolves that -- one epistemic act -- after which
+varying its action can only cost reward, so it never has reason to try
+alternatives from the same state. But action coverage is exactly what an observer
+needs to identify the dynamics. There is no term in EFE for "be legible to an
+observer". Constructive corollary: making an agent's behaviour identifiable needs
+an explicit objective for it (an observer-directed epistemic term, or DAgger's
+trick of externally injecting the coverage that competence removes).
+
 **CONFABULATION HYPOTHESIS: DEAD (confabulation_check.py).** Hypothesis was that
 the MPS invents confident structure at conditionals the agent never exercised --
 the one claim that would have made this a TENSOR-NETWORK result rather than an
