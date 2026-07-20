@@ -75,25 +75,99 @@ competent behaviour is bad for recovering the *world model*. Same mechanism
 
 ---
 
-## What this leaves as ours
+## 4. Active inference itself — ALREADY NOTES THE MECHANISM  ⚠️ read this first
 
-1. **Instantiation in tensor-network structure learning.** The identifiability
-   limit appears concretely as unexercised rows of the action-conditioned bond
-   signature — a representation-level statement, not just a data-level one.
-2. **Quantification.** Action entropy predicts recovery error (R² 0.807); visit
-   frequency essentially does not (R² 0.093). The Simpson's-paradox masking
-   (marginally the visit rate looks irrelevant because the highest-weight states
-   are exactly the zero-entropy ones) is, as far as we know, not reported
-   elsewhere in this form.
+**This is the most consequential entry. The core phenomenon is already in print in
+the active-inference parameter-recovery literature.**
+
+From the ActiveInference.jl paper (MDPI *Entropy* 27(1):62, 2025) ✅ verified:
+
+> "The ability to recover parameters depends on the specific model and task, as
+> well as on the specific values of the parameters (when α is very high, for
+> example, **the behaviour becomes essentially deterministic; further increases in
+> α would then not have any effect on the behaviour, and therefore, not be
+> estimable**)."
+
+That is our gamma result, stated in active inference: high precision =>
+deterministic behaviour => not estimable. We must cite this and NOT present the
+mechanism as new.
+
+- <https://www.mdpi.com/1099-4300/27/1/62> ✅ verified
+
+The distinction that survives, and it is genuine but narrow:
+  * THEY recover the AGENT'S OWN PARAMETERS (gamma, C) -- computational
+    phenotyping. Question: "can I fit this agent's precision?"
+  * WE recover the ENVIRONMENT'S generative model from the agent's behaviour.
+    Question: "can I learn how the world works by watching this agent?"
+Same mechanism, different target.
+
+Also: "As One and Many: Relating Individual and Emergent Group-Level Generative
+Models in Active Inference", MDPI *Entropy* 27(2):143 ✅ verified. Names the
+identifiability precondition for fitting active-inference models to behaviour
+("different types of generative models can be distinguished based on the
+behaviour") and observes the area is under-researched.
+- <https://www.mdpi.com/1099-4300/27/2/143>
+
+⚠️ CHECK: "Active Inference: A Method for Phenotyping Agency in AI Systems?",
+arXiv:2604.23278 (2026). Title is close to this series -- establish whether it is
+ours, adjacent, or independent work occupying the same framing.
+- <https://arxiv.org/html/2604.23278v1>
+
+## 5. Legibility — the constructive corollary already exists as a field  ✅ verified
+
+The "if you wanted identifiable behaviour you would need an explicit objective for
+it" corollary is not a new idea; it is the legibility literature.
+
+Dragan & Srinivasa, **"Generating Legible Motion"**, RSS 2013 ✅ verified PDF:
+<https://www.roboticsproceedings.org/rss09/p24.pdf>. Legible motion = motion that
+lets an observer quickly and confidently infer the correct goal. Their central
+result is STRONGER than our framing: legibility and predictability are formally
+distinct and **often contradictory**.
+
+- Dragan, Lee & Srinivasa, "Legibility and Predictability of Robot Motion",
+  HRI 2013: <https://dl.acm.org/doi/10.5555/2447556.2447672> ✅ verified
+  and <https://www.ri.cmu.edu/pub_files/2013/3/legiilitypredictabilityIEEE.pdf>
+- "Active Legibility in Multiagent Reinforcement Learning", arXiv:2410.20954 ✅
+  <https://arxiv.org/pdf/2410.20954>
+- "Observer-Aware Probabilistic Planning Under Partial Observability",
+  arXiv:2502.10568 ✅ <https://arxiv.org/pdf/2502.10568>
+
+Note the target differs again: legibility is about an observer inferring the
+agent's GOAL. Ours is an observer inferring the ENVIRONMENT's dynamics. Related
+but not the same object -- worth stating explicitly rather than hoping nobody
+notices.
+
+---
+
+## What this leaves as ours (revised down, twice)
+
+The mechanism is NOT ours — §4 has it in print for active inference. The
+constructive fix is NOT ours — §5 is an established field. What remains:
+
+1. **A different target.** Prior work recovers the *agent's parameters* (§4) or
+   the agent's *goal* (§5). We recover the *environment's generative model* from
+   the agent's behaviour. Same mechanism, different object, and the consequences
+   differ: an unidentifiable precision parameter is a nuisance, an unidentifiable
+   world model means your recovered dynamics are partly fabricated.
+2. **Quantification of WHICH quantity governs it.** Action entropy predicts
+   recovery error (R² 0.807); visit frequency essentially does not (R² 0.093),
+   with a Simpson's-paradox masking (marginally the visit rate looks irrelevant
+   because the highest-weight states are exactly the zero-entropy ones). We have
+   not found this decomposition reported elsewhere.
 3. **The loss/recovery inversion.** Training loss *improves* (3.689 → 1.661) as
-   recovery *degrades* (0.46 → 3.8), because a concentrated policy is easy to
-   model. Practitioners' default health check points the wrong way. This is a
-   concrete, actionable warning.
-4. **A data-only certificate.** Which conditionals are supported is computable
-   without ground truth, and we validate that it predicts recovery failure.
-5. **The active-inference irony.** The agent whose objective *includes* epistemic
-   value is the one that most damages the observer's identifiability. Agent
-   epistemics and observer epistemics are opposed.
+   recovery *degrades* (0.46 → 3.8), and within a single agent more epochs also
+   worsens recovery. The practitioner's default health check points the wrong
+   way. Concrete and actionable.
+4. **A data-only certificate**, validated (AUC 0.997, with the graded WEAK tier
+   doing the non-trivial work). §4 notes the identifiability problem; it does not
+   give a per-conditional instrument for detecting it without ground truth.
+5. **Instantiation in tensor-network structure learning** — the limit appears as
+   unexercised rows of the action-conditioned bond signature.
+
+Drop the "irony"/"epistemics are opposed" framing entirely. An agent that stops
+exploring once its uncertainty is resolved is epistemic value working as
+designed. The precise claim is that epistemic value drives STATE DISAMBIGUATION,
+not ACTION COVERAGE, and only the latter supports identification.
 
 ## How to phrase the claim
 
