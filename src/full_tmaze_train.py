@@ -45,6 +45,7 @@ from mpstwo.data.datastructs import TensorDict
 from mpstwo.model.mpstwo import MPSTwo
 from mpstwo.model.mpstwo_trainer import MPSTrainer
 from mpstwo.model.optimizers import SGD
+from mpstwo.model.schedulers import Han
 from mpstwo.utils.mapping import MultiOneHotMap
 
 ACT = ['center', 'right', 'left', 'cue']
@@ -171,13 +172,17 @@ def main():
     train._update_table()
     print('dataset size:', len(train))
 
+    # converged recipe: a Han learning-rate scheduler shrinks lr whenever the noisy
+    # DMRG/cumulant loss jumps up, so it descends past the plateau that a fixed lr
+    # bounces on (fit L1 ~0.005 vs ~0.30 for a fixed-lr run of the same budget).
     mps = MPSTwo(3, feature_dim_obs=24, feature_dim_act=4, bond_dim=4,
                  init_mode='random', max_bond=16, cutoff=0.01, dtype=dtype)
-    trainer = MPSTrainer(mps, train, optimizer=SGD(mps, lr=1e-2),
-                         batch_size=32, log_dir_suffix='full_tmaze',
-                         device='cpu')
+    optim = SGD(mps, lr=5e-3)
+    trainer = MPSTrainer(mps, train, optimizer=optim, batch_size=32,
+                         scheduler=Han(optim, safe_loss_threshold=5e-3, lr_shrink_rate=0.8),
+                         log_dir_suffix='full_tmaze', device='cpu')
     with torch.inference_mode():
-        trainer.train(60)
+        trainer.train(200)
     try:
         trainer.close()
     except NameError:

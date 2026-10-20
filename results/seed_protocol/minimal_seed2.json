@@ -1,0 +1,76 @@
+{
+ "seed": 2,
+ "n_train": 720,
+ "n_test": 180,
+ "epochs": 40,
+ "train_seconds": 184.9763264656067,
+ "L1_model_vs_analytic": 0.1950151968204522,
+ "L1_model_vs_heldout": 0.340124733073552,
+ "L1_analytic_vs_heldout": 0.25555555555555554,
+ "NLL_heldout_model": 2.9149716552007603,
+ "NLL_heldout_analytic": 2.890371757896165,
+ "emp_start": 1.0028896850852924,
+ "emp_trap": 2.1365363416792557e-29,
+ "emp_postcue": 1.5849625007211559,
+ "n_states_fidelity": 4,
+ "n_states_truth": 4,
+ "max_TV_history_conditional": 7.474350347753206e-29,
+ "fidelity_matrix": [
+  [
+   1.0,
+   0.0,
+   0.84,
+   0.0,
+   0.075,
+   0.115
+  ],
+  [
+   0.0,
+   1.0,
+   0.0,
+   0.672,
+   0.078,
+   0.091
+  ],
+  [
+   0.84,
+   0.0,
+   1.0,
+   0.0,
+   0.099,
+   0.063
+  ],
+  [
+   0.0,
+   0.672,
+   0.0,
+   1.0,
+   0.083,
+   0.128
+  ],
+  [
+   0.075,
+   0.078,
+   0.099,
+   0.083,
+   1.0,
+   0.0
+  ],
+  [
+   0.115,
+   0.091,
+   0.063,
+   0.128,
+   0.0,
+   1.0
+  ]
+ ],
+ "histories": [
+  "Right/Cheese",
+  "Right/Shock",
+  "Left/Cheese",
+  "Left/Shock",
+  "Cue/RightCue",
+  "Cue/LeftCue"
+ ]
+}
