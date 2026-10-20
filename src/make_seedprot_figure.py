@@ -74,7 +74,8 @@ def panel(ax, labels, F, title):
 
 
 def main():
-    fig, axes = plt.subplots(1, 2, figsize=(9, 4.2), gridspec_kw={'width_ratios': [6, 7]})
+    fig, axes = plt.subplots(1, 2, figsize=(10, 4.2),
+                             gridspec_kw={'width_ratios': [6, 7], 'wspace': 0.45})
     lab_m, F_m = minimal_rays()
     lab_f, F_f = full_rays()
     panel(axes[0], lab_m, F_m, 'Minimal maze, seed 0 (6 histories)')
