@@ -12,17 +12,19 @@ and evaluate on the held-out 20 percent and against the analytic environment:
   * empowerment (Blahut-Arimoto) at start, in the trap, and post-cue, read off
     the learned model, against the analytic values (full maze: full observation
     space and reward modality);
-  * structure: number of hidden states recovered by greedy clustering of the
-    gauge-invariant history-ray fidelities (merge when |<b_i|b_j>|^2 > 0.5) and
-    the maximum total-variation distance between each history's learned next-
-    observation conditional and the analytic one.
+  * structure: number of hidden states by predictive equivalence (histories
+    whose predicted futures agree, as in structure_recovery.cluster_by_prediction;
+    the paper's state criterion), alongside the raw count from greedy clustering
+    of history-ray fidelities (merge when |<b_i|b_j>|^2 > 0.5), and the maximum
+    total-variation distance between each history's learned next-observation
+    conditional and the analytic one.
 
-Seed 0 models are saved as Saved_Models/seedprot_{maze}_s0.pt and the canonical
-checkpoints are never touched.
+Every seed's model is saved as Saved_Models/seedprot_{maze}_s{seed}.pt and the
+canonical checkpoints are never touched.
 
 Run from the repo root:
   python src/seed_protocol.py --maze minimal --seeds 5 --epochs 40
-  python src/seed_protocol.py --maze full --seeds 5 --epochs 200
+  python src/seed_protocol.py --maze full --seeds 3 --epochs 40
 """
 import argparse
 import itertools
@@ -74,6 +76,44 @@ def cluster_rays(rays, thresh=0.5):
                 labels[j] = k
         k += 1
     return labels, F
+
+
+def cluster_by_prediction(sigs, tau=1.5):
+    """Predictive-equivalence clustering (as in structure_recovery.cluster_by_prediction):
+    average-linkage on the L1 distance between predicted futures, cut at `tau`.
+    Returns (labels, merge heights); numpy only, as scipy is not a dependency."""
+    X = np.array(sigs)
+    D = np.abs(X[:, None, :] - X[None, :, :]).sum(-1)
+    clusters = [[i] for i in range(len(X))]
+    heights = []
+    while len(clusters) > 1:
+        best = None
+        for i in range(len(clusters)):
+            for j in range(i + 1, len(clusters)):
+                d = D[np.ix_(clusters[i], clusters[j])].mean()
+                if best is None or d < best[0]:
+                    best = (d, i, j)
+        d, i, j = best
+        heights.append(d)
+        if d > tau:
+            break
+        clusters[i] += clusters.pop(j)
+    labels = np.empty(len(X), int)
+    for k, c in enumerate(clusters):
+        labels[c] = k
+    return labels, np.array(heights)
+
+
+def full_signature(bond, T3):
+    """p(position, reward | a3, history), context modality marginalized
+    (as in structure_recovery.predictive_signature)."""
+    fut = np.abs(np.einsum('j,jcqy->cq', bond, T3)) ** 2
+    pr = np.zeros((4, 12))
+    for o in range(24):
+        pr[:, 3 * (o // 6) + (o // 2) % 3] += fut[:, o]
+    rows = pr.sum(1, keepdims=True)
+    rows[rows < 1e-12] = 1.0
+    return (pr / rows).ravel()
 
 
 def tv(p, q):
@@ -154,7 +194,7 @@ def run_minimal(seed, n_traj, epochs, save):
         caps.append(capacity(W))
     res['emp_postcue'] = float(np.mean(caps))
     # structure: history rays at the bond
-    hists, rays, tvs = [], [], []
+    hists, rays, tvs, sigs = [], [], [], []
     for a1 in range(3):
         for o2 in range(4):
             if q[a1, o2].sum() < 1e-9:
@@ -163,9 +203,13 @@ def run_minimal(seed, n_traj, epochs, save):
             hists.append((a1, o2)); rays.append(b)
             fut = np.abs(np.einsum('i,ibpy->bp', b, T2)) ** 2
             fut = fut / fut.sum(1, keepdims=True)
+            sigs.append(fut.ravel())
             truth = q[a1, o2] / q[a1, o2].sum(); truth = truth / truth.sum(1, keepdims=True)
             tvs.append(max(tv(fut[a], truth[a]) for a in range(3)))
     labels, F = cluster_rays(rays, 0.5)
+    pred_labels, heights = cluster_by_prediction(sigs)
+    res['n_states_predictive'] = int(pred_labels.max() + 1)
+    res['predictive_merge_distances'] = np.round(heights, 3).tolist()
     res['n_states_fidelity'] = int(labels.max() + 1)
     res['n_states_truth'] = 4
     res['max_TV_history_conditional'] = float(max(tvs))
@@ -265,6 +309,22 @@ def run_full(seed, n_traj, epochs, save):
         Rp, Rq = reward_marginal(Wp), reward_marginal(Wq)
         tvs.append(max(tv(Rp[a3], Rq[a3]) for a3 in range(4)))
     labels, F = cluster_rays(rays, 0.5)
+    # predictive equivalence over every supported history, both start-context
+    # branches o1 kept separate (no amplitude is summed, so nothing can interfere)
+    sigs = []
+    for o1 in (obs_index(0, 0, 0), obs_index(0, 0, 1)):
+        for a2 in range(4):
+            for o2 in range(24):
+                if q[0, o1, a2, o2].sum() < 1e-12:
+                    continue
+                b = np.einsum('i,ij->j', T1[0, 0, o1, :], T2[:, a2, o2, :])
+                if np.linalg.norm(b) < 1e-9:
+                    continue
+                sigs.append(full_signature(b, T3))
+    pred_labels, heights = cluster_by_prediction(sigs)
+    res['n_states_predictive'] = int(pred_labels.max() + 1)
+    res['n_histories_predictive'] = len(sigs)
+    res['predictive_merge_distances'] = np.round(heights, 3).tolist()
     res['n_states_fidelity'] = int(labels.max() + 1)
     res['n_states_truth'] = 7
     res['max_TV_history_conditional_reward'] = float(max(tvs))
@@ -292,9 +352,10 @@ def main():
     runner = run_minimal if args.maze == 'minimal' else run_full
     results = []
     for s in range(args.seed_start, args.seed_start + args.seeds):
-        r = runner(s, n_traj, epochs, save=(s == 0))
+        r = runner(s, n_traj, epochs, save=True)
         results.append(r)
-        print(json.dumps({k: v for k, v in r.items() if k not in ('fidelity_matrix',)}, indent=1))
+        print(json.dumps({k: v for k, v in r.items()
+                          if k not in ('fidelity_matrix', 'predictive_merge_distances')}, indent=1))
         with open(out / f'{args.maze}_seed{s}.json', 'w') as f:
             json.dump(r, f, indent=1)
     keys = [k for k, v in results[0].items() if isinstance(v, (int, float)) and k != 'seed']

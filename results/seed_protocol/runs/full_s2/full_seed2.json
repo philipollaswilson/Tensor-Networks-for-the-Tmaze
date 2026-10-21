@@ -1,0 +1,118 @@
+{
+ "seed": 2,
+ "init_seed": 2,
+ "n_train": 3276,
+ "n_test": 820,
+ "epochs": 40,
+ "train_seconds": 2743.97305226326,
+ "L1_model_vs_analytic": 0.1932234676061299,
+ "L1_model_vs_heldout": 0.43461909111790986,
+ "L1_analytic_vs_heldout": 0.3782012195121952,
+ "NLL_heldout_model": 5.272232410265504,
+ "NLL_heldout_analytic": 5.233261213227586,
+ "emp_start_full": 2.0,
+ "emp_start_rew": 1.0000814645585834,
+ "emp_trap_full": 0.004762511648501642,
+ "emp_trap_rew": 4.79424825547303e-05,
+ "emp_postcue_full": 1.9974478171062917,
+ "emp_postcue_rew": 1.5809709074621794,
+ "n_states_predictive": 7,
+ "n_histories_predictive": 24,
+ "predictive_merge_distances": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.001,
+  0.001,
+  0.001,
+  0.002,
+  0.002,
+  0.205,
+  0.338,
+  0.448,
+  1.994
+ ],
+ "n_states_fidelity": 6,
+ "n_states_truth": 7,
+ "max_TV_history_conditional_reward": 0.07633132073865137,
+ "fidelity_matrix": [
+  [
+   1.0,
+   0.02,
+   0.021,
+   0.006,
+   0.019,
+   0.553,
+   0.226
+  ],
+  [
+   0.02,
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   0.048,
+   0.0
+  ],
+  [
+   0.021,
+   0.0,
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   0.051
+  ],
+  [
+   0.006,
+   0.0,
+   0.0,
+   1.0,
+   0.0,
+   0.0,
+   0.004
+  ],
+  [
+   0.019,
+   0.0,
+   0.0,
+   0.0,
+   1.0,
+   0.049,
+   0.0
+  ],
+  [
+   0.553,
+   0.048,
+   0.0,
+   0.0,
+   0.049,
+   1.0,
+   0.05
+  ],
+  [
+   0.226,
+   0.0,
+   0.051,
+   0.004,
+   0.0,
+   0.05,
+   1.0
+  ]
+ ],
+ "histories": [
+  "Center",
+  "R/Cheese",
+  "R/Shock",
+  "L/Cheese",
+  "L/Shock",
+  "Cue/ctxR",
+  "Cue/ctxL"
+ ]
+}

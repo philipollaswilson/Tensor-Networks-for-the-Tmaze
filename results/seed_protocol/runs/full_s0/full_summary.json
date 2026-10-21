@@ -1,0 +1,89 @@
+{
+ "n_seeds": 1,
+ "mean_sd": {
+  "init_seed": [
+   1000.0,
+   0.0
+  ],
+  "n_train": [
+   3276.0,
+   0.0
+  ],
+  "n_test": [
+   820.0,
+   0.0
+  ],
+  "epochs": [
+   40.0,
+   0.0
+  ],
+  "train_seconds": [
+   2743.1163301467896,
+   0.0
+  ],
+  "L1_model_vs_analytic": [
+   0.2030682457155762,
+   0.0
+  ],
+  "L1_model_vs_heldout": [
+   0.41832936271372567,
+   0.0
+  ],
+  "L1_analytic_vs_heldout": [
+   0.40952743902439026,
+   0.0
+  ],
+  "NLL_heldout_model": [
+   5.282805220732778,
+   0.0
+  ],
+  "NLL_heldout_analytic": [
+   5.267918572255583,
+   0.0
+  ],
+  "emp_start_full": [
+   2.0,
+   0.0
+  ],
+  "emp_start_rew": [
+   1.001134100144798,
+   0.0
+  ],
+  "emp_trap_full": [
+   0.010994846587800703,
+   0.0
+  ],
+  "emp_trap_rew": [
+   8.966397031154445e-05,
+   0.0
+  ],
+  "emp_postcue_full": [
+   1.9996846403652304,
+   0.0
+  ],
+  "emp_postcue_rew": [
+   1.5841999097127357,
+   0.0
+  ],
+  "n_states_predictive": [
+   7.0,
+   0.0
+  ],
+  "n_histories_predictive": [
+   24.0,
+   0.0
+  ],
+  "n_states_fidelity": [
+   7.0,
+   0.0
+  ],
+  "n_states_truth": [
+   7.0,
+   0.0
+  ],
+  "max_TV_history_conditional_reward": [
+   0.027959441690883963,
+   0.0
+  ]
+ }
+}

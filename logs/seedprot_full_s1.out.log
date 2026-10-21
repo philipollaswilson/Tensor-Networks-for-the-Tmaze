@@ -1,0 +1,61 @@
+
+==== seed 1 ====
+  start   : full = 2.0000 bits | reward-only = 1.0002 bits
+  trap    : full = 0.0067 bits | reward-only = 0.0001 bits
+  postcue : full = 1.9984 bits | reward-only = 1.5824 bits
+{
+ "seed": 1,
+ "init_seed": 1,
+ "n_train": 3276,
+ "n_test": 820,
+ "epochs": 40,
+ "train_seconds": 2740.286862850189,
+ "L1_model_vs_analytic": 0.1817441101577016,
+ "L1_model_vs_heldout": 0.45842288002152515,
+ "L1_analytic_vs_heldout": 0.4006478658536586,
+ "NLL_heldout_model": 5.265703738977994,
+ "NLL_heldout_analytic": 5.223962897390806,
+ "emp_start_full": 2.0,
+ "emp_start_rew": 1.0002134533990445,
+ "emp_trap_full": 0.0067403756818556464,
+ "emp_trap_rew": 5.360306953910521e-05,
+ "emp_postcue_full": 1.9983659421573674,
+ "emp_postcue_rew": 1.5823873306901843,
+ "n_states_predictive": 7,
+ "n_histories_predictive": 24,
+ "n_states_fidelity": 7,
+ "n_states_truth": 7,
+ "max_TV_history_conditional_reward": 0.04179869970266431,
+ "histories": [
+  "Center",
+  "R/Cheese",
+  "R/Shock",
+  "L/Cheese",
+  "L/Shock",
+  "Cue/ctxR",
+  "Cue/ctxL"
+ ]
+}
+
+SUMMARY (mean, sd over 1 seeds)
+  init_seed                             1.0000 +- 0.0000
+  n_train                            3276.0000 +- 0.0000
+  n_test                              820.0000 +- 0.0000
+  epochs                               40.0000 +- 0.0000
+  train_seconds                      2740.2869 +- 0.0000
+  L1_model_vs_analytic                  0.1817 +- 0.0000
+  L1_model_vs_heldout                   0.4584 +- 0.0000
+  L1_analytic_vs_heldout                0.4006 +- 0.0000
+  NLL_heldout_model                     5.2657 +- 0.0000
+  NLL_heldout_analytic                  5.2240 +- 0.0000
+  emp_start_full                        2.0000 +- 0.0000
+  emp_start_rew                         1.0002 +- 0.0000
+  emp_trap_full                         0.0067 +- 0.0000
+  emp_trap_rew                          0.0001 +- 0.0000
+  emp_postcue_full                      1.9984 +- 0.0000
+  emp_postcue_rew                       1.5824 +- 0.0000
+  n_states_predictive                   7.0000 +- 0.0000
+  n_histories_predictive               24.0000 +- 0.0000
+  n_states_fidelity                     7.0000 +- 0.0000
+  n_states_truth                        7.0000 +- 0.0000
+  max_TV_history_conditional_reward     0.0418 +- 0.0000
