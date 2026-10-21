@@ -213,7 +213,7 @@ cb.outline.set_edgecolor(INK); cb.outline.set_linewidth(0.8)
 cb.ax.tick_params(labelsize=6.5, length=2)
 if os.environ.get('NOSAVE'):
     sys.exit()
-out = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fig8_states.png')
+out = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Fig6.png')
 fig.savefig(out, dpi=300, facecolor=SURFACE)
 fig.savefig(out.replace('.png', '.pdf'), facecolor=SURFACE)
 print('wrote', out)
