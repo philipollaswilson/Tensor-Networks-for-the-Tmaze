@@ -368,7 +368,7 @@ Standard (non-silent) maze for comparison, r = c = 1:
 | after Cue, resolved | 1.585 | 2.322 |
 | inside an arm | 0.000 | -0.000 |
 
-Figure written: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\src\efe_analysis\figures\fig_noisy_arm.png
+Figure written: figures\fig_noisy_arm.png
 
 (pymdp cross-check skipped: ModuleNotFoundError("No module named 'pymdp'"))
 

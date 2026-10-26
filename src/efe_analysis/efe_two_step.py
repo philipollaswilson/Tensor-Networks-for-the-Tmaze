@@ -27,6 +27,7 @@ Run:  python efe_two_step.py   (numpy only; pymdp cross-check at the end if impo
 """
 from __future__ import annotations
 import itertools
+import os
 import numpy as np
 
 LN2 = np.log(2.0)
@@ -215,7 +216,8 @@ def main():
     except Exception as e:  # pragma: no cover
         text += f"\n\n(pymdp cross-check skipped: {e!r})\n"
     print(text)
-    with open("efe_two_step.md", "w", encoding="utf-8") as f:
+    here = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(here, "efe_two_step.md"), "w", encoding="utf-8") as f:
         f.write(text + "\n")
 
 

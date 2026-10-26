@@ -473,7 +473,7 @@ def main():
         figdir = os.path.join(here, "figures"); os.makedirs(figdir, exist_ok=True)
         fpath = os.path.join(figdir, "fig_noisy_arm.png")
         fig.savefig(fpath, dpi=200)
-        P(f"Figure written: {fpath}")
+        P(f"Figure written: {os.path.relpath(fpath, here)}")
         P()
     except Exception as e:  # pragma: no cover
         P(f"(figure skipped: {e!r})")
