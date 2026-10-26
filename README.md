@@ -44,6 +44,8 @@ src/
   model_selection.py         Item 3: state-count model selection (bond-dim sweep)
   gauge_fix_states.py        Item 5: symbolic-state gauge fixing
   make_extension_figures.py  paper/figs/*.png for Paper II
+  efe_analysis/              analytic EFE + empowerment checks on the true T-maze model (no MPS):
+                             per-action decomposition, horizon-2 planners, noisy-arm sweep
 Saved_Models/                MinimalTmaze.pt, FullTmaze.pt, SamuelModel.pt (bond-4 checkpoint)
 paper/                       Paper II: main.tex, main.pdf, figs/, llncs.cls
 mpstwo/                      the MPS package (model, trainer, optimizers, schedulers)
@@ -62,6 +64,7 @@ python src/factorization_test.py      # observation factorisation
 python src/model_selection.py         # state-count selection sweep
 python src/gauge_fix_states.py        # symbolic states
 python src/make_extension_figures.py  # regenerate paper figures
+python src/efe_analysis/noisy_arm.py  # analytic EFE checks (also efe_per_action.py, efe_two_step.py)
 ```
 
 Training writes TensorBoard logs to `MPS_*/` (gitignored). Build the paper with
