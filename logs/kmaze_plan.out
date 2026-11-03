@@ -1,0 +1,11 @@
+﻿D=2 n=  100: ours 7.52, ours_K 15.33, window 1 -7.43, window 2 4.39, window 4 6.56, window 8 7.73
+D=2 n=  300: ours 11.00, ours_K 14.33, window 1 -7.15, window 2 7.51, window 4 10.21, window 8 7.18
+D=2 n= 1000: ours 11.00, ours_K 12.00, window 1 -5.99, window 2 7.55, window 4 11.00, window 8 7.81
+D=2 n= 3000: ours 11.00, ours_K 12.00, window 1 -5.99, window 2 8.09, window 4 11.00, window 8 9.45
+D=4 n=  100: ours -9.01, ours_K 36.00, window 1 -6.27, window 2 -0.75, window 4 -8.40, window 6 0.72, window 8 3.11
+D=4 n=  300: ours -0.07, ours_K 35.00, window 1 -4.05, window 2 8.04, window 4 6.15, window 6 2.78, window 8 3.98
+D=4 n= 1000: ours 11.00, ours_K 20.67, window 1 -5.75, window 2 8.16, window 4 4.72, window 6 8.29, window 8 5.07
+D=4 n= 3000: ours 11.00, ours_K 31.33, window 1 -5.80, window 2 8.11, window 4 6.78, window 6 8.10, window 8 7.01
+D=8 n=  100: ours -8.47, ours_K 34.00, window 1 -7.62, window 2 -1.50, window 4 -1.04, window 8 0.00, window 10 -0.01
+D=8 n=  300: ours -3.31, ours_K 36.33, window 1 -5.99, window 2 0.58, window 4 -4.39, window 8 -0.70, window 10 0.18
+D=8 n= 1000: ours -7.32, ours_K 62.67, window 1 -6.27, window 2 7.42, window 4 -1.13, window 8 -1.20, window 10 1.16

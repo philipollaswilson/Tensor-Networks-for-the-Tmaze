@@ -30,6 +30,17 @@ From MPS models trained on the minimal 4-observation maze and the full `pymdp` T
 | Symbolic states (gauge-fix the bond into the cluster basis) | `src/gauge_fix_states.py` | ARI `1.000`; dist. preserved to 4e-14 |
 | Empowerment phenotype on the learned model | `src/empowerment_learned_model.py` | post-cue reward 1.585 vs analytic 1.585 |
 
+Structure learning straight from trajectories (no MPS), full maze:
+
+| Result | Script | Headline number |
+|--------|--------|-----------------|
+| Histories → predictive states (BMR), data-size sweep | `src/make_fig_hidden_states.py` | 24 → 7, ARI `1.000`; rank 6 |
+| States → generator (unmix beliefs) → factorization | `src/generative_model.py`, `src/make_fig_generative_model.py` | 6 = context 2 × place 3, `B = B_ctx ⊗ B_place` exact |
+| Same pipeline on maze variants, any history length | `src/structure_pipeline.py`, `src/make_fig_structure_stress.py` | 2 × 3; 2 × 4; no product |
+
+The steps as equations: `paper/figs/fig_structure_learning_math.png`. Details and
+numbers: `FUTURE_EXPERIMENTS.md` (A0).
+
 The full maze fits to `‖p−q‖₁ = 0.005`. See `ROADMAP.md` for the methods and the
 literature behind each item, and `DEVLOG.md` for the running log.
 
@@ -65,6 +76,9 @@ python src/model_selection.py         # state-count selection sweep
 python src/gauge_fix_states.py        # symbolic states
 python src/make_extension_figures.py  # regenerate paper figures
 python src/efe_analysis/noisy_arm.py  # analytic EFE checks (also efe_per_action.py, efe_two_step.py)
+python src/make_fig_hidden_states.py      # trajectories -> hidden states (~10 min)
+python src/make_fig_generative_model.py   # hidden states -> factored generative model + math figure
+python src/make_fig_structure_stress.py   # pipeline on three maze variants
 ```
 
 Training writes TensorBoard logs to `MPS_*/` (gitignored). Build the paper with

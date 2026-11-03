@@ -1,0 +1,1 @@
+{"arm": "structure", "seed": 1, "checks": [{"K": 31, "share": 0.918, "seen": 45, "merged": 14, "exact": false, "n": 1000, "steps": 20000, "rounds": 44, "time": 1997.4852848052979}]}

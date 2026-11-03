@@ -1,0 +1,375 @@
+---  ___                           __   ______ ---
+--- |   \ _ _ ___ __ _ _ __  ___ _ \ \ / /__ / ---
+--- | |) | '_/ -_) _` | '  \/ -_) '/\ V / |_ \ ---
+--- |___/|_| \___\__,_|_|_|_\___|_|  \_/ |___/ ---
+Replica: 0 / 1
+Logdir: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer
+Run script: train_eval
+Observations
+  token            Space(int32, shape=(), low=0, high=120)
+  reward           Space(float32, shape=(), low=-inf, high=inf)
+  is_first         Space(bool, shape=(), low=False, high=True)
+  is_last          Space(bool, shape=(), low=False, high=True)
+  is_terminal      Space(bool, shape=(), low=False, high=True)
+Actions
+  action           Space(int32, shape=(), low=0, high=3)
+Extras
+  consec           Space(int32, shape=(), low=-2147483648, high=2147483647)
+  stepid           Space(uint8, shape=(20,), low=0, high=255)
+  dyn/deter        Space(float32, shape=(512,), low=-inf, high=inf)
+  dyn/stoch        Space(float32, shape=(32, 4), low=-inf, high=inf)
+JAX devices (1): [TFRT_CPU_0]
+Policy devices: TFRT_CPU_0
+Train devices:  TFRT_CPU_0
+Initializing parameters...
+Optimizer opt has 652,474 params:
+       364,224 dyn
+        66,111 val
+        57,663 rew
+        57,336 dec
+        49,731 pol
+        41,153 con
+        16,256 enc
+Done initializing!
+Compiling 1 checkpoint groups...
+Largest checkpoint group: 0 GB
+Compiling train and report...
+Train cost analysis:
+  FLOPS:            1.8e+10
+  Memory (temp):    2.6e+08
+  Memory (inputs):  1.1e+07
+  Memory (outputs): 1.1e+07
+  Memory (code):    1.4e+06
+
+Report cost analysis:
+  FLOPS:            2.8e+07
+  Memory (temp):    3.8e+05
+  Memory (inputs):  2.7e+06
+  Memory (outputs): 4.1e+04
+  Memory (code):    1.1e+05
+
+Done compiling!
+Logdir C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer
+Did not find any checkpoint.
+Saving checkpoint: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/ckpt/20261028T174510F758775
+Saved checkpoint.
+Start training loop
+Evaluation
+
+--------------------[Agent Step 10]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / replay/replay_ratio nan / fps/policy 49.37 / fps/train 0
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Start JAX profiler: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer
+Stop JAX profiler
+
+--------------------[Agent Step 1_370]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.6 / train/loss/dyn 5.05 / train/loss/policy 5.7e-4 / train/loss/rep 5.05 / train/loss/repval 11.01 / train/loss/rew 5.53 / train/loss/token 4.93 / train/loss/value 0.93 / train/rand/action 1 / replay/replay_ratio 113.87 / fps/policy 11.09 / fps/train 1185.19
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 1_660]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.22 / train/loss/dyn 2.03 / train/loss/policy 0.01 / train/loss/rep 2.03 / train/loss/repval 10.79 / train/loss/rew 5.41 / train/loss/token 4.49 / train/loss/value 3.23 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.41 / fps/train 1234.17
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Evaluation
+
+--------------------[Agent Step 1_920]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.06 / train/loss/dyn 1.12 / train/loss/policy 0.02 / train/loss/rep 1.12 / train/loss/repval 10.27 / train/loss/rew 5.1 / train/loss/token 4.08 / train/loss/value 6.75 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 10.18 / fps/train 1070.81
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 2_160]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.04 / train/loss/dyn 1.06 / train/loss/policy -0.01 / train/loss/rep 1.06 / train/loss/repval 9.54 / train/loss/rew 4.68 / train/loss/token 3.73 / train/loss/value 7.6 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 1.93 / fps/train 987.65
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Evaluation
+
+--------------------[Agent Step 2_410]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.03 / train/loss/dyn 1.09 / train/loss/policy -0.08 / train/loss/rep 1.09 / train/loss/repval 8.74 / train/loss/rew 4.19 / train/loss/token 3.42 / train/loss/value 7.43 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 10.05 / fps/train 1024.94
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+
+--------------------[Agent Step 2_670]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.03 / train/loss/dyn 1.22 / train/loss/policy -0.22 / train/loss/rep 1.22 / train/loss/repval 8.07 / train/loss/rew 3.59 / train/loss/token 3.02 / train/loss/value 7.22 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.15 / fps/train 1103.3
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+
+--------------------[Agent Step 2_960]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.03 / train/loss/dyn 1.46 / train/loss/policy -0.6 / train/loss/rep 1.46 / train/loss/repval 7.65 / train/loss/rew 2.86 / train/loss/token 2.56 / train/loss/value 7.27 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.36 / fps/train 1209.29
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 3_240]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.03 / train/loss/dyn 1.92 / train/loss/policy -1.02 / train/loss/rep 1.92 / train/loss/repval 7.26 / train/loss/rew 2.07 / train/loss/token 2.04 / train/loss/value 7.04 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 10.55 / fps/train 1176.59
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 3_540]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 2.29 / train/loss/policy -1.02 / train/loss/rep 2.29 / train/loss/repval 7.11 / train/loss/rew 1.42 / train/loss/token 1.55 / train/loss/value 6.62 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.46 / fps/train 1257.45
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 3_850]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 2.28 / train/loss/policy -0.88 / train/loss/rep 2.28 / train/loss/repval 7.03 / train/loss/rew 1.05 / train/loss/token 1.15 / train/loss/value 6.13 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 10.62 / fps/train 1282.12
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 4_160]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 2.22 / train/loss/policy -0.79 / train/loss/rep 2.22 / train/loss/repval 6.96 / train/loss/rew 0.9 / train/loss/token 0.87 / train/loss/value 5.8 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.55 / fps/train 1303.67
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+
+--------------------[Agent Step 4_490]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 2.15 / train/loss/policy -0.75 / train/loss/rep 2.15 / train/loss/repval 6.8 / train/loss/rew 0.84 / train/loss/token 0.67 / train/loss/value 5.49 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.7 / fps/train 1383.89
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 4_830]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 2.07 / train/loss/policy -0.74 / train/loss/rep 2.07 / train/loss/repval 6.56 / train/loss/rew 0.79 / train/loss/token 0.53 / train/loss/value 5.09 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 11.14 / fps/train 1442.06
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 5_180]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 2.02 / train/loss/policy -0.73 / train/loss/rep 2.02 / train/loss/repval 6.28 / train/loss/rew 0.77 / train/loss/token 0.44 / train/loss/value 4.73 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.89 / fps/train 1477.37
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 5_500]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.98 / train/loss/policy -0.73 / train/loss/rep 1.98 / train/loss/repval 6.01 / train/loss/rew 0.75 / train/loss/token 0.38 / train/loss/value 4.4 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 10.97 / fps/train 1355.98
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+
+--------------------[Agent Step 5_840]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.96 / train/loss/policy -0.72 / train/loss/rep 1.96 / train/loss/repval 5.83 / train/loss/rew 0.74 / train/loss/token 0.34 / train/loss/value 4.15 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.77 / fps/train 1420.52
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 6_170]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.91 / train/loss/policy -0.73 / train/loss/rep 1.91 / train/loss/repval 5.74 / train/loss/rew 0.72 / train/loss/token 0.29 / train/loss/value 3.92 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.75 / fps/train 1405.72
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Evaluation
+
+--------------------[Agent Step 6_490]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.86 / train/loss/policy -0.72 / train/loss/rep 1.86 / train/loss/repval 5.66 / train/loss/rew 0.71 / train/loss/token 0.24 / train/loss/value 3.82 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 10.82 / fps/train 1337.58
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+
+--------------------[Agent Step 6_820]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.79 / train/loss/policy -0.72 / train/loss/rep 1.79 / train/loss/repval 5.39 / train/loss/rew 0.7 / train/loss/token 0.2 / train/loss/value 3.58 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.69 / fps/train 1376.05
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Evaluation
+
+--------------------[Agent Step 7_150]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.75 / train/loss/policy -0.72 / train/loss/rep 1.75 / train/loss/repval 5.41 / train/loss/rew 0.7 / train/loss/token 0.17 / train/loss/value 3.52 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 10.99 / fps/train 1391.06
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 7_480]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.72 / train/loss/policy -0.72 / train/loss/rep 1.72 / train/loss/repval 5.16 / train/loss/rew 0.69 / train/loss/token 0.15 / train/loss/value 3.29 / train/rand/action 1 / replay/replay_ratio 520 / fps/policy 2.73 / fps/train 1398.28
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 7_790]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.7 / train/loss/policy -0.72 / train/loss/rep 1.7 / train/loss/repval 5.26 / train/loss/rew 0.69 / train/loss/token 0.14 / train/loss/value 3.32 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 2.58 / fps/train 1322.27
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Evaluation
+
+--------------------[Agent Step 8_130]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.7 / train/loss/policy -0.72 / train/loss/rep 1.7 / train/loss/repval 5.03 / train/loss/rew 0.68 / train/loss/token 0.13 / train/loss/value 3.07 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 10.96 / fps/train 1418.44
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 8_460]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.67 / train/loss/policy -0.72 / train/loss/rep 1.67 / train/loss/repval 4.89 / train/loss/rew 0.68 / train/loss/token 0.11 / train/loss/value 3.04 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 2.75 / fps/train 1406.38
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 8_790]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.65 / train/loss/policy -0.72 / train/loss/rep 1.65 / train/loss/repval 4.85 / train/loss/rew 0.68 / train/loss/token 0.1 / train/loss/value 3.06 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 10.98 / fps/train 1389.3
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 9_130]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.63 / train/loss/policy -0.72 / train/loss/rep 1.63 / train/loss/repval 4.56 / train/loss/rew 0.68 / train/loss/token 0.09 / train/loss/value 2.78 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 2.82 / fps/train 1442.21
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 9_480]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.59 / train/loss/policy -0.72 / train/loss/rep 1.59 / train/loss/repval 4.72 / train/loss/rew 0.68 / train/loss/token 0.08 / train/loss/value 2.83 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 2.84 / fps/train 1453.21
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 9_820]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.6 / train/loss/policy -0.72 / train/loss/rep 1.6 / train/loss/repval 4.74 / train/loss/rew 0.67 / train/loss/token 0.08 / train/loss/value 2.79 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 11.11 / fps/train 1437.91
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+
+--------------------[Agent Step 10_150]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.6 / train/loss/policy -0.71 / train/loss/rep 1.6 / train/loss/repval 4.41 / train/loss/rew 0.67 / train/loss/token 0.07 / train/loss/value 2.55 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 2.73 / fps/train 1396.66
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Evaluation
+
+--------------------[Agent Step 10_450]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.59 / train/loss/policy -0.71 / train/loss/rep 1.59 / train/loss/repval 4.37 / train/loss/rew 0.67 / train/loss/token 0.06 / train/loss/value 2.58 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 10.69 / fps/train 1258.58
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 10_760]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.64 / train/loss/policy -0.71 / train/loss/rep 1.64 / train/loss/repval 4.43 / train/loss/rew 0.67 / train/loss/token 0.07 / train/loss/value 2.6 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 2.54 / fps/train 1301.94
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 11_070]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.67 / train/loss/policy -0.71 / train/loss/rep 1.67 / train/loss/repval 4.41 / train/loss/rew 0.67 / train/loss/token 0.08 / train/loss/value 2.51 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 2.51 / fps/train 1283.65
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 11_380]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.67 / train/loss/policy -0.71 / train/loss/rep 1.67 / train/loss/repval 4.25 / train/loss/rew 0.67 / train/loss/token 0.07 / train/loss/value 2.33 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 10.72 / fps/train 1293.37
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+
+--------------------[Agent Step 11_690]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.73 / train/loss/policy -0.72 / train/loss/rep 1.73 / train/loss/repval 4.13 / train/loss/rew 0.67 / train/loss/token 0.07 / train/loss/value 2.3 / train/rand/action 0.99 / replay/replay_ratio 520 / fps/policy 2.54 / fps/train 1299.94
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 12_010]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.72 / train/loss/policy -0.72 / train/loss/rep 1.72 / train/loss/repval 4.25 / train/loss/rew 0.67 / train/loss/token 0.06 / train/loss/value 2.41 / train/rand/action 0.98 / replay/replay_ratio 520 / fps/policy 10.73 / fps/train 1327.13
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 12_320]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.73 / train/loss/policy -0.72 / train/loss/rep 1.73 / train/loss/repval 4.35 / train/loss/rew 0.67 / train/loss/token 0.06 / train/loss/value 2.42 / train/rand/action 0.98 / replay/replay_ratio 520 / fps/policy 2.53 / fps/train 1297.49
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Evaluation
+
+--------------------[Agent Step 12_650]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.72 / train/loss/policy -0.71 / train/loss/rep 1.72 / train/loss/repval 4.36 / train/loss/rew 0.67 / train/loss/token 0.05 / train/loss/value 2.32 / train/rand/action 0.98 / replay/replay_ratio 520 / fps/policy 10.87 / fps/train 1375.99
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+
+--------------------[Agent Step 12_990]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.72 / train/loss/policy -0.71 / train/loss/rep 1.72 / train/loss/repval 4.21 / train/loss/rew 0.67 / train/loss/token 0.05 / train/loss/value 2.11 / train/rand/action 0.97 / replay/replay_ratio 520 / fps/policy 2.76 / fps/train 1411.06
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+
+--------------------[Agent Step 13_320]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.73 / train/loss/policy -0.71 / train/loss/rep 1.73 / train/loss/repval 3.97 / train/loss/rew 0.67 / train/loss/token 0.05 / train/loss/value 1.97 / train/rand/action 0.97 / replay/replay_ratio 520 / fps/policy 2.68 / fps/train 1372.59
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 13_650]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.7 / train/loss/policy -0.71 / train/loss/rep 1.7 / train/loss/repval 3.93 / train/loss/rew 0.67 / train/loss/token 0.05 / train/loss/value 2.05 / train/rand/action 0.97 / replay/replay_ratio 520 / fps/policy 10.84 / fps/train 1372.35
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+
+--------------------[Agent Step 13_970]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.7 / train/loss/policy -0.71 / train/loss/rep 1.7 / train/loss/repval 3.94 / train/loss/rew 0.67 / train/loss/token 0.05 / train/loss/value 2.13 / train/rand/action 0.97 / replay/replay_ratio 520 / fps/policy 2.61 / fps/train 1337.89
+
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/metrics.jsonl
+Writing metrics: C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\results\mountaincar\dreamerv3_s0\dreamer/scores.jsonl
+Evaluation
+
+--------------------[Agent Step 14_300]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -200 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 1.69 / train/loss/policy -0.71 / train/loss/rep 1.69 / train/loss/repval 3.96 / train/loss/rew 0.66 / train/loss/token 0.05 / train/loss/value 2.16 / train/rand/action 0.97 / replay/replay_ratio 520 / fps/policy 10.96 / fps/train 1386.55
+

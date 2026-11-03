@@ -1,0 +1,183 @@
+tmaze n=10000 seed 0: 15 predictive states, 20 lifted states, truth n_pred 11. D on: z0 1.00
+
+z5 (s5), 16319 visits. A: corridor r=-1 1.00
+        N: z5 [corridor r=-1] 1.00  (n=3254)
+        S: z5 [corridor r=-1] 1.00  (n=3255)
+        E: z8 [corridor] 1.00  (n=3260)
+        W: z5 [corridor r=-1] 1.00  (n=3207)
+   history x318: cue:goal-S -N> corridor r=-1 -S> corridor r=-1
+   history x312: cue:goal-N -N> corridor r=-1 -N> corridor r=-1
+   history x308: cue:goal-S -N> corridor r=-1 -W> corridor r=-1
+   truth, not used: (0, 1) 50%, (0, 0) 50%
+
+z0 (s0), 9000 visits. A: cue:goal-S 0.50, cue:goal-N 0.50
+        N: z9 [corridor r=-1] 1.00  (n=2366)
+        S: z9 [corridor r=-1] 1.00  (n=2208)
+        E: z1 [corridor] 1.00  (n=2251)
+        W: z9 [corridor r=-1] 1.00  (n=2175)
+   history x4530: cue:goal-N
+   history x4470: cue:goal-S
+   truth, not used: (0, 0) 50%, (0, 1) 50%
+
+z9 (s9), 6749 visits. A: corridor r=-1 1.00
+        N: z5 [corridor r=-1] 1.00  (n=1710)
+        S: z5 [corridor r=-1] 1.00  (n=1693)
+        E: z10 [corridor] 1.00  (n=1657)
+        W: z5 [corridor r=-1] 1.00  (n=1689)
+   history x1225: cue:goal-S -N> corridor r=-1
+   history x1156: cue:goal-N -S> corridor r=-1
+   history x1141: cue:goal-N -N> corridor r=-1
+   truth, not used: (0, 0) 50%, (0, 1) 50%
+
+z8 (s8), 5989 visits. A: corridor 1.00
+        N: z3 [corridor r=-1] 1.00  (n=961)
+        S: z3 [corridor r=-1] 1.00  (n=990)
+        E: z8 [corridor] 1.00  (n=909)
+        W: z4 [corridor] 1.00  (n=974)
+   history x84: cue:goal-N -N> corridor r=-1 -S> corridor r=-1 -E> corridor
+   history x82: cue:goal-N -N> corridor r=-1 -N> corridor r=-1 -E> corridor
+   history x80: cue:goal-S -W> corridor r=-1 -S> corridor r=-1 -E> corridor
+   truth, not used: (1, 0) 36%, (1, 1) 34%
+
+z3 (s3), 5210 visits. A: corridor r=-1 1.00
+        N: z3 [corridor r=-1] 1.00  (n=735)
+        S: z3 [corridor r=-1] 1.00  (n=792)
+        E: z8 [corridor] 1.00  (n=767)
+        W: z4 [corridor] 1.00  (n=764)
+   history x81: cue:goal-N -N> corridor r=-1 -E> corridor -N> corridor r=-1
+   history x80: cue:goal-S -N> corridor r=-1 -E> corridor -N> corridor r=-1
+   history x79: cue:goal-S -N> corridor r=-1 -E> corridor -S> corridor r=-1
+   truth, not used: (1, 0) 43%, (1, 1) 42%
+
+z4 (s4), 2991 visits. A: corridor 1.00
+        N: z5 [corridor r=-1] 1.00  (n=503)
+        S: z5 [corridor r=-1] 1.00  (n=482)
+        E: z8 [corridor] 1.00  (n=490)
+        W: z5 [corridor r=-1] 1.00  (n=526)
+   history x286: cue:goal-N -E> corridor -W> corridor
+   history x252: cue:goal-S -E> corridor -W> corridor
+   history x82: cue:goal-N -E> corridor -S> corridor r=-1 -W> corridor
+   truth, not used: (0, 0) 48%, (0, 1) 45%
+
+z1 (s1), 2251 visits. A: corridor 1.00
+        N: z2 [corridor r=-1] 1.00  (n=576)
+        S: z2 [corridor r=-1] 1.00  (n=568)
+        E: z12 [corridor] 1.00  (n=569)
+        W: z4 [corridor] 1.00  (n=538)
+   history x1147: cue:goal-N -E> corridor
+   history x1104: cue:goal-S -E> corridor
+   truth, not used: (1, 0) 51%, (1, 1) 49%
+
+z10 (s10), 1657 visits. A: corridor 1.00
+        N: z3 [corridor r=-1] 1.00  (n=418)
+        S: z3 [corridor r=-1] 1.00  (n=428)
+        E: z6 [corridor] 1.00  (n=398)
+        W: z4 [corridor] 1.00  (n=413)
+   history x307: cue:goal-S -N> corridor r=-1 -E> corridor
+   history x290: cue:goal-N -S> corridor r=-1 -E> corridor
+   history x274: cue:goal-N -N> corridor r=-1 -E> corridor
+   truth, not used: (1, 0) 50%, (1, 1) 50%
+
+z2 (s2), 1144 visits. A: corridor r=-1 1.00
+        N: z3 [corridor r=-1] 1.00  (n=270)
+        S: z3 [corridor r=-1] 1.00  (n=295)
+        E: z6 [corridor] 1.00  (n=277)
+        W: z4 [corridor] 1.00  (n=302)
+   history x305: cue:goal-S -E> corridor -N> corridor r=-1
+   history x293: cue:goal-N -E> corridor -S> corridor r=-1
+   history x275: cue:goal-S -E> corridor -S> corridor r=-1
+   truth, not used: (1, 1) 51%, (1, 0) 49%
+
+z6 (s6), 675 visits. A: corridor 1.00
+        N: z11 [corridor r=-1] 0.99  (n=167)
+        S: z11 [corridor r=-1] 0.99  (n=171)
+        E: z7 [corridor] 0.99  (n=166)
+        W: z8 [corridor] 0.99  (n=171)
+   history x78: cue:goal-S -E> corridor -N> corridor r=-1 -E> corridor
+   history x76: cue:goal-S -N> corridor r=-1 -E> corridor -E> corridor
+   history x76: cue:goal-N -S> corridor r=-1 -E> corridor -E> corridor
+   truth, not used: (2, 1) 50%, (2, 0) 50%
+
+z11 (s11), 614 visits. A: corridor r=-1 1.00
+        N: z3 [corridor r=-1] 0.99  (n=153)
+        S: z3 [corridor r=-1] 0.99  (n=168)
+        E: z7 [corridor] 0.99  (n=142)
+        W: z8 [corridor] 0.99  (n=151)
+   history x76: cue:goal-N -E> corridor -E> corridor -S> corridor r=-1
+   history x72: cue:goal-N -E> corridor -E> corridor -N> corridor r=-1
+   history x70: cue:goal-S -E> corridor -E> corridor -S> corridor r=-1
+   truth, not used: (2, 0) 51%, (2, 1) 49%
+
+z12 (s12), 569 visits. A: corridor 1.00
+        N: z11 [corridor r=-1] 0.99  (n=130)
+        S: z11 [corridor r=-1] 0.99  (n=146)
+        E: z7 [corridor] 0.99  (n=141)
+        W: z8 [corridor] 0.99  (n=152)
+   history x297: cue:goal-N -E> corridor -E> corridor
+   history x272: cue:goal-S -E> corridor -E> corridor
+   truth, not used: (2, 0) 52%, (2, 1) 48%
+
+z7 (s7), 449 visits. A: corridor 1.00
+        N: z13 [corridor r=-1] 0.99  (n=90)
+        S: z13 [corridor r=-1] 0.99  (n=80)
+        E: z14 [junction] 0.99  (n=105)
+        W: z8 [corridor] 0.99  (n=89)
+   history x74: cue:goal-N -E> corridor -E> corridor -E> corridor
+   history x67: cue:goal-S -E> corridor -E> corridor -E> corridor
+   history x21: cue:goal-N -E> corridor -S> corridor r=-1 -E> corridor -E> corridor
+   truth, not used: (3, 0) 53%, (3, 1) 47%
+
+z13 (s13), 170 visits. A: corridor r=-1 1.00
+        N: z16 [corridor r=-1] 0.94  (n=14)
+        S: z16 [corridor r=-1] 0.92  (n=11)
+        E: z17 [junction] 0.95  (n=17)
+        W: z15 [corridor] 0.96  (n=24)
+   history x18: cue:goal-N -E> corridor -E> corridor -E> corridor -N> corridor r=-1
+   history x17: cue:goal-S -E> corridor -E> corridor -E> corridor -N> corridor r=-1
+   history x16: cue:goal-N -E> corridor -E> corridor -E> corridor -S> corridor r=-1
+   truth, not used: (3, 1) 51%, (3, 0) 49%
+
+z14 (s14), 105 visits. A: junction 1.00
+        N: z18 [end r=-1] 0.50, z19 [end r=+4] 0.40  (n=9)
+        S: z18 [end r=-1] 0.47, z19 [end r=+4] 0.47  (n=16)
+        E: z18 [end r=-1] 0.91  (n=10)
+        W: z18 [end r=-1] 0.88  (n=7)
+   history x23: cue:goal-S -E> corridor -E> corridor -E> corridor -E> junction
+   history x19: cue:goal-N -E> corridor -E> corridor -E> corridor -E> junction
+   history x7: cue:goal-N -E> corridor -S> corridor r=-1 -E> corridor -E> corridor -E> junction
+   truth, not used: (4, 0) 55%, (4, 1) 45%
+
+z15 (s21), 0 visits. A: corridor 1.00
+        N: never tried here
+        S: never tried here
+        E: never tried here
+        W: never tried here
+   truth, not used: 
+
+z16 (s22), 0 visits. A: corridor r=-1 1.00
+        N: never tried here
+        S: never tried here
+        E: never tried here
+        W: never tried here
+   truth, not used: 
+
+z17 (s24), 0 visits. A: junction 1.00
+        N: never tried here
+        S: never tried here
+        E: never tried here
+        W: never tried here
+   truth, not used: 
+
+z18 (s28), 0 visits. A: end r=-1 1.00
+        N: never tried here
+        S: never tried here
+        E: never tried here
+        W: never tried here
+   truth, not used: 
+
+z19 (s29), 0 visits. A: end r=+4 1.00
+        N: never tried here
+        S: never tried here
+        E: never tried here
+        W: never tried here
+   truth, not used: 

@@ -1,0 +1,66 @@
+﻿COLAB1 Cell 0 OK repo= C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs wall_s=2.244
+native RNG seed= 2
+Cell 1 OK GDP keys sample= ['T', 'U', 'A', 'B', 'C', 'D', 'E', 'H'] RGB type= <class 'dict'> wall_s=0.204
+Cell 2: calling spm_MDP_generate (T=10000) …
+Cell 2 OK S.shape= (4, 3) PDP.T= 10000 o.shape= (111, 10000) O streams×? 111 wall_s=14.889
+python.exe : 
+C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs\python_src\toolbox\DEM\DEM_AtariIII.py:182: 
+UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+En línea: 1 Carácter: 348
++ ... KEND='Agg'; & C:\Users\darth\miniconda3\envs\rgms\python.exe -u pytho ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\darth\...cannot be shown:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  plt.show()
+Cell 3 OK png= C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs\visualizations\DEM_AtariIII\AtariIII_colab1_dem_gameplay.png frame_rgb.shape= (96, 72, 3) control.shape= (1, 9) wall_s=0.057
+Cell 4: spm_faster_structure_learning (O(:,1:1000), S, Sc) …
+Cell 4: merge rewarded windows … n_hits= 48 Ne= 2
+Cell 4 OK Nm= 2 Ne= 2 n_hits= 48 n_miss= 406 n_merge_calls= 96 deep_b_cols= (1, 838, 838, 5) wall_s=14.605
+Cell 5: basin training loop (up to 128; early break when all(d)) …
+  i=1 NS=872 NU=5 NA=59 NO=79 NH=40
+  i=8 NS=1073 NU=5 NA=51 NO=111 NH=40
+  i=16 NS=1277 NU=5 NA=43 NO=129 NH=40
+  i=24 NS=1467 NU=5 NA=38 NO=157 NH=40
+  i=32 NS=1598 NU=5 NA=29 NO=169 NH=40
+  i=40 NS=1783 NU=5 NA=28 NO=193 NH=40
+  i=48 NS=1910 NU=5 NA=26 NO=213 NH=40
+  i=56 NS=2052 NU=5 NA=19 NO=226 NH=40
+  i=64 NS=2167 NU=6 NA=17 NO=237 NH=40
+  i=72 NS=2272 NU=6 NA=15 NO=262 NH=40
+  i=80 NS=2362 NU=6 NA=12 NO=276 NH=40
+  i=88 NS=2462 NU=6 NA=11 NO=285 NH=40
+  i=96 NS=2540 NU=6 NA=9 NO=293 NH=40
+  i=104 NS=2597 NU=6 NA=7 NO=298 NH=40
+  i=112 NS=2622 NU=6 NA=6 NO=299 NH=40
+  i=120 NS=2641 NU=6 NA=6 NO=298 NH=40
+  i=128 NS=2657 NU=6 NA=4 NO=297 NH=40
+C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs\python_src\toolbox\DEM\DEM_AtariIII.py:304: 
+UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Cell 5 OK n_iters= 128 final NS/NU/NA/NO/NH= 2657 6 4 297 40 png= C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs\visualizations\DEM_AtariIII\AtariIII_colab1_dem_attractors_basin.png wall_s=186.179
+Cell 6: spm_RDP_sort …
+C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs\python_src\toolbox\DEM\DEM_AtariIII.py:344: 
+UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Cell 6 OK Nm= 2 b1.shape= (487, 487, 6) n_hid= 25 I.shape= (32, 487) png= C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs\visualizations\DEM_AtariIII\AtariIII_colab1_dem_attractors_mdp_post_sort.png wall_s=7.143
+Cell 7: assemble RDP …
+Cell 7: spm_MDP_VB_XXX (generative, T=64) …
+C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs\python_src\toolbox\DEM\vb_VBX.py:48: 
+RuntimeWarning: divide by zero encountered in log
+  return np.fmax(np.log(np.asarray(A, dtype=float)), -32.0)
+C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs\python_src\toolbox\DEM\DEM_AtariIII.py:379: 
+UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Cell 7 OK RDP.T= 64.0 PDP keys has Q= True n_hits= 5 png= C:\Users\darth\Documents\VSCode\Tensor-Networks-for-the-Tmaze\lib\RGMs\visualizations\DEM_AtariIII\AtariIII_colab1_dem_generative_ai.png wall_s=80.889
+Cell 8: NR loop 32 games, T=floor(NT/Ne)=128 …
+i=1: spm_MDP_VB_XXX runtime = 0:00:09.979395
+i=1,s=1: spm_merge_structure_learning runtime = 0:00:00.575543
+i=1,s=2: spm_merge_structure_learning runtime = 0:00:00.568940
+i=1: spm_RDP_basin runtime = 0:00:00.062149
+  game 1/32 wall_s=11.4 F4_hits=10.0
+i=2: spm_MDP_VB_XXX runtime = 0:00:10.304862
+i=2,s=1: spm_merge_structure_learning runtime = 0:00:00.650014
+i=2,s=2: spm_merge_structure_learning runtime = 0:00:00.690139
+i=2: spm_RDP_basin runtime = 0:00:00.082731
+  game 2/32 wall_s=11.9 F4_hits=11.0

@@ -1,0 +1,12 @@
+﻿  frontier 140, last K 22
+  frontier 120, last K 44
+  frontier 100, last K 28
+  frontier 80, last K 30
+  frontier 60, last K 11
+  frontier 40, last K 4
+  frontier 20, last K 2
+learned                  4s {'nll_bits': 51.691, 'nll_train_bits': 50.844, 'acc': 0.112, 'Kmax': 45.0, 'states': 2493.0, 'params': 5314.0, 'top_mi': 0.328}
+k-d (locality)           3s {'nll_bits': 52.674, 'nll_train_bits': 52.092, 'acc': 0.39, 'Kmax': 51.0, 'states': 1245.0, 'params': 5095.0, 'top_mi': 0.338}
+raster chain (MPS)       3s {'nll_bits': 50.455, 'nll_train_bits': 49.658, 'acc': 0.12, 'Kmax': 58.0, 'states': 4445.0, 'params': 7897.0, 'top_mi': 0.342}
+independent pixels  nll bits 71.1188169302032
+Chow-Liu tree       nll bits 58.2099365953619

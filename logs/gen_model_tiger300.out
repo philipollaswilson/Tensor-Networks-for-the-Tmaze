@@ -1,0 +1,3 @@
+1/3 S_tiger_n300_s1.pkl 1802s TimeoutError('budget 1800s') (1803s)
+2/3 S_tiger_n300_s0.pkl 1802s TimeoutError('budget 1800s') (1803s)
+3/3 S_tiger_n300_s2.pkl 1802s TimeoutError('budget 1800s') (3605s)

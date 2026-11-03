@@ -1,0 +1,23 @@
+true nll train 0.5500 test 0.5492 bits/symbol
+superoperator |eig| [0.81 0.81 0.81 0.81] angle/pi [ 0.      0.5903 -0.5903  0.    ]
+hankel sv [0.17231 0.02899 0.02085 0.00086 0.00079 0.00073 0.00042 0.00031]
+chain K=1 test gap +0.1051
+chain K=2 test gap +0.0509
+chain K=4 test gap +0.0388
+chain K=8 test gap +0.0209
+chain K=12 test gap +0.0054
+chain K=16 test gap +0.0028
+chain K=24 test gap +0.0006
+chain K=32 test gap +0.0003
+chain K=48 test gap +0.0003
+hmm D=1 test gap +0.1051 (20s)
+hmm D=2 test gap +0.0508 (31s)
+hmm D=3 test gap +0.0215 (29s)
+hmm D=4 test gap +0.0121 (29s)
+hmm D=6 test gap +0.0058 (33s)
+hmm D=8 test gap +0.0031 (30s)
+hmm D=12 test gap +0.0025 (38s)
+hmm D=16 test gap +0.0032 (1524s)
+born D=1 test gap +0.1051 (123s)
+born D=2 test gap +0.0000 (257s)
+born D=3 test gap +0.0001 (1643s)

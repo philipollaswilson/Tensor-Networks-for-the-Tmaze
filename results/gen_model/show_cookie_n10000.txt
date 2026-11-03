@@ -1,0 +1,214 @@
+cookie n=10000 seed 0: 16 predictive states, 18 lifted states, truth n_pred 14. D on: z15 1.00
+
+z15 (s14), 31297 visits. A: white 1.00
+     left: z3 [blue] 1.00  (n=4852)
+    right: z9 [green] 1.00  (n=4923)
+       up: z0 [red] 1.00  (n=4807)
+     down: z15 [white] 1.00  (n=5006)
+    press: z15 [white] 1.00  (n=4935)
+      eat: z15 [white] 1.00  (n=4852)
+   history x9000: white
+   history x1561: white -down> white
+   history x1506: white -eat> white
+   truth, not used: (0, 0) 100%, (0, 2) 0%
+
+z9 (s8), 18880 visits. A: green 1.00
+     left: z15 [white] 1.00  (n=2863)
+    right: z9 [green] 1.00  (n=2809)
+       up: z9 [green] 1.00  (n=2792)
+     down: z9 [green] 1.00  (n=2694)
+    press: z9 [green] 1.00  (n=2796)
+      eat: z9 [green] 1.00  (n=2757)
+   history x1482: white -right> green
+   history x278: white -down> white -right> green
+   history x263: white -right> green -press> green
+   truth, not used: (3, 0) 99%, (3, 2) 1%
+
+z3 (s3), 18816 visits. A: blue 1.00
+     left: z3 [blue] 1.00  (n=2712)
+    right: z15 [white] 1.00  (n=2759)
+       up: z3 [blue] 1.00  (n=2729)
+     down: z3 [blue] 1.00  (n=2824)
+    press: z3 [blue] 1.00  (n=2880)
+      eat: z3 [blue] 1.00  (n=2736)
+   history x1490: white -left> blue
+   history x265: white -left> blue -eat> blue
+   history x263: white -press> white -left> blue
+   truth, not used: (2, 0) 99%, (2, 3) 1%
+
+z0 (s0), 12370 visits. A: red 1.00
+     left: z0 [red] 1.00  (n=1959)
+    right: z0 [red] 1.00  (n=1863)
+       up: z0 [red] 1.00  (n=1807)
+     down: z15 [white] 1.00  (n=1867)
+    press: z1 [red] 1.00  (n=1894)
+      eat: z0 [red] 1.00  (n=1915)
+   history x1491: white -up> red
+   history x269: white -down> white -up> red
+   history x268: white -eat> white -up> red
+   truth, not used: (1, 0) 100%, (1, 2) 0%
+
+z1 (s1), 6510 visits. A: red 1.00
+     left: z1 [red] 1.00  (n=843)
+    right: z1 [red] 1.00  (n=914)
+       up: z1 [red] 1.00  (n=900)
+     down: z2 [white] 1.00  (n=934)
+    press: z1 [red] 1.00  (n=858)
+      eat: z1 [red] 1.00  (n=920)
+   history x248: white -up> red -press> red
+   history x49: white -up> red -press> red -up> red
+   history x49: white -down> white -up> red -press> red
+   truth, not used: (1, 2) 50%, (1, 3) 50%
+
+z2 (s2), 1001 visits. A: white 1.00
+     left: z4 [blue+cookie] 0.52, z16 [blue] 0.48  (n=131)
+    right: z6 [green+cookie] 0.50, z9 [green] 0.49  (n=129)
+       up: z1 [red] 0.99  (n=133)
+     down: z12 [white] 0.99  (n=145)
+    press: z10 [white] 0.99  (n=128)
+      eat: z5 [white] 0.99  (n=152)
+   history x46: white -up> red -press> red -down> white
+   history x12: white -up> red -left> red -press> red -down> white
+   history x9: white -up> red -press> red -left> red -down> white
+   truth, not used: (0, 2) 50%, (0, 3) 50%
+
+z12 (s11), 218 visits. A: white 1.00
+     left: z4 [blue+cookie] 0.61, z3 [blue] 0.37  (n=32)
+    right: z6 [green+cookie] 0.57, z9 [green] 0.39  (n=27)
+       up: z1 [red] 0.97  (n=28)
+     down: z12 [white] 0.97  (n=28)
+    press: z2 [white] 0.97  (n=27)
+      eat: z12 [white] 0.95  (n=20)
+   history x8: white -up> red -press> red -down> white -down> white
+   history x3: white -up> red -eat> red -press> red -down> white -down> white
+   history x3: white -down> white -up> red -eat> red -press> red -down> white -down> white
+   truth, not used: (0, 2) 50%, (0, 3) 50%
+
+z4 (s4), 194 visits. A: blue+cookie 1.00
+     left: z4 [blue+cookie] 0.95  (n=18)
+    right: z11 [white] 0.97  (n=28)
+       up: z4 [blue+cookie] 0.96  (n=21)
+     down: z4 [blue+cookie] 0.95  (n=20)
+    press: z4 [blue+cookie] 0.96  (n=22)
+      eat: z13 [blue r=+1] 0.95  (n=17)
+   history x3: white -up> red -press> red -eat> red -down> white -left> blue+cookie
+   history x2: white -up> red -press> red -down> white -left> blue+cookie
+   history x2: white -up> red -right> red -eat> red -press> red -down> white -left> blue+cookie
+   truth, not used: (2, 2) 100%
+
+z6 (s6), 182 visits. A: green+cookie 1.00
+     left: z14 [white] 0.97  (n=27)
+    right: z6 [green+cookie] 0.95  (n=18)
+       up: z6 [green+cookie] 0.96  (n=26)
+     down: z6 [green+cookie] 0.94  (n=15)
+    press: z6 [green+cookie] 0.95  (n=19)
+      eat: z8 [green r=+1] 0.96  (n=26)
+   history x3: white -up> red -press> red -down> white -right> green+cookie
+   history x3: white -up> red -eat> red -press> red -down> white -right> green+cookie
+   history x2: white -up> red -left> red -right> red -press> red -left> red -down> white -down> white -right> green+cookie
+   truth, not used: (3, 3) 100%
+
+z5 (s5), 152 visits. A: white 1.00
+     left: z3 [blue] 0.54, z4 [blue+cookie] 0.43  (n=25)
+    right: z7 [green] 0.57, z6 [green+cookie] 0.38  (n=20)
+       up: z1 [red] 0.94  (n=15)
+     down: z2 [white] 0.94  (n=15)
+    press: z2 [white] 0.96  (n=25)
+      eat: z11 [white] 0.92  (n=11)
+   history x14: white -up> red -press> red -down> white -eat> white
+   history x3: white -up> red -up> red -press> red -down> white -eat> white
+   history x2: white -eat> white -up> red -press> red -press> red -down> white -eat> white
+   truth, not used: (0, 3) 53%, (0, 2) 47%
+
+z10 (s9), 128 visits. A: white 1.00
+     left: z16 [blue] 0.69, z4 [blue+cookie] 0.25  (n=15)
+    right: z9 [green] 0.61, z6 [green+cookie] 0.35  (n=22)
+       up: z0 [red] 0.94  (n=15)
+     down: z11 [white] 0.95  (n=17)
+    press: z11 [white] 0.93  (n=13)
+      eat: z12 [white] 0.95  (n=17)
+   history x5: white -up> red -press> red -down> white -press> white
+   history x3: white -up> red -press> red -left> red -down> white -press> white
+   history x2: white -up> red -press> red -right> red -down> white -press> white
+   truth, not used: (0, 2) 55%, (0, 3) 45%
+
+z16 (s15), 78 visits. A: blue 1.00
+     left: z3 [blue] 0.88  (n=7)
+    right: z14 [white] 0.88  (n=7)
+       up: z3 [blue] 0.93  (n=12)
+     down: z3 [blue] 0.92  (n=11)
+    press: z3 [blue] 0.88  (n=7)
+      eat: z3 [blue] 0.94  (n=16)
+   history x3: white -up> red -press> red -up> red -down> white -left> blue
+   history x2: white -up> red -press> red -right> red -down> white -left> blue
+   history x2: white -down> white -up> red -press> red -down> white -left> blue
+   truth, not used: (2, 3) 100%
+
+z11 (s10), 72 visits. A: white 1.00
+     left: z4 [blue+cookie] 0.91  (n=10)
+    right: z7 [green] 0.91  (n=10)
+       up: z0 [red] 0.81  (n=4)
+     down: z15 [white] 0.86  (n=6)
+    press: z15 [white] 0.81  (n=4)
+      eat: z12 [white] 0.88  (n=7)
+   history x2: white -up> red -press> red -eat> red -down> white -left> blue+cookie -right> white
+   history x1: white -up> red -press> red -left> red -down> white -press> white -down> white
+   history x1: white -up> red -press> red -down> white -eat> white -eat> white
+   truth, not used: (0, 2) 75%, (0, 3) 22%
+
+z14 (s13), 36 visits. A: white 1.00
+     left: z16 [blue] 0.81  (n=4)
+    right: z6 [green+cookie] 0.88  (n=7)
+       up: z1 [red] 0.84  (n=5)
+     down: z12 [white] 0.53  (n=1)
+    press: z14 [white] 0.68  (n=2)
+      eat: z15 [white] 0.84  (n=5)
+   history x2: white -up> red -press> red -down> white -right> green+cookie -left> white
+   history x1: white -up> red -press> red -down> white -eat> white -right> green+cookie -down> green+cookie -press> green+cookie -left> white
+   history x1: white -up> red -down> white -press> white -up> red -up> red -press> red -down> white -right> green+cookie -left> white
+   truth, not used: (0, 3) 100%
+
+z8 (s7), 26 visits. A: green r=+1 1.00
+     left: z11 [white] 0.76  (n=3)
+    right: z9 [green] 0.53  (n=1)
+       up: z9 [green] 0.76  (n=3)
+     down: z9 [green] 0.86  (n=6)
+    press: z9 [green] 0.84  (n=5)
+      eat: z9 [green] 0.84  (n=5)
+   history x1: white -up> red -down> white -up> red -right> red -eat> red -press> red -down> white -right> green+cookie -eat> green r=+1
+   history x1: white -eat> white -up> red -up> red -press> red -press> red -down> white -right> green+cookie -right> green+cookie -eat> green r=+1
+   history x1: white -up> red -left> red -press> red -down> white -right> green+cookie -eat> green r=+1
+   truth, not used: (3, 0) 100%
+
+z7 (s7), 22 visits. A: green 1.00
+     left: z11 [white] 0.76  (n=3)
+    right: z9 [green] 0.53  (n=1)
+       up: z9 [green] 0.76  (n=3)
+     down: z9 [green] 0.86  (n=6)
+    press: z9 [green] 0.84  (n=5)
+      eat: z9 [green] 0.84  (n=5)
+   history x2: white -up> red -press> red -down> white -eat> white -right> green
+   history x2: white -down> white -up> red -press> red -down> white -eat> white -right> green
+   history x1: white -up> red -right> red -press> red -press> red -down> white -eat> white -right> green
+   truth, not used: (3, 2) 100%
+
+z13 (s12), 17 visits. A: blue r=+1 1.00
+     left: z3 [blue] 0.68  (n=2)
+    right: never tried here
+       up: z3 [blue] 0.53  (n=1)
+     down: z17 [blue] 0.53  (n=1)
+    press: never tried here
+      eat: z3 [blue] 0.53  (n=1)
+   history x1: white -up> red -press> red -down> white -eat> white -eat> white -left> blue+cookie -eat> blue r=+1
+   history x1: white -up> red -right> red -press> red -press> red -up> red -down> white -eat> white -left> blue+cookie -eat> blue r=+1
+   history x1: white -up> red -press> red -left> red -up> red -down> white -left> blue+cookie -eat> blue r=+1
+   truth, not used: (2, 0) 100%
+
+z17 (s20), 0 visits. A: blue 1.00
+     left: never tried here
+    right: never tried here
+       up: never tried here
+     down: never tried here
+    press: never tried here
+      eat: never tried here
+   truth, not used: 

@@ -1,0 +1,13 @@
+truth 45 d_min 0.022112642826717113
+N=1000 seed 0: K=28 rounds 42 exact False (116s)
+N=1000 seed 1: K=28 rounds 14 exact False (12s)
+N=1000 seed 2: K=40 rounds 46 exact False (109s)
+N=3000 seed 0: K=18 rounds 80 exact False (363s)
+N=3000 seed 1: K=23 rounds 11 exact False (20s)
+N=3000 seed 2: K=28 rounds 7 exact False (20s)
+N=10000 seed 0: K=29 rounds 7 exact False (36s)
+N=10000 seed 1: K=29 rounds 7 exact False (34s)
+N=10000 seed 2: K=29 rounds 7 exact False (35s)
+N=30000 seed 0: K=44 rounds 10 exact False (160s)
+N=30000 seed 1: K=44 rounds 8 exact False (124s)
+N=30000 seed 2: K=45 rounds 8 exact False (127s)

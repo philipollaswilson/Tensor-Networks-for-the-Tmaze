@@ -1,0 +1,1052 @@
+[
+ {
+  "episode": 0,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 1,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 2,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 3,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 4,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 5,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 6,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 7,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 8,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 9,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 10,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 11,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 12,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 13,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 14,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 15,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 16,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 17,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 18,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 19,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 20,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 21,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 22,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 23,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 24,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 25,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 26,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "timeout",
+  "reward": 0
+ },
+ {
+  "episode": 27,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 28,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 29,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 30,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 31,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 32,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 33,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 34,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 35,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 36,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 37,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 38,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 39,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 40,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 41,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 42,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 43,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 44,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 45,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 46,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 47,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 48,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 49,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 50,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 51,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 52,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 53,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 54,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 55,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 56,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 57,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 58,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 59,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 60,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 61,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 62,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 63,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 64,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 65,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 66,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 67,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 68,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 69,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 70,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 71,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 72,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 73,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 74,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 75,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 76,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 77,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 78,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 79,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 80,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 81,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 82,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 83,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 84,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 85,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 86,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 87,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 88,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 89,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 90,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 91,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 92,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 93,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 94,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 95,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 96,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 97,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 98,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 99,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 100,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 101,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 102,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 103,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 104,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 105,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 106,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 107,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 108,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 109,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 110,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 111,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 112,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 113,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 114,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 115,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 116,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 117,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 118,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 119,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 120,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 121,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 122,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 123,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 124,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 125,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 126,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 127,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 128,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 129,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 130,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 131,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 132,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 133,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 134,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 135,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 136,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 137,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 138,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 139,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 140,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 141,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 142,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 143,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 144,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 145,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 146,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 147,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 148,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 149,
+  "policy": "psrl",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ }
+]

@@ -1,0 +1,5 @@
+{"episode": 0, "flag": "right", "return": -200.0, "x0": -0.6, "optimal": -106, "train_episodes": 0}
+{"episode": 1, "flag": "right", "return": -200.0, "x0": -0.55, "optimal": -106, "train_episodes": 0}
+{"episode": 2, "flag": "right", "return": -200.0, "x0": -0.5, "optimal": -104, "train_episodes": 0}
+{"episode": 3, "flag": "right", "return": -200.0, "x0": -0.45, "optimal": -92, "train_episodes": 0}
+{"episode": 4, "flag": "right", "return": -200.0, "x0": -0.4, "optimal": -83, "train_episodes": 0}

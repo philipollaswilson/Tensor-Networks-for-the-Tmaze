@@ -1,0 +1,1 @@
+{"arm": "oracle", "seed": 0, "checks": [{"K": 33, "share": 0.831952380952381, "seen": 45, "merged": 14, "exact": false, "n": 1000, "steps": 20000, "rounds": 41, "time": 1408.8920919895172}]}

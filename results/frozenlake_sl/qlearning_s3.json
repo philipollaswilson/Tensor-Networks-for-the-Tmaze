@@ -1,0 +1,1052 @@
+[
+ {
+  "episode": 0,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 1,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 2,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 3,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 4,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 5,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 6,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 7,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 8,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 9,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 10,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 11,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 12,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 13,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 14,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 15,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 16,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 17,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 18,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 19,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 20,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 21,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 22,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 23,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 24,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 25,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 26,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 27,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 28,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 29,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 30,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 31,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 32,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 33,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 34,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 35,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 36,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 37,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 38,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 39,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 40,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 41,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 42,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 43,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 44,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 45,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 46,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 47,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 48,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 49,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 50,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 51,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 52,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 53,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 54,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 55,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 56,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 57,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 58,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 59,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 60,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 61,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 62,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 63,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 64,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 65,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 66,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 67,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 68,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 69,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 70,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 71,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 72,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 73,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 74,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 75,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 76,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 77,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 78,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 79,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 80,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 81,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 82,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 83,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 84,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 85,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 86,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 87,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 88,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 89,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 90,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 91,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 92,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 93,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 94,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 95,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 96,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 97,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 98,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 99,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 100,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 101,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 102,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 103,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 104,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 105,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 106,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 107,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 108,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 109,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 110,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 111,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 112,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 113,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 114,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 115,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 116,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 117,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 118,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 119,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 120,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 121,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 122,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 123,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 124,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 125,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 126,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 127,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 128,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 129,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 130,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 131,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 132,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 133,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 134,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 135,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "hole",
+  "reward": 0
+ },
+ {
+  "episode": 136,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 137,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 138,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 139,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 140,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 141,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 142,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 143,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 144,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 145,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 146,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 147,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 148,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ },
+ {
+  "episode": 149,
+  "policy": "qlearning",
+  "seed": 3,
+  "result": "goal",
+  "reward": 1
+ }
+]

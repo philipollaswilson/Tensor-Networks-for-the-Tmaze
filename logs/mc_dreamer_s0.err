@@ -1,0 +1,2 @@
+2026-10-28 17:46:48.165258: E external/xla/xla/python/profiler/internal/python_hooks.cc:400] Can't import tensorflow.python.profiler.trace
+2026-10-28 17:47:05.383147: E external/xla/xla/python/profiler/internal/python_hooks.cc:400] Can't import tensorflow.python.profiler.trace

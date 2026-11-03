@@ -1,0 +1,23 @@
+﻿   stage 1 round 1: 9 states
+   stage 1 round 2: 9 states
+   stage 2 round 1: split to 9 states
+   stage 3 iteration 1: 9 groups
+RESULT 1 3000 1s 3 rounds 9 states -> 8 vertices, purity 1.0 conflicts 0 [(2, 'bit1', 1.0), (4, 'loc', 1.0)]
+   stage 1 round 1: 17 states
+   stage 1 round 2: 19 states
+   stage 1 round 3: 27 states
+   stage 1 round 4: 29 states
+   stage 1 round 5: 29 states
+   stage 2 round 1: split to 62 states
+   stage 3 iteration 1: 31 groups
+   stage 3 iteration 2: 32 groups
+   stage 3 iteration 3: 32 groups
+   stage 2 round 2: split to 65 states
+   stage 3 iteration 1: 31 groups
+   stage 3 iteration 2: 33 groups
+   stage 3 iteration 3: 33 groups
+   stage 2 round 3: split to 66 states
+   stage 3 iteration 1: 31 groups
+   stage 3 iteration 2: 33 groups
+   stage 3 iteration 3: 33 groups
+RESULT 2 10000 23s 8 rounds 33 states -> 22 vertices, purity 0.643 conflicts 0 []

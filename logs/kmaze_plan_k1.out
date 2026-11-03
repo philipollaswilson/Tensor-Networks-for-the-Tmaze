@@ -1,0 +1,8 @@
+﻿n=   25: ours 7.35, ours_K 9.67, window 1 -5.70, window 2 9.67, window 3 6.00
+n=   50: ours 1.08, ours_K 10.00, window 1 -5.89, window 2 10.00, window 3 8.52
+n=  100: ours 5.83, ours_K 10.33, window 1 -5.94, window 2 10.00, window 3 9.83
+n=  200: ours 5.83, ours_K 10.67, window 1 -6.03, window 2 10.00, window 3 10.00
+n=  500: ours 10.00, ours_K 10.67, window 1 -6.42, window 2 10.00, window 3 10.00
+n= 1000: ours 10.00, ours_K 10.67, window 1 -5.84, window 2 10.00, window 3 10.00
+n= 3000: ours 10.00, ours_K 10.00, window 1 -6.09, window 2 10.00, window 3 10.00
+saved

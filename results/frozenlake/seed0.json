@@ -1,0 +1,19 @@
+{
+ "seed": 0,
+ "slippery": false,
+ "n_train": 8000,
+ "n_test": 2000,
+ "epochs": 25,
+ "train_seconds": 2269.54505944252,
+ "bond_dims": [
+  4,
+  16,
+  16,
+  16
+ ],
+ "L1_model_vs_analytic": 0.4510187226574302,
+ "L1_model_vs_heldout": 0.7133622126701558,
+ "L1_analytic_vs_heldout": 0.5423125,
+ "NLL_heldout_model": 7.140166245500462,
+ "NLL_heldout_analytic": 6.931471805599454
+}

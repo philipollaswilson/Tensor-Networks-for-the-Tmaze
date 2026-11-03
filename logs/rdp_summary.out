@@ -1,0 +1,52 @@
+﻿nats per step above the Bayes floor (timeouts or errors in brackets)
+env            n        ours    language       adact  flexfringe         hmm         gru
+tmaze        300      0.0337      0.1554      0.1609      0.0618      0.0193      0.0085
+tmaze       1000      0.0141      0.0992      0.1504      0.0404      0.0141      0.0031
+tmaze       3000      0.0034      0.0333      0.1276      0.0185      0.0097      0.0008
+tmaze      10000      0.0013      0.0207      0.0344      0.0051      0.0073      0.0002
+tmaze      30000      0.0006      0.0136      0.0241      0.0012      0.0061      0.0002
+cookie       300      0.0384      1.0148      1.0711      0.7425      0.0226      0.0224
+cookie      1000      0.0180      0.7443      1.0395      0.0281      0.0104      0.0103
+cookie      3000  0.0080 [1]      0.1162      1.0299      0.0267      0.0046      0.0029
+cookie     10000  0.0019 [2]      0.0259      0.9897      0.0212      0.0038      0.0011
+cookie     30000  0.0008 [1]      0.0192      0.6615      0.0156      0.0032      0.0002
+corridor     300      0.0131      0.2635      0.5237      0.0158      0.0107      0.0001
+corridor    1000      0.0039      0.0039      0.0039      0.0048      0.0040      0.0001
+corridor    3000      0.0013      0.0013      0.0013      0.0017      0.0015      0.0001
+corridor   10000      0.0004      0.0004      0.0004      0.0005      0.0005      0.0001
+corridor   30000      0.0001      0.0001      0.0001      0.0002      0.0002      0.0001
+cheese       300      0.1691      1.3856      1.4674      1.0102      0.0274      0.0945
+cheese      1000      0.0826      1.1166      1.4252      0.1845      0.0087      0.0309
+cheese      3000      0.0410      0.6314      1.4134      0.1032      0.0019      0.0133
+cheese     10000      0.0049      0.3782      0.9071      0.0503      0.0012      0.0041
+cheese     30000      0.0014      0.1125      0.4078      0.0299      0.0010      0.0020
+minihall     300      0.1023      1.5072      1.5065      1.1277      0.0071      0.0349
+minihall    1000      0.0132      1.4492      1.4761      0.1465      0.0047      0.0128
+minihall    3000      0.0038      1.2399      1.3992      0.1120      0.0041      0.0073
+minihall   10000      0.0010      0.7956      0.9892      0.0580      0.0037      0.0034
+minihall   30000      0.0002      0.2531      0.4753      0.0273      0.0037      0.0014
+tiger        300       - [5]      0.0998      0.0998      0.0988      0.0201      0.0438
+tiger       1000       - [5]      0.0855      0.0855      0.0680      0.0048      0.0129
+tiger       3000       - [5]      0.0769      0.0805      0.0433      0.0014      0.0061
+tiger      10000       - [5]      0.0546      0.0661      0.0224      0.0005      0.0022
+tiger      30000       - [5]      0.0289      0.0553      0.0135      0.0002      0.0013
+
+learned states (mean); true n_pred / n_layered(H)
+tmaze        300 truth 11/21     ours 8 language 7 adact 7 flexfringe 13
+tmaze       3000 truth 11/21     ours 11 language 11 adact 8 flexfringe 45
+tmaze      30000 truth 11/21     ours 15 language 14 adact 11 flexfringe 53
+cookie       300 truth 14/77     ours 8 language 14 adact 11 flexfringe 24
+cookie      3000 truth 14/77     ours 16 language 35 adact 11 flexfringe 41
+cookie     30000 truth 14/77     ours 17 language 41 adact 32 flexfringe 214
+corridor     300 truth 12/11     ours 9 language 11 adact 8 flexfringe 14
+corridor    3000 truth 12/11     ours 9 language 11 adact 11 flexfringe 15
+corridor   30000 truth 12/11     ours 9 language 11 adact 11 flexfringe 13
+cheese       300 truth 14/74     ours 23 language 9 adact 8 flexfringe 34
+cheese      3000 truth 14/74     ours 46 language 30 adact 8 flexfringe 116
+cheese     30000 truth 14/74     ours 27 language 61 adact 39 flexfringe 488
+minihall     300 truth 18/236    ours 22 language 17 adact 17 flexfringe 30
+minihall    3000 truth 18/236    ours 19 language 40 adact 23 flexfringe 93
+minihall   30000 truth 18/236    ours 22 language 123 adact 99 flexfringe 448
+tiger        300 truth inf/102   ours - language 12 adact 12 flexfringe 15
+tiger       3000 truth inf/102   ours - language 13 adact 12 flexfringe 12
+tiger      30000 truth inf/102   ours - language 28 adact 21 flexfringe 69

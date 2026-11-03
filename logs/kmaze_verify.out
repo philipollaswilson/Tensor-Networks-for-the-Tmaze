@@ -1,0 +1,9 @@
+﻿   round 1: 30 edges -> 9 states, minimized 9
+   round 2: 38 edges -> 11 states, minimized 9
+RESULT 1 3000 1s 2 rounds 9 states -> 8 vertices, purity 1.0 conflicts 0 [(2, 'bit1', 1.0), (4, 'loc', 1.0)]
+   round 1: 68 edges -> 19 states, minimized 17
+   round 2: 92 edges -> 41 states, minimized 19
+   round 3: 102 edges -> 47 states, minimized 27
+   round 4: 142 edges -> 64 states, minimized 29
+   round 5: 152 edges -> 64 states, minimized 29
+RESULT 2 10000 12s 5 rounds 29 states -> 22 vertices, purity 0.643 conflicts 0 []

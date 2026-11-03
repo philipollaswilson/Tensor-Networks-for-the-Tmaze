@@ -1,0 +1,4 @@
+{"step": 0, "episode/score": -200.0, "episode/length": 201.0, "epstats/reward_rate": 0.005}
+{"step": 10, "replay/items": 0.0, "replay/chunks": 1.0, "replay/streams": 1.0, "replay/ram_gb": 0.0024747848510742188, "replay/inserts": 0.0, "replay/samples": 0.0, "replay/updates": 0.0, "replay/replay_ratio": NaN, "usage/psutil/proc_cpu_usage": 0.0, "usage/psutil/proc_ram_frac": 0.009622790009576254, "usage/psutil/proc_ram_gb": 0.6128959655761719, "usage/psutil/total_cpu_count": 20.0, "usage/psutil/total_cpu_frac": 0.34299999999999997, "usage/psutil/total_ram_frac": 0.465, "usage/psutil/total_ram_total_gb": 63.6921272277832, "usage/psutil/total_ram_used_gb": 29.647842407226562, "usage/psutil/total_ram_avail_gb": 34.04428482055664, "fps/policy": 58.368787340669755, "fps/train": 0.0}
+{"step": 201, "episode/score": -200.0, "episode/length": 201.0}
+{"step": 402, "episode/score": -200.0, "episode/length": 201.0}

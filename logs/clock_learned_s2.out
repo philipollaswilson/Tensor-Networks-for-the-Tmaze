@@ -1,0 +1,2 @@
+true nll train 0.5481 test 0.5494 bits/symbol
+learned K=18 test gap +0.0002 (41s)

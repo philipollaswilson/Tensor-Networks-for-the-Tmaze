@@ -14,3 +14,14 @@ _convergence_check.json
 _identifiability.json
 _floor_diagnosis.json
 _certificate.json
+
+# third-party code and downloads (fetch separately)
+lib/RGMs/
+lib/dreamerv3/
+lib/flexfringe/
+lib/spm_dem/
+data/
+# profiler traces and large checkpoints
+results/mountaincar/dreamerv3_s0/dreamer/plugins/
+Saved_Models/frozenlake_online_efe_s7.pt
+Saved_Models/frozenlake_s0.pt

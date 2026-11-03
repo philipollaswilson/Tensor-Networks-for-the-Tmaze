@@ -1,0 +1,9 @@
+﻿   stage 1 round 1: 17 states
+   stage 1 round 2: 26 states
+   stage 1 round 3: 29 states
+   stage 1 round 4: 29 states
+   stage 2 round 1: split to 46 states
+   stage 3 iteration 1: 29 groups
+RESULT 2 50000 1272s 5 rounds 29 states -> 20 vertices, purity 0.802 conflicts 0 []
+pure states per location Counter({'Q1': 4, 'C': 4, 'Q2': 4})
+mixed states per location Counter({'C': 5, 'Q2': 2, 'R1': 2, 'Q1': 2, 'R2': 2, 'L1': 2, 'L2': 2})

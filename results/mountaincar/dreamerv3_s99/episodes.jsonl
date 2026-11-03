@@ -1,0 +1,2 @@
+{"episode": 0, "flag": "right", "return": -200.0, "x0": -0.4987938650903211, "optimal": -107, "train_episodes": 0}
+{"episode": 1, "flag": "right", "return": -200.0, "x0": -0.48698167364310235, "optimal": -105, "train_episodes": 1}

@@ -1,0 +1,35 @@
+[
+ {
+  "episode": 0,
+  "policy": "born_D8",
+  "seed": 0,
+  "flag": "right",
+  "return": -200.0,
+  "optimal": -101,
+  "regret": 99.0,
+  "n_nodes": 65,
+  "seconds": 20.232820510864258
+ },
+ {
+  "episode": 1,
+  "policy": "born_D8",
+  "seed": 0,
+  "flag": "right",
+  "return": -200.0,
+  "optimal": -109,
+  "regret": 91.0,
+  "n_nodes": 52,
+  "seconds": 38.76948857307434
+ },
+ {
+  "episode": 2,
+  "policy": "born_D8",
+  "seed": 0,
+  "flag": "right",
+  "return": -200.0,
+  "optimal": -110,
+  "regret": 90.0,
+  "n_nodes": 48,
+  "seconds": 61.3212993144989
+ }
+]

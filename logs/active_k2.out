@@ -1,0 +1,1 @@
+FAILED ('uniform', 0): BrokenProcessPool('A process in the process pool was terminated abruptly while the future was running or pending.')
