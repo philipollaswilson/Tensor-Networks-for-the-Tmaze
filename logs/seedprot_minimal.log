@@ -1,0 +1,758 @@
+INFO:mpstwo.model.mpstwo_trainer:Logging to MPS_seedprot_minimal_s0
+INFO:mpstwo.model.mpstwo_trainer:1/40
+  0%|          | 0/72 [00:00<?, ?it/s] 97%|#########7| 70/72 [00:00<00:00, 695.14it/s]100%|##########| 72/72 [00:00<00:00, 696.37it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.943225659369214
+INFO:mpstwo.model.mpstwo_trainer:2/40
+  0%|          | 0/72 [00:00<?, ?it/s]100%|##########| 72/72 [00:00<00:00, 856.77it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.800697638397271
+INFO:mpstwo.model.mpstwo_trainer:3/40
+  0%|          | 0/72 [00:00<?, ?it/s]100%|##########| 72/72 [00:00<00:00, 820.94it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.793212780170624
+INFO:mpstwo.model.mpstwo_trainer:4/40
+  0%|          | 0/72 [00:00<?, ?it/s]100%|##########| 72/72 [00:00<00:00, 848.38it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.787279329961845
+INFO:mpstwo.model.mpstwo_trainer:5/40
+  0%|          | 0/72 [00:00<?, ?it/s]100%|##########| 72/72 [00:00<00:00, 766.42it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7892735965880893
+INFO:mpstwo.model.mpstwo_trainer:6/40
+  0%|          | 0/72 [00:00<?, ?it/s]100%|##########| 72/72 [00:00<00:00, 819.93it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.794729553199002
+INFO:mpstwo.model.mpstwo_trainer:7/40
+  0%|          | 0/72 [00:00<?, ?it/s] 74%|#######3  | 53/72 [00:00<00:00, 527.09it/s]100%|##########| 72/72 [00:00<00:00, 542.66it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.78622600631575
+INFO:mpstwo.model.mpstwo_trainer:8/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 274.50it/s] 88%|########7 | 63/72 [00:00<00:00, 318.03it/s]100%|##########| 72/72 [00:00<00:00, 320.52it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7900382493349016
+INFO:mpstwo.model.mpstwo_trainer:9/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 248.12it/s] 69%|######9   | 50/72 [00:00<00:00, 244.08it/s]100%|##########| 72/72 [00:00<00:00, 247.42it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.790384146911332
+INFO:mpstwo.model.mpstwo_trainer:10/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 239.37it/s] 69%|######9   | 50/72 [00:00<00:00, 247.06it/s]100%|##########| 72/72 [00:00<00:00, 242.06it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.792643723073814
+INFO:mpstwo.model.mpstwo_trainer:11/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 256.28it/s] 93%|#########3| 67/72 [00:00<00:00, 336.29it/s]100%|##########| 72/72 [00:00<00:00, 314.87it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.793935819392936
+INFO:mpstwo.model.mpstwo_trainer:12/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 282.99it/s] 97%|#########7| 70/72 [00:00<00:00, 353.16it/s]100%|##########| 72/72 [00:00<00:00, 342.56it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7940750275712003
+INFO:mpstwo.model.mpstwo_trainer:13/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 241.20it/s] 69%|######9   | 50/72 [00:00<00:00, 238.00it/s]100%|##########| 72/72 [00:00<00:00, 244.70it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7830613339296875
+INFO:mpstwo.model.mpstwo_trainer:14/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 244.29it/s] 69%|######9   | 50/72 [00:00<00:00, 241.27it/s]100%|##########| 72/72 [00:00<00:00, 246.67it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.793001254077873
+INFO:mpstwo.model.mpstwo_trainer:15/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 248.73it/s] 69%|######9   | 50/72 [00:00<00:00, 246.97it/s]100%|##########| 72/72 [00:00<00:00, 243.01it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7904321030973955
+INFO:mpstwo.model.mpstwo_trainer:16/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 267.72it/s] 76%|#######6  | 55/72 [00:00<00:00, 272.83it/s]100%|##########| 72/72 [00:00<00:00, 267.95it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.792185367737675
+INFO:mpstwo.model.mpstwo_trainer:17/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 260.77it/s] 75%|#######5  | 54/72 [00:00<00:00, 252.99it/s]100%|##########| 72/72 [00:00<00:00, 251.80it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7970084840845826
+INFO:mpstwo.model.mpstwo_trainer:18/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 263.59it/s] 75%|#######5  | 54/72 [00:00<00:00, 260.86it/s]100%|##########| 72/72 [00:00<00:00, 261.96it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7846564959960745
+INFO:mpstwo.model.mpstwo_trainer:19/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 258.96it/s] 74%|#######3  | 53/72 [00:00<00:00, 248.05it/s]100%|##########| 72/72 [00:00<00:00, 264.18it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.795513524207569
+INFO:mpstwo.model.mpstwo_trainer:20/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 254.11it/s] 78%|#######7  | 56/72 [00:00<00:00, 276.07it/s]100%|##########| 72/72 [00:00<00:00, 278.32it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.781288722087817
+INFO:mpstwo.model.mpstwo_trainer:21/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 262.05it/s] 75%|#######5  | 54/72 [00:00<00:00, 263.45it/s]100%|##########| 72/72 [00:00<00:00, 270.65it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7799083577957955
+INFO:mpstwo.model.mpstwo_trainer:22/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 265.20it/s] 76%|#######6  | 55/72 [00:00<00:00, 270.12it/s]100%|##########| 72/72 [00:00<00:00, 264.87it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.794529286135278
+INFO:mpstwo.model.mpstwo_trainer:23/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 245.98it/s] 69%|######9   | 50/72 [00:00<00:00, 235.86it/s]100%|##########| 72/72 [00:00<00:00, 247.54it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.787809885112511
+INFO:mpstwo.model.mpstwo_trainer:24/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 242.45it/s] 88%|########7 | 63/72 [00:00<00:00, 316.80it/s]100%|##########| 72/72 [00:00<00:00, 307.03it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.780599022800951
+INFO:mpstwo.model.mpstwo_trainer:25/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 247.40it/s] 71%|#######   | 51/72 [00:00<00:00, 253.50it/s]100%|##########| 72/72 [00:00<00:00, 250.98it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7991239245089363
+INFO:mpstwo.model.mpstwo_trainer:26/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 236.47it/s] 67%|######6   | 48/72 [00:00<00:00, 232.98it/s]100%|##########| 72/72 [00:00<00:00, 235.39it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7861427091615734
+INFO:mpstwo.model.mpstwo_trainer:27/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 266.21it/s] 90%|######### | 65/72 [00:00<00:00, 329.22it/s]100%|##########| 72/72 [00:00<00:00, 323.07it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7915739695509103
+INFO:mpstwo.model.mpstwo_trainer:28/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 259.78it/s] 74%|#######3  | 53/72 [00:00<00:00, 247.66it/s]100%|##########| 72/72 [00:00<00:00, 248.03it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7942971192885615
+INFO:mpstwo.model.mpstwo_trainer:29/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 241.90it/s] 72%|#######2  | 52/72 [00:00<00:00, 253.30it/s]100%|##########| 72/72 [00:00<00:00, 262.30it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.788102383303731
+INFO:mpstwo.model.mpstwo_trainer:30/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 245.09it/s] 69%|######9   | 50/72 [00:00<00:00, 236.92it/s]100%|##########| 72/72 [00:00<00:00, 247.80it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7916322825927713
+INFO:mpstwo.model.mpstwo_trainer:31/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 284.78it/s] 81%|########  | 58/72 [00:00<00:00, 277.67it/s]100%|##########| 72/72 [00:00<00:00, 272.75it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7859132167107123
+INFO:mpstwo.model.mpstwo_trainer:32/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 279.53it/s] 78%|#######7  | 56/72 [00:00<00:00, 277.23it/s]100%|##########| 72/72 [00:00<00:00, 280.83it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.781662431739063
+INFO:mpstwo.model.mpstwo_trainer:33/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 285.37it/s] 81%|########  | 58/72 [00:00<00:00, 257.51it/s]100%|##########| 72/72 [00:00<00:00, 259.07it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7801305702158188
+INFO:mpstwo.model.mpstwo_trainer:34/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 267.18it/s] 75%|#######5  | 54/72 [00:00<00:00, 268.07it/s]100%|##########| 72/72 [00:00<00:00, 259.01it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.8028670311374664
+INFO:mpstwo.model.mpstwo_trainer:35/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 238.40it/s] 67%|######6   | 48/72 [00:00<00:00, 237.99it/s]100%|##########| 72/72 [00:00<00:00, 237.53it/s]100%|##########| 72/72 [00:00<00:00, 237.26it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.78923519723081
+INFO:mpstwo.model.mpstwo_trainer:36/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 276.73it/s] 78%|#######7  | 56/72 [00:00<00:00, 258.37it/s]100%|##########| 72/72 [00:00<00:00, 255.43it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.784781231920325
+INFO:mpstwo.model.mpstwo_trainer:37/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 236.83it/s] 71%|#######   | 51/72 [00:00<00:00, 255.64it/s]100%|##########| 72/72 [00:00<00:00, 277.28it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7896896020457373
+INFO:mpstwo.model.mpstwo_trainer:38/40
+  0%|          | 0/72 [00:00<?, ?it/s] 29%|##9       | 21/72 [00:00<00:00, 204.75it/s] 67%|######6   | 48/72 [00:00<00:00, 240.51it/s]100%|##########| 72/72 [00:00<00:00, 245.21it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.791190857703414
+INFO:mpstwo.model.mpstwo_trainer:39/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 261.05it/s] 92%|#########1| 66/72 [00:00<00:00, 334.81it/s]100%|##########| 72/72 [00:00<00:00, 331.45it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7920632136986168
+INFO:mpstwo.model.mpstwo_trainer:40/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 288.66it/s] 85%|########4 | 61/72 [00:00<00:00, 306.12it/s]100%|##########| 72/72 [00:00<00:00, 314.57it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.791357581716298
+INFO:mpstwo.model.mpstwo_trainer:Logging to MPS_seedprot_minimal_s1
+INFO:mpstwo.model.mpstwo_trainer:1/40
+{
+ "seed": 0,
+ "n_train": 720,
+ "n_test": 180,
+ "epochs": 40,
+ "train_seconds": 9.810192346572876,
+ "L1_model_vs_analytic": 0.2341244313242838,
+ "L1_model_vs_heldout": 0.23519651207934233,
+ "L1_analytic_vs_heldout": 0.18888888888888888,
+ "NLL_heldout_model": 2.919435998984504,
+ "NLL_heldout_analytic": 2.890371757896165,
+ "emp_start": 1.004766663863406,
+ "emp_trap": 6.1009096255879835e-30,
+ "emp_postcue": 1.5849625007211559,
+ "n_states_predictive": 4,
+ "n_states_fidelity": 4,
+ "n_states_truth": 4,
+ "max_TV_history_conditional": 1.3052184817926427e-29,
+ "histories": [
+  "Right/Cheese",
+  "Right/Shock",
+  "Left/Cheese",
+  "Left/Shock",
+  "Cue/RightCue",
+  "Cue/LeftCue"
+ ]
+}
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 243.32it/s] 69%|######9   | 50/72 [00:00<00:00, 239.52it/s]100%|##########| 72/72 [00:00<00:00, 244.98it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.9175924197357275
+INFO:mpstwo.model.mpstwo_trainer:2/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 246.91it/s] 71%|#######   | 51/72 [00:00<00:00, 253.89it/s]100%|##########| 72/72 [00:00<00:00, 265.45it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7971007744941723
+INFO:mpstwo.model.mpstwo_trainer:3/40
+  0%|          | 0/72 [00:00<?, ?it/s] 31%|###       | 22/72 [00:00<00:00, 212.72it/s] 62%|######2   | 45/72 [00:00<00:00, 220.25it/s] 97%|#########7| 70/72 [00:00<00:00, 229.29it/s]100%|##########| 72/72 [00:00<00:00, 225.69it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.79249932280848
+INFO:mpstwo.model.mpstwo_trainer:4/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 240.94it/s] 69%|######9   | 50/72 [00:00<00:00, 238.78it/s]100%|##########| 72/72 [00:00<00:00, 238.97it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7957080460210637
+INFO:mpstwo.model.mpstwo_trainer:5/40
+  0%|          | 0/72 [00:00<?, ?it/s] 26%|##6       | 19/72 [00:00<00:00, 185.11it/s] 74%|#######3  | 53/72 [00:00<00:00, 274.47it/s]100%|##########| 72/72 [00:00<00:00, 277.70it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.789365489884091
+INFO:mpstwo.model.mpstwo_trainer:6/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 276.49it/s] 78%|#######7  | 56/72 [00:00<00:00, 266.49it/s]100%|##########| 72/72 [00:00<00:00, 268.08it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7934706183028197
+INFO:mpstwo.model.mpstwo_trainer:7/40
+  0%|          | 0/72 [00:00<?, ?it/s] 31%|###       | 22/72 [00:00<00:00, 217.61it/s] 64%|######3   | 46/72 [00:00<00:00, 230.52it/s]100%|##########| 72/72 [00:00<00:00, 240.31it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7898412472051626
+INFO:mpstwo.model.mpstwo_trainer:8/40
+  0%|          | 0/72 [00:00<?, ?it/s] 43%|####3     | 31/72 [00:00<00:00, 308.50it/s] 86%|########6 | 62/72 [00:00<00:00, 271.00it/s]100%|##########| 72/72 [00:00<00:00, 284.96it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.787550432159163
+INFO:mpstwo.model.mpstwo_trainer:9/40
+  0%|          | 0/72 [00:00<?, ?it/s] 31%|###       | 22/72 [00:00<00:00, 212.17it/s] 64%|######3   | 46/72 [00:00<00:00, 226.57it/s] 97%|#########7| 70/72 [00:00<00:00, 231.85it/s]100%|##########| 72/72 [00:00<00:00, 229.01it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7922220808905234
+INFO:mpstwo.model.mpstwo_trainer:10/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 224.59it/s] 67%|######6   | 48/72 [00:00<00:00, 235.37it/s]100%|##########| 72/72 [00:00<00:00, 231.74it/s]100%|##########| 72/72 [00:00<00:00, 231.14it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7890802732138016
+INFO:mpstwo.model.mpstwo_trainer:11/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 229.50it/s] 67%|######6   | 48/72 [00:00<00:00, 239.60it/s]100%|##########| 72/72 [00:00<00:00, 235.93it/s]100%|##########| 72/72 [00:00<00:00, 235.58it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7848925106775813
+INFO:mpstwo.model.mpstwo_trainer:12/40
+  0%|          | 0/72 [00:00<?, ?it/s] 44%|####4     | 32/72 [00:00<00:00, 314.06it/s] 90%|######### | 65/72 [00:00<00:00, 317.80it/s]100%|##########| 72/72 [00:00<00:00, 313.66it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7882310693327628
+INFO:mpstwo.model.mpstwo_trainer:13/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 272.85it/s] 78%|#######7  | 56/72 [00:00<00:00, 264.57it/s]100%|##########| 72/72 [00:00<00:00, 265.42it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7988311639745302
+INFO:mpstwo.model.mpstwo_trainer:14/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 257.38it/s] 72%|#######2  | 52/72 [00:00<00:00, 247.63it/s]100%|##########| 72/72 [00:00<00:00, 250.46it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7885625582455504
+INFO:mpstwo.model.mpstwo_trainer:15/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 234.13it/s] 69%|######9   | 50/72 [00:00<00:00, 247.38it/s]100%|##########| 72/72 [00:00<00:00, 258.96it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.791543077580498
+INFO:mpstwo.model.mpstwo_trainer:16/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 237.33it/s] 68%|######8   | 49/72 [00:00<00:00, 239.28it/s]100%|##########| 72/72 [00:00<00:00, 250.83it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.789565326195335
+INFO:mpstwo.model.mpstwo_trainer:17/40
+  0%|          | 0/72 [00:00<?, ?it/s] 47%|####7     | 34/72 [00:00<00:00, 336.52it/s] 96%|#########5| 69/72 [00:00<00:00, 343.09it/s]100%|##########| 72/72 [00:00<00:00, 342.67it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.790960871813629
+INFO:mpstwo.model.mpstwo_trainer:18/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 226.26it/s] 69%|######9   | 50/72 [00:00<00:00, 239.08it/s]100%|##########| 72/72 [00:00<00:00, 239.06it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7944673009128125
+INFO:mpstwo.model.mpstwo_trainer:19/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 242.40it/s] 69%|######9   | 50/72 [00:00<00:00, 244.09it/s]100%|##########| 72/72 [00:00<00:00, 241.20it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7935199915923996
+INFO:mpstwo.model.mpstwo_trainer:20/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 222.84it/s] 65%|######5   | 47/72 [00:00<00:00, 230.29it/s]100%|##########| 72/72 [00:00<00:00, 244.85it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7937743026498256
+INFO:mpstwo.model.mpstwo_trainer:21/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 286.47it/s] 81%|########  | 58/72 [00:00<00:00, 268.75it/s]100%|##########| 72/72 [00:00<00:00, 262.52it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.792559501001664
+INFO:mpstwo.model.mpstwo_trainer:22/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 279.86it/s] 85%|########4 | 61/72 [00:00<00:00, 298.35it/s]100%|##########| 72/72 [00:00<00:00, 300.49it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.796864801506329
+INFO:mpstwo.model.mpstwo_trainer:23/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 279.95it/s] 78%|#######7  | 56/72 [00:00<00:00, 247.59it/s]100%|##########| 72/72 [00:00<00:00, 250.36it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.794209530765634
+INFO:mpstwo.model.mpstwo_trainer:24/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 280.69it/s] 81%|########  | 58/72 [00:00<00:00, 285.16it/s]100%|##########| 72/72 [00:00<00:00, 286.49it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.8012919571366726
+INFO:mpstwo.model.mpstwo_trainer:25/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 262.72it/s] 75%|#######5  | 54/72 [00:00<00:00, 246.59it/s]100%|##########| 72/72 [00:00<00:00, 257.59it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.781268604885869
+INFO:mpstwo.model.mpstwo_trainer:26/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 288.89it/s] 81%|########  | 58/72 [00:00<00:00, 282.68it/s]100%|##########| 72/72 [00:00<00:00, 277.65it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.792601753021063
+INFO:mpstwo.model.mpstwo_trainer:27/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 232.08it/s] 68%|######8   | 49/72 [00:00<00:00, 240.81it/s]100%|##########| 72/72 [00:00<00:00, 290.10it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7961807071031517
+INFO:mpstwo.model.mpstwo_trainer:28/40
+  0%|          | 0/72 [00:00<?, ?it/s] 44%|####4     | 32/72 [00:00<00:00, 314.34it/s] 89%|########8 | 64/72 [00:00<00:00, 292.58it/s]100%|##########| 72/72 [00:00<00:00, 292.19it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.797885330054381
+INFO:mpstwo.model.mpstwo_trainer:29/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 263.77it/s] 83%|########3 | 60/72 [00:00<00:00, 298.82it/s]100%|##########| 72/72 [00:00<00:00, 294.79it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7894199961637973
+INFO:mpstwo.model.mpstwo_trainer:30/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 268.99it/s] 75%|#######5  | 54/72 [00:00<00:00, 261.84it/s]100%|##########| 72/72 [00:00<00:00, 256.40it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.785824367814092
+INFO:mpstwo.model.mpstwo_trainer:31/40
+  0%|          | 0/72 [00:00<?, ?it/s] 29%|##9       | 21/72 [00:00<00:00, 205.78it/s] 61%|######1   | 44/72 [00:00<00:00, 216.73it/s] 96%|#########5| 69/72 [00:00<00:00, 229.93it/s]100%|##########| 72/72 [00:00<00:00, 225.17it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.789347360370994
+INFO:mpstwo.model.mpstwo_trainer:32/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 258.14it/s] 86%|########6 | 62/72 [00:00<00:00, 317.40it/s]100%|##########| 72/72 [00:00<00:00, 304.73it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7933882394633867
+INFO:mpstwo.model.mpstwo_trainer:33/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 241.55it/s] 74%|#######3  | 53/72 [00:00<00:00, 259.16it/s]100%|##########| 72/72 [00:00<00:00, 269.49it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7920880717746765
+INFO:mpstwo.model.mpstwo_trainer:34/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 227.98it/s] 64%|######3   | 46/72 [00:00<00:00, 218.96it/s] 96%|#########5| 69/72 [00:00<00:00, 222.14it/s]100%|##########| 72/72 [00:00<00:00, 221.80it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7871351493172316
+INFO:mpstwo.model.mpstwo_trainer:35/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 225.41it/s] 64%|######3   | 46/72 [00:00<00:00, 221.22it/s]100%|##########| 72/72 [00:00<00:00, 237.20it/s]100%|##########| 72/72 [00:00<00:00, 232.83it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7814347294157096
+INFO:mpstwo.model.mpstwo_trainer:36/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 251.10it/s] 85%|########4 | 61/72 [00:00<00:00, 307.59it/s]100%|##########| 72/72 [00:00<00:00, 308.86it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.792588470439315
+INFO:mpstwo.model.mpstwo_trainer:37/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 282.96it/s] 88%|########7 | 63/72 [00:00<00:00, 312.87it/s]100%|##########| 72/72 [00:00<00:00, 311.06it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.798218428069938
+INFO:mpstwo.model.mpstwo_trainer:38/40
+  0%|          | 0/72 [00:00<?, ?it/s] 31%|###       | 22/72 [00:00<00:00, 215.26it/s] 61%|######1   | 44/72 [00:00<00:00, 216.12it/s]100%|##########| 72/72 [00:00<00:00, 256.80it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7898996457322798
+INFO:mpstwo.model.mpstwo_trainer:39/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 264.87it/s] 79%|#######9  | 57/72 [00:00<00:00, 282.01it/s]100%|##########| 72/72 [00:00<00:00, 271.28it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.788560900191006
+INFO:mpstwo.model.mpstwo_trainer:40/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 278.21it/s] 92%|#########1| 66/72 [00:00<00:00, 337.70it/s]100%|##########| 72/72 [00:00<00:00, 330.32it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7857724649836855
+INFO:mpstwo.model.mpstwo_trainer:Logging to MPS_seedprot_minimal_s2
+INFO:mpstwo.model.mpstwo_trainer:1/40
+{
+ "seed": 1,
+ "n_train": 720,
+ "n_test": 180,
+ "epochs": 40,
+ "train_seconds": 11.207252979278564,
+ "L1_model_vs_analytic": 0.22561478598222717,
+ "L1_model_vs_heldout": 0.3207822620120908,
+ "L1_analytic_vs_heldout": 0.27777777777777773,
+ "NLL_heldout_model": 2.914629115305342,
+ "NLL_heldout_analytic": 2.890371757896165,
+ "emp_start": 1.00026626113821,
+ "emp_trap": 1.1153097168677238e-29,
+ "emp_postcue": 1.5849625007211559,
+ "n_states_predictive": 4,
+ "n_states_fidelity": 5,
+ "n_states_truth": 4,
+ "max_TV_history_conditional": 1.6216499003723438e-28,
+ "histories": [
+  "Right/Cheese",
+  "Right/Shock",
+  "Left/Cheese",
+  "Left/Shock",
+  "Cue/RightCue",
+  "Cue/LeftCue"
+ ]
+}
+  0%|          | 0/72 [00:00<?, ?it/s] 42%|####1     | 30/72 [00:00<00:00, 295.73it/s] 97%|#########7| 70/72 [00:00<00:00, 353.42it/s]100%|##########| 72/72 [00:00<00:00, 342.95it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.9284493636178066
+INFO:mpstwo.model.mpstwo_trainer:2/40
+  0%|          | 0/72 [00:00<?, ?it/s] 46%|####5     | 33/72 [00:00<00:00, 325.62it/s] 92%|#########1| 66/72 [00:00<00:00, 312.46it/s]100%|##########| 72/72 [00:00<00:00, 309.21it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.797304406737968
+INFO:mpstwo.model.mpstwo_trainer:3/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 261.97it/s] 76%|#######6  | 55/72 [00:00<00:00, 268.13it/s]100%|##########| 72/72 [00:00<00:00, 265.60it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7961183300392514
+INFO:mpstwo.model.mpstwo_trainer:4/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 245.74it/s] 69%|######9   | 50/72 [00:00<00:00, 237.70it/s]100%|##########| 72/72 [00:00<00:00, 245.25it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.793387946025813
+INFO:mpstwo.model.mpstwo_trainer:5/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 267.56it/s] 85%|########4 | 61/72 [00:00<00:00, 306.56it/s]100%|##########| 72/72 [00:00<00:00, 312.57it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7786645085558583
+INFO:mpstwo.model.mpstwo_trainer:6/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 235.31it/s] 90%|######### | 65/72 [00:00<00:00, 333.70it/s]100%|##########| 72/72 [00:00<00:00, 325.42it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7925407596659406
+INFO:mpstwo.model.mpstwo_trainer:7/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 258.33it/s] 72%|#######2  | 52/72 [00:00<00:00, 242.97it/s]100%|##########| 72/72 [00:00<00:00, 240.86it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.795983154065371
+INFO:mpstwo.model.mpstwo_trainer:8/40
+  0%|          | 0/72 [00:00<?, ?it/s] 44%|####4     | 32/72 [00:00<00:00, 315.23it/s] 89%|########8 | 64/72 [00:00<00:00, 317.27it/s]100%|##########| 72/72 [00:00<00:00, 312.06it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.796474662709697
+INFO:mpstwo.model.mpstwo_trainer:9/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 252.92it/s] 75%|#######5  | 54/72 [00:00<00:00, 266.75it/s]100%|##########| 72/72 [00:00<00:00, 277.94it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.800331747828307
+INFO:mpstwo.model.mpstwo_trainer:10/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 239.76it/s] 75%|#######5  | 54/72 [00:00<00:00, 274.99it/s]100%|##########| 72/72 [00:00<00:00, 274.72it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7895207439858067
+INFO:mpstwo.model.mpstwo_trainer:11/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 244.11it/s] 72%|#######2  | 52/72 [00:00<00:00, 256.84it/s]100%|##########| 72/72 [00:00<00:00, 254.64it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.8016072597585566
+INFO:mpstwo.model.mpstwo_trainer:12/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 259.07it/s] 72%|#######2  | 52/72 [00:00<00:00, 245.39it/s]100%|##########| 72/72 [00:00<00:00, 244.24it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7932831402293803
+INFO:mpstwo.model.mpstwo_trainer:13/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 237.29it/s] 72%|#######2  | 52/72 [00:00<00:00, 257.46it/s]100%|##########| 72/72 [00:00<00:00, 251.50it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.794177242214184
+INFO:mpstwo.model.mpstwo_trainer:14/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 222.97it/s] 71%|#######   | 51/72 [00:00<00:00, 252.70it/s]100%|##########| 72/72 [00:00<00:00, 271.90it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.793108294739498
+INFO:mpstwo.model.mpstwo_trainer:15/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 268.86it/s] 75%|#######5  | 54/72 [00:00<00:00, 251.98it/s]100%|##########| 72/72 [00:00<00:00, 246.80it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7914670698601394
+INFO:mpstwo.model.mpstwo_trainer:16/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 236.00it/s] 71%|#######   | 51/72 [00:00<00:00, 254.28it/s]100%|##########| 72/72 [00:00<00:00, 267.61it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7919712258880938
+INFO:mpstwo.model.mpstwo_trainer:17/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 244.12it/s] 69%|######9   | 50/72 [00:00<00:00, 242.89it/s]100%|##########| 72/72 [00:00<00:00, 234.92it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7936596369813897
+INFO:mpstwo.model.mpstwo_trainer:18/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 226.45it/s] 82%|########1 | 59/72 [00:00<00:00, 299.90it/s]100%|##########| 72/72 [00:00<00:00, 291.64it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.791241428166534
+INFO:mpstwo.model.mpstwo_trainer:19/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 226.26it/s] 65%|######5   | 47/72 [00:00<00:00, 228.92it/s] 97%|#########7| 70/72 [00:00<00:00, 219.77it/s]100%|##########| 72/72 [00:00<00:00, 219.99it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.784246986084962
+INFO:mpstwo.model.mpstwo_trainer:20/40
+  0%|          | 0/72 [00:00<?, ?it/s] 31%|###       | 22/72 [00:00<00:00, 211.51it/s] 62%|######2   | 45/72 [00:00<00:00, 220.08it/s]100%|##########| 72/72 [00:00<00:00, 261.20it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7898282569087582
+INFO:mpstwo.model.mpstwo_trainer:21/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 262.29it/s] 75%|#######5  | 54/72 [00:00<00:00, 240.77it/s]100%|##########| 72/72 [00:00<00:00, 241.88it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7972059901645068
+INFO:mpstwo.model.mpstwo_trainer:22/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 251.15it/s] 74%|#######3  | 53/72 [00:00<00:00, 259.36it/s]100%|##########| 72/72 [00:00<00:00, 254.22it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.786468694238815
+INFO:mpstwo.model.mpstwo_trainer:23/40
+  0%|          | 0/72 [00:00<?, ?it/s] 31%|###       | 22/72 [00:00<00:00, 217.90it/s] 62%|######2   | 45/72 [00:00<00:00, 221.55it/s] 96%|#########5| 69/72 [00:00<00:00, 229.11it/s]100%|##########| 72/72 [00:00<00:00, 229.00it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7914387285419733
+INFO:mpstwo.model.mpstwo_trainer:24/40
+  0%|          | 0/72 [00:00<?, ?it/s] 42%|####1     | 30/72 [00:00<00:00, 291.51it/s] 83%|########3 | 60/72 [00:00<00:00, 266.29it/s]100%|##########| 72/72 [00:00<00:00, 258.75it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7974880968539546
+INFO:mpstwo.model.mpstwo_trainer:25/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 236.96it/s] 69%|######9   | 50/72 [00:00<00:00, 250.01it/s]100%|##########| 72/72 [00:00<00:00, 248.35it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7930669491106395
+INFO:mpstwo.model.mpstwo_trainer:26/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 255.88it/s] 72%|#######2  | 52/72 [00:00<00:00, 248.68it/s]100%|##########| 72/72 [00:00<00:00, 240.71it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.797489591885605
+INFO:mpstwo.model.mpstwo_trainer:27/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 241.23it/s] 75%|#######5  | 54/72 [00:00<00:00, 267.46it/s]100%|##########| 72/72 [00:00<00:00, 259.87it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7927259585653235
+INFO:mpstwo.model.mpstwo_trainer:28/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 229.60it/s] 78%|#######7  | 56/72 [00:00<00:00, 287.40it/s]100%|##########| 72/72 [00:00<00:00, 304.01it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.793827849766909
+INFO:mpstwo.model.mpstwo_trainer:29/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 277.77it/s] 79%|#######9  | 57/72 [00:00<00:00, 281.05it/s]100%|##########| 72/72 [00:00<00:00, 272.46it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7946879383220358
+INFO:mpstwo.model.mpstwo_trainer:30/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 257.76it/s] 83%|########3 | 60/72 [00:00<00:00, 305.03it/s]100%|##########| 72/72 [00:00<00:00, 306.96it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.801404575406032
+INFO:mpstwo.model.mpstwo_trainer:31/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 266.68it/s] 75%|#######5  | 54/72 [00:00<00:00, 249.67it/s]100%|##########| 72/72 [00:00<00:00, 248.08it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7910104325405993
+INFO:mpstwo.model.mpstwo_trainer:32/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 266.73it/s] 79%|#######9  | 57/72 [00:00<00:00, 284.23it/s]100%|##########| 72/72 [00:00<00:00, 284.97it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7859448229912167
+INFO:mpstwo.model.mpstwo_trainer:33/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 254.87it/s] 72%|#######2  | 52/72 [00:00<00:00, 238.73it/s]100%|##########| 72/72 [00:00<00:00, 239.14it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7984430867461305
+INFO:mpstwo.model.mpstwo_trainer:34/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 255.02it/s] 74%|#######3  | 53/72 [00:00<00:00, 258.09it/s]100%|##########| 72/72 [00:00<00:00, 252.64it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7927739144022286
+INFO:mpstwo.model.mpstwo_trainer:35/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 225.04it/s] 71%|#######   | 51/72 [00:00<00:00, 253.26it/s]100%|##########| 72/72 [00:00<00:00, 262.19it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.795608066500949
+INFO:mpstwo.model.mpstwo_trainer:36/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 280.64it/s] 81%|########  | 58/72 [00:00<00:00, 257.14it/s]100%|##########| 72/72 [00:00<00:00, 252.02it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.796875524402225
+INFO:mpstwo.model.mpstwo_trainer:37/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 269.82it/s] 75%|#######5  | 54/72 [00:00<00:00, 266.23it/s]100%|##########| 72/72 [00:00<00:00, 271.86it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7981012388202546
+INFO:mpstwo.model.mpstwo_trainer:38/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 234.95it/s] 68%|######8   | 49/72 [00:00<00:00, 240.16it/s]100%|##########| 72/72 [00:00<00:00, 247.47it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.785895965979265
+INFO:mpstwo.model.mpstwo_trainer:39/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 258.37it/s] 78%|#######7  | 56/72 [00:00<00:00, 281.92it/s]100%|##########| 72/72 [00:00<00:00, 294.45it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.798587646115065
+INFO:mpstwo.model.mpstwo_trainer:40/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 223.44it/s] 69%|######9   | 50/72 [00:00<00:00, 246.27it/s]100%|##########| 72/72 [00:00<00:00, 243.30it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7987985091052483
+INFO:mpstwo.model.mpstwo_trainer:Logging to MPS_seedprot_minimal_s3
+INFO:mpstwo.model.mpstwo_trainer:1/40
+{
+ "seed": 2,
+ "n_train": 720,
+ "n_test": 180,
+ "epochs": 40,
+ "train_seconds": 11.191868543624878,
+ "L1_model_vs_analytic": 0.19501519682045237,
+ "L1_model_vs_heldout": 0.3401247330735509,
+ "L1_analytic_vs_heldout": 0.25555555555555554,
+ "NLL_heldout_model": 2.9149716552007603,
+ "NLL_heldout_analytic": 2.890371757896165,
+ "emp_start": 1.0028896850852926,
+ "emp_trap": 6.35843148662685e-30,
+ "emp_postcue": 1.5849625007211559,
+ "n_states_predictive": 4,
+ "n_states_fidelity": 4,
+ "n_states_truth": 4,
+ "max_TV_history_conditional": 8.126545025025857e-29,
+ "histories": [
+  "Right/Cheese",
+  "Right/Shock",
+  "Left/Cheese",
+  "Left/Shock",
+  "Cue/RightCue",
+  "Cue/LeftCue"
+ ]
+}
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 250.36it/s] 72%|#######2  | 52/72 [00:00<00:00, 246.27it/s]100%|##########| 72/72 [00:00<00:00, 245.93it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.943631861796225
+INFO:mpstwo.model.mpstwo_trainer:2/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 225.51it/s] 64%|######3   | 46/72 [00:00<00:00, 227.23it/s]100%|##########| 72/72 [00:00<00:00, 238.30it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.788497250610723
+INFO:mpstwo.model.mpstwo_trainer:3/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 266.03it/s] 75%|#######5  | 54/72 [00:00<00:00, 240.47it/s]100%|##########| 72/72 [00:00<00:00, 240.38it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7930448891189736
+INFO:mpstwo.model.mpstwo_trainer:4/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 252.34it/s] 72%|#######2  | 52/72 [00:00<00:00, 255.90it/s]100%|##########| 72/72 [00:00<00:00, 255.01it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.8007213507036077
+INFO:mpstwo.model.mpstwo_trainer:5/40
+  0%|          | 0/72 [00:00<?, ?it/s] 31%|###       | 22/72 [00:00<00:00, 213.47it/s] 65%|######5   | 47/72 [00:00<00:00, 232.20it/s]100%|##########| 72/72 [00:00<00:00, 240.53it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7915517365867455
+INFO:mpstwo.model.mpstwo_trainer:6/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 251.99it/s] 72%|#######2  | 52/72 [00:00<00:00, 238.43it/s]100%|##########| 72/72 [00:00<00:00, 235.15it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7970591887378986
+INFO:mpstwo.model.mpstwo_trainer:7/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 277.97it/s] 78%|#######7  | 56/72 [00:00<00:00, 275.61it/s]100%|##########| 72/72 [00:00<00:00, 273.67it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7806992208985113
+INFO:mpstwo.model.mpstwo_trainer:8/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 230.20it/s] 67%|######6   | 48/72 [00:00<00:00, 232.61it/s]100%|##########| 72/72 [00:00<00:00, 242.87it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.783069978250882
+INFO:mpstwo.model.mpstwo_trainer:9/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 265.25it/s] 86%|########6 | 62/72 [00:00<00:00, 308.47it/s]100%|##########| 72/72 [00:00<00:00, 309.74it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.797047347116471
+INFO:mpstwo.model.mpstwo_trainer:10/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 223.16it/s] 71%|#######   | 51/72 [00:00<00:00, 252.93it/s]100%|##########| 72/72 [00:00<00:00, 260.00it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.791771811990882
+INFO:mpstwo.model.mpstwo_trainer:11/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 258.47it/s] 72%|#######2  | 52/72 [00:00<00:00, 244.07it/s]100%|##########| 72/72 [00:00<00:00, 241.13it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7837846680563043
+INFO:mpstwo.model.mpstwo_trainer:12/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 288.70it/s] 97%|#########7| 70/72 [00:00<00:00, 356.11it/s]100%|##########| 72/72 [00:00<00:00, 347.09it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.795792947510505
+INFO:mpstwo.model.mpstwo_trainer:13/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 247.89it/s] 69%|######9   | 50/72 [00:00<00:00, 238.19it/s]100%|##########| 72/72 [00:00<00:00, 248.15it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.787042633109186
+INFO:mpstwo.model.mpstwo_trainer:14/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 240.89it/s] 69%|######9   | 50/72 [00:00<00:00, 238.88it/s]100%|##########| 72/72 [00:00<00:00, 236.89it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.787614226749762
+INFO:mpstwo.model.mpstwo_trainer:15/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 221.70it/s] 68%|######8   | 49/72 [00:00<00:00, 241.85it/s]100%|##########| 72/72 [00:00<00:00, 246.84it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7936375785526586
+INFO:mpstwo.model.mpstwo_trainer:16/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 249.81it/s] 75%|#######5  | 54/72 [00:00<00:00, 268.67it/s]100%|##########| 72/72 [00:00<00:00, 295.94it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7871610544859684
+INFO:mpstwo.model.mpstwo_trainer:17/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 266.17it/s] 78%|#######7  | 56/72 [00:00<00:00, 280.09it/s]100%|##########| 72/72 [00:00<00:00, 294.87it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7854723207917784
+INFO:mpstwo.model.mpstwo_trainer:18/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 239.98it/s] 68%|######8   | 49/72 [00:00<00:00, 239.92it/s]100%|##########| 72/72 [00:00<00:00, 273.80it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7850238666596905
+INFO:mpstwo.model.mpstwo_trainer:19/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 251.81it/s] 90%|######### | 65/72 [00:00<00:00, 329.72it/s]100%|##########| 72/72 [00:00<00:00, 324.87it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7984084704453687
+INFO:mpstwo.model.mpstwo_trainer:20/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 238.61it/s] 69%|######9   | 50/72 [00:00<00:00, 248.75it/s]100%|##########| 72/72 [00:00<00:00, 259.42it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.787796756421362
+INFO:mpstwo.model.mpstwo_trainer:21/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 255.06it/s] 72%|#######2  | 52/72 [00:00<00:00, 257.05it/s]100%|##########| 72/72 [00:00<00:00, 249.80it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.8009245322019423
+INFO:mpstwo.model.mpstwo_trainer:22/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 244.94it/s] 72%|#######2  | 52/72 [00:00<00:00, 257.22it/s]100%|##########| 72/72 [00:00<00:00, 269.60it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7940101557801906
+INFO:mpstwo.model.mpstwo_trainer:23/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 265.19it/s] 75%|#######5  | 54/72 [00:00<00:00, 251.32it/s]100%|##########| 72/72 [00:00<00:00, 252.46it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7939866252095746
+INFO:mpstwo.model.mpstwo_trainer:24/40
+  0%|          | 0/72 [00:00<?, ?it/s] 40%|####      | 29/72 [00:00<00:00, 289.32it/s] 81%|########  | 58/72 [00:00<00:00, 278.66it/s]100%|##########| 72/72 [00:00<00:00, 271.98it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.778134403682928
+INFO:mpstwo.model.mpstwo_trainer:25/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 225.28it/s] 65%|######5   | 47/72 [00:00<00:00, 232.92it/s]100%|##########| 72/72 [00:00<00:00, 240.62it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.792014818799484
+INFO:mpstwo.model.mpstwo_trainer:26/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 251.49it/s] 72%|#######2  | 52/72 [00:00<00:00, 237.53it/s]100%|##########| 72/72 [00:00<00:00, 237.82it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.788535800184917
+INFO:mpstwo.model.mpstwo_trainer:27/40
+  0%|          | 0/72 [00:00<?, ?it/s] 49%|####8     | 35/72 [00:00<00:00, 344.77it/s]100%|##########| 72/72 [00:00<00:00, 357.62it/s]100%|##########| 72/72 [00:00<00:00, 354.36it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.803544702891721
+INFO:mpstwo.model.mpstwo_trainer:28/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 239.94it/s] 68%|######8   | 49/72 [00:00<00:00, 238.80it/s]100%|##########| 72/72 [00:00<00:00, 243.56it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7926023399055837
+INFO:mpstwo.model.mpstwo_trainer:29/40
+  0%|          | 0/72 [00:00<?, ?it/s] 39%|###8      | 28/72 [00:00<00:00, 275.40it/s] 78%|#######7  | 56/72 [00:00<00:00, 266.68it/s]100%|##########| 72/72 [00:00<00:00, 261.52it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.795110090040351
+INFO:mpstwo.model.mpstwo_trainer:30/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 236.74it/s] 72%|#######2  | 52/72 [00:00<00:00, 259.81it/s]100%|##########| 72/72 [00:00<00:00, 258.66it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.790829825478104
+INFO:mpstwo.model.mpstwo_trainer:31/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 244.48it/s] 69%|######9   | 50/72 [00:00<00:00, 237.72it/s]100%|##########| 72/72 [00:00<00:00, 231.71it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7929574812125084
+INFO:mpstwo.model.mpstwo_trainer:32/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 249.05it/s] 81%|########  | 58/72 [00:00<00:00, 290.95it/s]100%|##########| 72/72 [00:00<00:00, 292.45it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.79896634245905
+INFO:mpstwo.model.mpstwo_trainer:33/40
+  0%|          | 0/72 [00:00<?, ?it/s] 44%|####4     | 32/72 [00:00<00:00, 317.44it/s]100%|##########| 72/72 [00:00<00:00, 360.52it/s]100%|##########| 72/72 [00:00<00:00, 352.59it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.789632891610284
+INFO:mpstwo.model.mpstwo_trainer:34/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 254.02it/s] 78%|#######7  | 56/72 [00:00<00:00, 278.34it/s]100%|##########| 72/72 [00:00<00:00, 302.80it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7939040321429194
+INFO:mpstwo.model.mpstwo_trainer:35/40
+  0%|          | 0/72 [00:00<?, ?it/s] 46%|####5     | 33/72 [00:00<00:00, 328.84it/s] 93%|#########3| 67/72 [00:00<00:00, 333.48it/s]100%|##########| 72/72 [00:00<00:00, 331.73it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.775371789080048
+INFO:mpstwo.model.mpstwo_trainer:36/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 256.04it/s] 72%|#######2  | 52/72 [00:00<00:00, 252.54it/s]100%|##########| 72/72 [00:00<00:00, 254.43it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7958500173018805
+INFO:mpstwo.model.mpstwo_trainer:37/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 267.43it/s] 75%|#######5  | 54/72 [00:00<00:00, 253.88it/s]100%|##########| 72/72 [00:00<00:00, 248.05it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7959338824818354
+INFO:mpstwo.model.mpstwo_trainer:38/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 244.64it/s] 69%|######9   | 50/72 [00:00<00:00, 234.59it/s]100%|##########| 72/72 [00:00<00:00, 231.13it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.790441334350429
+INFO:mpstwo.model.mpstwo_trainer:39/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 242.54it/s] 69%|######9   | 50/72 [00:00<00:00, 235.29it/s]100%|##########| 72/72 [00:00<00:00, 232.77it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7851768102587093
+INFO:mpstwo.model.mpstwo_trainer:40/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 237.72it/s] 67%|######6   | 48/72 [00:00<00:00, 233.61it/s]100%|##########| 72/72 [00:00<00:00, 235.03it/s]100%|##########| 72/72 [00:00<00:00, 234.54it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.8029147714765816
+INFO:mpstwo.model.mpstwo_trainer:Logging to MPS_seedprot_minimal_s4
+INFO:mpstwo.model.mpstwo_trainer:1/40
+{
+ "seed": 3,
+ "n_train": 720,
+ "n_test": 180,
+ "epochs": 40,
+ "train_seconds": 11.221724510192871,
+ "L1_model_vs_analytic": 0.18846483700736327,
+ "L1_model_vs_heldout": 0.28756471329682065,
+ "L1_analytic_vs_heldout": 0.22222222222222218,
+ "NLL_heldout_model": 2.933037261674336,
+ "NLL_heldout_analytic": 2.890371757896165,
+ "emp_start": 1.00099871307444,
+ "emp_trap": 1.0838705054057244e-27,
+ "emp_postcue": 1.5849625007211559,
+ "n_states_predictive": 4,
+ "n_states_fidelity": 4,
+ "n_states_truth": 4,
+ "max_TV_history_conditional": 3.510797900849119e-27,
+ "histories": [
+  "Right/Cheese",
+  "Right/Shock",
+  "Left/Cheese",
+  "Left/Shock",
+  "Cue/RightCue",
+  "Cue/LeftCue"
+ ]
+}
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 231.21it/s] 67%|######6   | 48/72 [00:00<00:00, 233.12it/s]100%|##########| 72/72 [00:00<00:00, 236.18it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.927204043401434
+INFO:mpstwo.model.mpstwo_trainer:2/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 241.25it/s] 69%|######9   | 50/72 [00:00<00:00, 236.97it/s]100%|##########| 72/72 [00:00<00:00, 239.66it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7935481920723277
+INFO:mpstwo.model.mpstwo_trainer:3/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 228.10it/s] 79%|#######9  | 57/72 [00:00<00:00, 293.03it/s]100%|##########| 72/72 [00:00<00:00, 298.44it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.787153364354107
+INFO:mpstwo.model.mpstwo_trainer:4/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 253.93it/s] 72%|#######2  | 52/72 [00:00<00:00, 250.40it/s]100%|##########| 72/72 [00:00<00:00, 245.91it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7871771583584293
+INFO:mpstwo.model.mpstwo_trainer:5/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 253.46it/s] 72%|#######2  | 52/72 [00:00<00:00, 236.66it/s]100%|##########| 72/72 [00:00<00:00, 241.89it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7883783016776675
+INFO:mpstwo.model.mpstwo_trainer:6/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 229.28it/s] 65%|######5   | 47/72 [00:00<00:00, 228.81it/s] 97%|#########7| 70/72 [00:00<00:00, 223.61it/s]100%|##########| 72/72 [00:00<00:00, 224.16it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7842242051950055
+INFO:mpstwo.model.mpstwo_trainer:7/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 255.18it/s] 78%|#######7  | 56/72 [00:00<00:00, 274.29it/s]100%|##########| 72/72 [00:00<00:00, 267.10it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7827585010781757
+INFO:mpstwo.model.mpstwo_trainer:8/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 246.30it/s] 69%|######9   | 50/72 [00:00<00:00, 235.80it/s]100%|##########| 72/72 [00:00<00:00, 231.88it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7885003724667072
+INFO:mpstwo.model.mpstwo_trainer:9/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 233.82it/s] 67%|######6   | 48/72 [00:00<00:00, 229.19it/s]100%|##########| 72/72 [00:00<00:00, 230.94it/s]100%|##########| 72/72 [00:00<00:00, 230.42it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.791349819588591
+INFO:mpstwo.model.mpstwo_trainer:10/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 263.71it/s] 75%|#######5  | 54/72 [00:00<00:00, 252.81it/s]100%|##########| 72/72 [00:00<00:00, 250.28it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.797193586219967
+INFO:mpstwo.model.mpstwo_trainer:11/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 244.28it/s] 81%|########  | 58/72 [00:00<00:00, 291.24it/s]100%|##########| 72/72 [00:00<00:00, 302.68it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7852756007910835
+INFO:mpstwo.model.mpstwo_trainer:12/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 253.36it/s] 72%|#######2  | 52/72 [00:00<00:00, 240.97it/s]100%|##########| 72/72 [00:00<00:00, 243.49it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7872632954454364
+INFO:mpstwo.model.mpstwo_trainer:13/40
+  0%|          | 0/72 [00:00<?, ?it/s] 38%|###7      | 27/72 [00:00<00:00, 267.72it/s] 78%|#######7  | 56/72 [00:00<00:00, 278.06it/s]100%|##########| 72/72 [00:00<00:00, 273.26it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.790618638922248
+INFO:mpstwo.model.mpstwo_trainer:14/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 236.87it/s] 68%|######8   | 49/72 [00:00<00:00, 243.27it/s]100%|##########| 72/72 [00:00<00:00, 248.21it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7877704723393615
+INFO:mpstwo.model.mpstwo_trainer:15/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 235.60it/s] 67%|######6   | 48/72 [00:00<00:00, 232.41it/s]100%|##########| 72/72 [00:00<00:00, 232.56it/s]100%|##########| 72/72 [00:00<00:00, 232.40it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7872852034857183
+INFO:mpstwo.model.mpstwo_trainer:16/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 247.29it/s] 71%|#######   | 51/72 [00:00<00:00, 251.35it/s]100%|##########| 72/72 [00:00<00:00, 250.23it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7907717989175937
+INFO:mpstwo.model.mpstwo_trainer:17/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 232.47it/s] 67%|######6   | 48/72 [00:00<00:00, 233.58it/s]100%|##########| 72/72 [00:00<00:00, 236.55it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.791461041848388
+INFO:mpstwo.model.mpstwo_trainer:18/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 229.07it/s] 64%|######3   | 46/72 [00:00<00:00, 226.14it/s] 99%|#########8| 71/72 [00:00<00:00, 233.28it/s]100%|##########| 72/72 [00:00<00:00, 231.57it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.795305484170737
+INFO:mpstwo.model.mpstwo_trainer:19/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 253.82it/s] 72%|#######2  | 52/72 [00:00<00:00, 252.78it/s]100%|##########| 72/72 [00:00<00:00, 246.10it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7907063881659813
+INFO:mpstwo.model.mpstwo_trainer:20/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 235.01it/s] 68%|######8   | 49/72 [00:00<00:00, 242.91it/s]100%|##########| 72/72 [00:00<00:00, 243.72it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7877426292391814
+INFO:mpstwo.model.mpstwo_trainer:21/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 256.46it/s] 72%|#######2  | 52/72 [00:00<00:00, 248.31it/s]100%|##########| 72/72 [00:00<00:00, 242.14it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.786289625901436
+INFO:mpstwo.model.mpstwo_trainer:22/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 229.53it/s] 68%|######8   | 49/72 [00:00<00:00, 243.14it/s]100%|##########| 72/72 [00:00<00:00, 243.31it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.8002149114291743
+INFO:mpstwo.model.mpstwo_trainer:23/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 234.32it/s] 68%|######8   | 49/72 [00:00<00:00, 241.05it/s]100%|##########| 72/72 [00:00<00:00, 242.44it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.791384407628742
+INFO:mpstwo.model.mpstwo_trainer:24/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 242.80it/s] 69%|######9   | 50/72 [00:00<00:00, 234.59it/s]100%|##########| 72/72 [00:00<00:00, 232.99it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.787397065923068
+INFO:mpstwo.model.mpstwo_trainer:25/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 255.32it/s] 74%|#######3  | 53/72 [00:00<00:00, 259.38it/s]100%|##########| 72/72 [00:00<00:00, 261.31it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.790561668048833
+INFO:mpstwo.model.mpstwo_trainer:26/40
+  0%|          | 0/72 [00:00<?, ?it/s] 32%|###1      | 23/72 [00:00<00:00, 227.36it/s] 64%|######3   | 46/72 [00:00<00:00, 226.45it/s] 99%|#########8| 71/72 [00:00<00:00, 235.29it/s]100%|##########| 72/72 [00:00<00:00, 232.22it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7935846047139794
+INFO:mpstwo.model.mpstwo_trainer:27/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 245.86it/s] 69%|######9   | 50/72 [00:00<00:00, 237.04it/s]100%|##########| 72/72 [00:00<00:00, 235.23it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.790491893538105
+INFO:mpstwo.model.mpstwo_trainer:28/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 256.21it/s] 74%|#######3  | 53/72 [00:00<00:00, 260.97it/s]100%|##########| 72/72 [00:00<00:00, 267.43it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7892731801008335
+INFO:mpstwo.model.mpstwo_trainer:29/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 238.10it/s] 67%|######6   | 48/72 [00:00<00:00, 235.12it/s]100%|##########| 72/72 [00:00<00:00, 240.83it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.785676116838294
+INFO:mpstwo.model.mpstwo_trainer:30/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 254.29it/s] 72%|#######2  | 52/72 [00:00<00:00, 251.51it/s]100%|##########| 72/72 [00:00<00:00, 248.93it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7826221386376315
+INFO:mpstwo.model.mpstwo_trainer:31/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 249.41it/s] 69%|######9   | 50/72 [00:00<00:00, 248.71it/s]100%|##########| 72/72 [00:00<00:00, 258.06it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7957953193796956
+INFO:mpstwo.model.mpstwo_trainer:32/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 245.70it/s] 69%|######9   | 50/72 [00:00<00:00, 241.41it/s]100%|##########| 72/72 [00:00<00:00, 243.94it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.787178743734867
+INFO:mpstwo.model.mpstwo_trainer:33/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 258.91it/s] 75%|#######5  | 54/72 [00:00<00:00, 265.91it/s]100%|##########| 72/72 [00:00<00:00, 259.20it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.783002022910655
+INFO:mpstwo.model.mpstwo_trainer:34/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 234.12it/s] 68%|######8   | 49/72 [00:00<00:00, 240.86it/s]100%|##########| 72/72 [00:00<00:00, 242.98it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.793257489154114
+INFO:mpstwo.model.mpstwo_trainer:35/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 239.40it/s] 68%|######8   | 49/72 [00:00<00:00, 230.19it/s]100%|##########| 72/72 [00:00<00:00, 231.14it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.786616022440722
+INFO:mpstwo.model.mpstwo_trainer:36/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 258.10it/s] 72%|#######2  | 52/72 [00:00<00:00, 255.76it/s]100%|##########| 72/72 [00:00<00:00, 250.04it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.789778625152176
+INFO:mpstwo.model.mpstwo_trainer:37/40
+  0%|          | 0/72 [00:00<?, ?it/s] 33%|###3      | 24/72 [00:00<00:00, 236.79it/s] 67%|######6   | 48/72 [00:00<00:00, 237.22it/s]100%|##########| 72/72 [00:00<00:00, 248.01it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7896441982655444
+INFO:mpstwo.model.mpstwo_trainer:38/40
+  0%|          | 0/72 [00:00<?, ?it/s] 36%|###6      | 26/72 [00:00<00:00, 254.02it/s] 72%|#######2  | 52/72 [00:00<00:00, 249.00it/s]100%|##########| 72/72 [00:00<00:00, 280.61it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7967849222715495
+INFO:mpstwo.model.mpstwo_trainer:39/40
+  0%|          | 0/72 [00:00<?, ?it/s] 44%|####4     | 32/72 [00:00<00:00, 311.86it/s] 89%|########8 | 64/72 [00:00<00:00, 297.64it/s]100%|##########| 72/72 [00:00<00:00, 291.39it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7900381992538774
+INFO:mpstwo.model.mpstwo_trainer:40/40
+  0%|          | 0/72 [00:00<?, ?it/s] 35%|###4      | 25/72 [00:00<00:00, 244.26it/s] 69%|######9   | 50/72 [00:00<00:00, 240.40it/s]100%|##########| 72/72 [00:00<00:00, 252.32it/s]
+INFO:mpstwo.model.mpstwo_trainer:Train loss: 2.7927865035943964
+{
+ "seed": 4,
+ "n_train": 720,
+ "n_test": 180,
+ "epochs": 40,
+ "train_seconds": 11.85391354560852,
+ "L1_model_vs_analytic": 0.24730036389659246,
+ "L1_model_vs_heldout": 0.1369819035654397,
+ "L1_analytic_vs_heldout": 0.25555555555555554,
+ "NLL_heldout_model": 2.864027159098383,
+ "NLL_heldout_analytic": 2.890371757896165,
+ "emp_start": 1.0000095443387773,
+ "emp_trap": 8.196893653961701e-31,
+ "emp_postcue": 1.5849625007211559,
+ "n_states_predictive": 4,
+ "n_states_fidelity": 5,
+ "n_states_truth": 4,
+ "max_TV_history_conditional": 2.2860435014470291e-29,
+ "histories": [
+  "Right/Cheese",
+  "Right/Shock",
+  "Left/Cheese",
+  "Left/Shock",
+  "Cue/RightCue",
+  "Cue/LeftCue"
+ ]
+}
+
+SUMMARY (mean, sd over 5 seeds)
+  n_train                             720.0000 +- 0.0000
+  n_test                              180.0000 +- 0.0000
+  epochs                               40.0000 +- 0.0000
+  train_seconds                        11.0570 +- 0.7512
+  L1_model_vs_analytic                  0.2181 +- 0.0254
+  L1_model_vs_heldout                   0.2641 +- 0.0815
+  L1_analytic_vs_heldout                0.2400 +- 0.0348
+  NLL_heldout_model                     2.9092 +- 0.0263
+  NLL_heldout_analytic                  2.8904 +- 0.0000
+  emp_start                             1.0018 +- 0.0020
+  emp_trap                              0.0000 +- 0.0000
+  emp_postcue                           1.5850 +- 0.0000
+  n_states_predictive                   4.0000 +- 0.0000
+  n_states_fidelity                     4.4000 +- 0.5477
+  n_states_truth                        4.0000 +- 0.0000
+  max_TV_history_conditional            0.0000 +- 0.0000

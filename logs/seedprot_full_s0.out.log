@@ -1,0 +1,64 @@
+Error: With batch_size=32, 3 psi's == 0. At position(s):
+	[16 26 27]
+[seed 0] init 0 hit zero psi (Some psi's == 0); retrying with a new init
+
+==== seed 0 ====
+  start   : full = 2.0000 bits | reward-only = 1.0011 bits
+  trap    : full = 0.0110 bits | reward-only = 0.0001 bits
+  postcue : full = 1.9997 bits | reward-only = 1.5842 bits
+{
+ "seed": 0,
+ "init_seed": 1000,
+ "n_train": 3276,
+ "n_test": 820,
+ "epochs": 40,
+ "train_seconds": 2743.1163301467896,
+ "L1_model_vs_analytic": 0.2030682457155762,
+ "L1_model_vs_heldout": 0.41832936271372567,
+ "L1_analytic_vs_heldout": 0.40952743902439026,
+ "NLL_heldout_model": 5.282805220732778,
+ "NLL_heldout_analytic": 5.267918572255583,
+ "emp_start_full": 2.0,
+ "emp_start_rew": 1.001134100144798,
+ "emp_trap_full": 0.010994846587800703,
+ "emp_trap_rew": 8.966397031154445e-05,
+ "emp_postcue_full": 1.9996846403652304,
+ "emp_postcue_rew": 1.5841999097127357,
+ "n_states_predictive": 7,
+ "n_histories_predictive": 24,
+ "n_states_fidelity": 7,
+ "n_states_truth": 7,
+ "max_TV_history_conditional_reward": 0.027959441690883963,
+ "histories": [
+  "Center",
+  "R/Cheese",
+  "R/Shock",
+  "L/Cheese",
+  "L/Shock",
+  "Cue/ctxR",
+  "Cue/ctxL"
+ ]
+}
+
+SUMMARY (mean, sd over 1 seeds)
+  init_seed                          1000.0000 +- 0.0000
+  n_train                            3276.0000 +- 0.0000
+  n_test                              820.0000 +- 0.0000
+  epochs                               40.0000 +- 0.0000
+  train_seconds                      2743.1163 +- 0.0000
+  L1_model_vs_analytic                  0.2031 +- 0.0000
+  L1_model_vs_heldout                   0.4183 +- 0.0000
+  L1_analytic_vs_heldout                0.4095 +- 0.0000
+  NLL_heldout_model                     5.2828 +- 0.0000
+  NLL_heldout_analytic                  5.2679 +- 0.0000
+  emp_start_full                        2.0000 +- 0.0000
+  emp_start_rew                         1.0011 +- 0.0000
+  emp_trap_full                         0.0110 +- 0.0000
+  emp_trap_rew                          0.0001 +- 0.0000
+  emp_postcue_full                      1.9997 +- 0.0000
+  emp_postcue_rew                       1.5842 +- 0.0000
+  n_states_predictive                   7.0000 +- 0.0000
+  n_histories_predictive               24.0000 +- 0.0000
+  n_states_fidelity                     7.0000 +- 0.0000
+  n_states_truth                        7.0000 +- 0.0000
+  max_TV_history_conditional_reward     0.0280 +- 0.0000
