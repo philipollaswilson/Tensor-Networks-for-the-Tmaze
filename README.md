@@ -3,6 +3,11 @@
 Learn a generative model of a T-maze POMDP from behaviour with a matrix product state
 (MPS), then **recover the model's structure** and read agency-relevant quantities off it.
 
+**Start here:** [EXPERIMENTS.md](EXPERIMENTS.md) lists every experiment so far with its status, and
+[THINKING.md](THINKING.md) gives the reasoning, what we've learnt and the open questions. Current
+plans are in [PLANS.md](PLANS.md). Third-party code in `lib/` (RGMs, DreamerV3, FlexFringe, SPM DEM)
+is not committed and has to be fetched separately.
+
 This is the companion code for two papers:
 
 - **Paper I** — *Characterizing Agency in AI Systems: Active Inference and an
